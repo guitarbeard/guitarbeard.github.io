@@ -7,6 +7,10 @@ a, a:hover, a:focus {
   color: white;
 }
 
+.fake-code-container a, .fake-code-container a:hover, .fake-code-container a:focus {
+  color: rgba(255, 255, 255, 0);
+}
+
 .img-circle {
   border: solid white 9px;
 }
@@ -85,8 +89,8 @@ a, a:hover, a:focus {
     padding-right: 5px;
   }
 
-  .code-line{
-    padding-top: 7px;
+  .fake-code-container a{
+    padding-top: 6px;
     color: white;
   }
 }
