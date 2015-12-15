@@ -47,22 +47,27 @@ a, a:hover, a:focus {
 }
 
 .green-code {
+  color: rgb(2, 243, 3);
   background-color: rgb(2, 243, 3);
 }
 
 .blue-code {
+  color: rgb(2, 155, 243);
   background-color: rgb(2, 155, 243);
 }
 
 .red-code {
+  color: rgb(243, 75, 2);
   background-color: rgb(243, 75, 2);
 }
 
 .orange-code {
+  color: rgb(243, 153, 2);
   background-color: rgb(243, 153, 2);
 }
 
 .purple-code {
+  color: rgb(238, 67, 240);
   background-color: rgb(238, 67, 240);
 }
 
@@ -78,5 +83,10 @@ a, a:hover, a:focus {
   .code-line-wrap {
     padding-left: 5px;
     padding-right: 5px;
+  }
+
+  .code-line{
+    padding-top: 7px;
+    color: white;
   }
 }
