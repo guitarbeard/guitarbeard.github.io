@@ -11,23 +11,32 @@ a, a:hover, a:focus {
   border: solid white 9px;
 }
 
-small {
-  color: white!important;
-}
-
 .info {
   background-color: rgb(255, 109, 54);
-  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.info marquee {
+  font-size: 20px;
 }
 
 .fake-code-container {
+  padding: 15px 30px;
+  border-radius: 10px;
   background-color: rgb(68, 68, 68);
 }
 
+.fake-code-container .row {
+  margin-top: 14px;
+}
+
+.fake-code-container:first-child {
+  margin-top: 0px;
+}
+
 .code-line-wrap {
-  margin-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .code-line {
@@ -55,4 +64,23 @@ small {
 
 .purple-code {
   background-color: rgb(238, 67, 240);
+}
+
+@media (max-width: 767px) {
+  .info h2{
+      font-size: 29px;
+  }
+
+  .fake-code-container {
+    border-radius: 0px;
+  }
+
+  .fake-code-container .row {
+    margin-top: 10px;
+  }
+
+  .code-line-wrap {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
