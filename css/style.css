@@ -12,8 +12,8 @@ a, a:hover, a:focus {
 }
 
 .info {
-  background-color: rgb(255, 109, 54);
-  margin-bottom: 0px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .info marquee {
@@ -67,10 +67,6 @@ a, a:hover, a:focus {
 }
 
 @media (max-width: 767px) {
-  .info h2{
-      font-size: 29px;
-  }
-
   .fake-code-container {
     border-radius: 0px;
   }
