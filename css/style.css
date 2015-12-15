@@ -1,0 +1,58 @@
+body {
+  background-color: rgb(255, 109, 54);
+  color: white;
+}
+
+a, a:hover, a:focus {
+  color: white;
+}
+
+.img-circle {
+  border: solid white 9px;
+}
+
+small {
+  color: white!important;
+}
+
+.info {
+  background-color: rgb(255, 109, 54);
+  margin-top: 30px;
+}
+
+.fake-code-container {
+  background-color: rgb(68, 68, 68);
+}
+
+.code-line-wrap {
+  margin-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.code-line {
+  width: 100%;
+  display: block;
+  text-align: center;
+  height: 30px;
+}
+
+.green-code {
+  background-color: rgb(2, 243, 3);
+}
+
+.blue-code {
+  background-color: rgb(2, 155, 243);
+}
+
+.red-code {
+  background-color: rgb(243, 75, 2);
+}
+
+.orange-code {
+  background-color: rgb(243, 153, 2);
+}
+
+.purple-code {
+  background-color: rgb(238, 67, 240);
+}
