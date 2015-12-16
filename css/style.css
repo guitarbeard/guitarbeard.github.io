@@ -24,6 +24,10 @@ a, a:hover, a:focus {
   font-size: 20px;
 }
 
+.info h1, .info h4 {
+  font-weight: 300;
+}
+
 .fake-code-container {
   padding: 15px 30px;
   border-radius: 10px;
