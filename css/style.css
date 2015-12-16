@@ -16,7 +16,7 @@ a, a:hover, a:focus {
 }
 
 .info {
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 30px;
 }
 
@@ -73,6 +73,10 @@ a, a:hover, a:focus {
 .purple-code {
   color: rgb(238, 67, 240);
   background-color: rgb(238, 67, 240);
+}
+
+footer small {
+  margin: 5px 0px;
 }
 
 @media (max-width: 767px) {
