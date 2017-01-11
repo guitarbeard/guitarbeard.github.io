@@ -3,12 +3,20 @@ body {
   color: white;
 }
 
+p a {
+  text-decoration: underline;
+}
+
 a, a:hover, a:focus {
   color: white;
 }
 
-.fake-code-container a, .fake-code-container a:hover, .fake-code-container a:focus {
-  color: rgba(255, 255, 255, 0);
+a:hover, a:focus {
+  opacity: 0.8;
+}
+
+.fake-code-container a{
+  padding-top: 6px;
 }
 
 .img-circle {
@@ -55,27 +63,22 @@ a, a:hover, a:focus {
 }
 
 .green-code {
-  color: rgb(2, 243, 3);
   background-color: rgb(2, 243, 3);
 }
 
 .blue-code {
-  color: rgb(2, 155, 243);
   background-color: rgb(2, 155, 243);
 }
 
 .red-code {
-  color: rgb(243, 75, 2);
   background-color: rgb(243, 75, 2);
 }
 
 .orange-code {
-  color: rgb(243, 153, 2);
   background-color: rgb(243, 153, 2);
 }
 
 .purple-code {
-  color: rgb(238, 67, 240);
   background-color: rgb(238, 67, 240);
 }
 
@@ -95,10 +98,5 @@ footer small {
   .code-line-wrap {
     padding-left: 5px;
     padding-right: 5px;
-  }
-
-  .fake-code-container a{
-    padding-top: 6px;
-    color: white;
   }
 }
