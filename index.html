@@ -1,172 +1,394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>alxdna</title>
-    <meta name="description" content="I am a web developer with over 7 years experience with HTML, CSS, Javascript, and PHP. I am excited and inspired by the latest technologies used on the web including the composability of web components, the improvements of ES6(2015), and the amazing possiblities in WebGL. Personal projects of mine include an Arduino powered puzzle box, a multi-search map application, and a javascript text-to-image converter.">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-      <div class="info">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-            <div class="col-xs-8 col-sm-3 col-xs-offset-2 col-sm-offset-0">
-              <img src="images/alxdna.jpg" class="img-responsive img-circle" alt="Me!">
-            </div>
-            <div class="col-xs-12 col-sm-9 col-md-9 ">
-                <div class="row">
-                  <h2>alex medina
-                  <span class="pull-right">
-                    <a href="https://github.com/guitarbeard" target="_blank" class="pulse-hover"><i class="fa fa-github fa-1x"></i></a>
-                    <a href="https://www.linkedin.com/in/alxdna" target="_blank" class="pulse-hover"><i class="fa fa-linkedin-square fa-1x"></i></a>
-                  </span></h2>
-                </div>
-                <div class="row">
-                  <p class="h4 description">
-                    I am a web developer with over 7 years experience with HTML, CSS, Javascript, and PHP.
-                    I am excited and inspired by the latest technologies used on the web including the composability of web components, the improvements of ES6(2015), and the amazing possiblities in WebGL.
-                    Personal projects of mine include an <a href="https://github.com/guitarbeard/arduino-puzzle-box" target="_blank">Arduino powered puzzle box</a>, a <a href="//irinamaps.com" target="_blank">multi-search map application</a>, and a javascript <a href="//www.alxdna.net/TXT2IMG" target="_blank">text-to-image converter</a>.
-                  </p>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="fake-code-container col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-          <div class="row">
-            <div class="col-xs-4 code-line-wrap">
-              <a href="http://gunnjerkens.com" target="_blank" class="pulse animated infinite code-line green-code" data-toggle="tooltip" data-placement="top" title="Gunn Jerkens">Gunn Jerkens</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line orange-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <a href="http://www.critiqueit.com" target="_blank" class="flash animated infinite code-line blue-code" data-toggle="tooltip" data-placement="top" title="CritiqueIt">CritiqueIt</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line orange-code"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line red-code"></div>
-            </div>
-            <div class="col-xs-6 code-line-wrap">
-              <a href="https://github.com/guitarbeard/arduino-puzzle-box" target="_blank" class="shake animated infinite code-line blue-code" data-toggle="tooltip" data-placement="top" title="Arduino Puzzle Box">Arduino Puzzle Box</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line orange-code"></div>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line green-code"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 code-line-wrap col-xs-offset-2">
-              <div class="code-line orange-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <div class="code-line blue-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <a href="//www.irinamaps.com" target="_blank" class="rubberBand animated infinite code-line purple-code" data-toggle="tooltip" data-placement="top" title="Irinamaps">Irinamaps</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-4 code-line-wrap col-xs-offset-4">
-              <a href="//www.alxdna.net/RNADNA" target="_blank" class="wobble animated infinite code-line blue-code" data-toggle="tooltip" data-placement="top" title="RNADNA">RNADNA</a>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <div class="code-line red-code"></div>
-            </div>
-          </div>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Medina, Senior Front-End Engineer</title>
+<meta name="description" content="Alex Medina is a senior front-end engineer in Long Beach, CA, building Shopify storefronts for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, and more.">
+<link rel="canonical" href="https://alxdna.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alxdna.dev/">
+<meta property="og:title" content="Alex Medina, Senior Front-End Engineer">
+<meta property="og:description" content="Front-end engineer behind storefronts for Barnes &amp; Noble, Netflix, and SKIMS.">
+<meta property="og:image" content="https://alxdna.dev/images/alxdna.jpg">
+<meta name="theme-color" content="#F7F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316181D'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%232B44D6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem('alx-theme'); } catch (e) {}
+  var dark = saved ? saved === 'dark' : !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F7F4}
+html[data-theme="dark"] body{background:#0F1115}
+a{color:var(--ink)}a:hover{color:var(--accent-ink)}
+.alx{--accent:#2B44D6;--bg:#F7F7F4;--ink:#16181D;--text:#3A3F4B;--muted:#5A5F6B;--line:#DCDCD5;--tile:#FFFFFF;--panel:#16181D;--veil:rgba(247,247,244,0.8);--dye-opacity:0.55;--logo-filter:none;--on-accent:#FFFFFF;color-scheme:light}
+html[data-theme="dark"] .alx{--accent:#8C9CFF;--bg:#0F1115;--ink:#F2F2EE;--text:#C9CCD3;--muted:#A0A6B1;--line:#2C3039;--tile:#181B21;--panel:#1C1F26;--veil:rgba(15,17,21,0.76);--dye-opacity:0.6;--logo-filter:invert(1);--on-accent:#0B0D12;color-scheme:dark}
+.alx > .alx-content{position:relative;z-index:1}
+.alx .icon-sun{display:none}html[data-theme="dark"] .alx .icon-sun{display:block}html[data-theme="dark"] .alx .icon-moon{display:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="alx" id="alx" style="position: relative; min-height: 100%; background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; transition: background-color 0.3s, color 0.3s">
+  <div aria-hidden="true" style="position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none">
+    <div class="alx-dye" style="position: absolute; inset: -15%; opacity: var(--dye-opacity); filter: blur(36px); background: radial-gradient(circle at 22% 28%, #FF5DA2 0, rgba(255,93,162,0) 32%), radial-gradient(circle at 78% 22%, #FFC94D 0, rgba(255,201,77,0) 30%), radial-gradient(circle at 70% 72%, #3FD0C9 0, rgba(63,208,201,0) 34%), radial-gradient(circle at 25% 80%, #7B61FF 0, rgba(123,97,255,0) 32%), repeating-conic-gradient(from 20deg at 50% 45%, #FF5DA2 0deg, #FF8A3D 30deg, #FFC94D 60deg, #5EDB8F 90deg, #3FD0C9 120deg, #4C7DFF 150deg, #7B61FF 180deg); transition: opacity 0.3s"></div>
+    <canvas id="alx-dye-gl" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: var(--dye-opacity); transition: opacity 0.3s"></canvas>
+    <div style="position: absolute; inset: 0; background: var(--veil); transition: background-color 0.3s"></div>
+  </div>
+  <div class="alx-content">
 
-          <div class="row">
-            <div class="col-xs-4 code-line-wrap">
-              <a href="//www.alxdna.net/TXT2IMG" target="_blank" class="jello animated infinite code-line orange-code" data-toggle="tooltip" data-placement="top" title="TXT2IMG">TXT2IMG</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line blue-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <div class="code-line orange-code"></div>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line green-code"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 code-line-wrap col-xs-offset-2">
-              <div class="code-line green-code"></div>
-            </div>
-            <div class="col-xs-6 code-line-wrap">
-              <a href="https://github.com/guitarbeard/ArduinoGarageDoorOpener" target="_blank" class="headShake animated infinite code-line blue-code" data-toggle="tooltip" data-placement="top" title="Arduino Garage Door Opener">Arduino Garage Door Opener</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line red-code"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line purple-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <div class="code-line blue-code"></div>
-            </div>
-            <div class="col-xs-4 code-line-wrap">
-              <a href="//bedrosians.com/" target="_blank" class="swing animated infinite code-line orange-code" data-toggle="tooltip" data-placement="top" title="Bedrosians">Bedrosians</a>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line green-code"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-3 code-line-wrap col-xs-offset-2">
-              <a href="http://www.mideosystems.com" target="_blank" class="tada animated infinite code-line red-code" data-toggle="tooltip" data-placement="top" title="Mideo">Mideo</a>
-            </div>
-            <div class="col-xs-3 code-line-wrap">
-              <div class="code-line blue-code"></div>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line orange-code"></div>
-            </div>
-            <div class="col-xs-2 code-line-wrap">
-              <div class="code-line purple-code"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="row">
-        <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-          <small class="pull-right">Made with <i class="fa fa-code"></i> in Long Beach, CA</small>
-        </div>
-      </footer>
+  <header style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+    <a href="#top" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; text-decoration: none">alxdna<span style="color: var(--accent)">.</span></a>
+    <nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; font-size: 15px; font-weight: 500">
+      <a href="#work" style="text-decoration: none">Work</a>
+      <a href="#maps" style="text-decoration: none">Maps On Maps</a>
+      <a href="#experience" style="text-decoration: none">Experience</a>
+      <a href="#about" style="text-decoration: none">About</a>
+      <a href="Alex-Medina-Resume.pdf" style="text-decoration: none; padding: 10px 18px; border: 1.5px solid var(--ink); border-radius: 999px; min-height: 24px; display: inline-flex; align-items: center">Resume</a>
+      <button type="button" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode" style="width: 44px; height: 44px; padding: 0; border-radius: 999px; border: 1.5px solid var(--line); background: var(--tile); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg class="icon-sun" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="icon-moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <section id="top" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 88px">
+    <p style="margin: 0 0 28px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center">
+      <span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #1F8A5B; display: inline-block"></span>Open to senior roles</span>
+      <span>Long Beach, CA · Remote friendly</span>
+    </p>
+    <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, 7vw, 92px); line-height: 0.98; letter-spacing: -0.035em; max-width: 1050px">Front-end engineer behind storefronts for <span style="color: var(--accent)">Barnes &amp; Noble, Netflix, and SKIMS</span>.</h1>
+    <p style="margin: 36px 0 0; max-width: 680px; font-size: 20px; line-height: 1.55; color: var(--text)">Senior front-end engineer, full-stack when it counts. 14 years shipping for the web, most recently headless Hydrogen and Liquid storefronts and custom Shopify apps for brands like Glossier, MoMA, and Peet's Coffee.</p>
+    <div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px">
+      <a href="mailto:alxdna@gmail.com" style="text-decoration: none; background: var(--accent); color: var(--on-accent); padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 16px">Get in touch</a>
+      <a href="Alex-Medina-Resume.pdf" style="text-decoration: none; padding: 13.5px 24.5px; border: 1.5px solid var(--ink); border-radius: 999px; font-weight: 600; font-size: 16px">Download resume (PDF)</a>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </section>
 
-    <script>
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-      });
-    </script>
-  </body>
+  <section aria-label="Clients" style="border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 14px 44px; align-items: center">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shipped for</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">Barnes &amp; Noble</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">Netflix</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">SKIMS</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">Glossier</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">MoMA</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">Peet's Coffee</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">HAUS Labs</span>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px">Indigo</span>
+    </div>
+  </section>
+
+  <section id="work" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 40px">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px 48px; align-items: end; justify-content: space-between; margin-bottom: 48px">
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Selected Shopify work</h2>
+      <p style="margin: 0; max-width: 460px; color: var(--text)">Built at SDG, 2022 to 2026: large custom themes, headless Hydrogen storefronts, and custom Shopify apps.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px">
+      <a href="https://www.barnesandnoble.com" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/barnesnoble.svg" alt="Barnes &amp; Noble" loading="lazy" style="width: 88%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Barnes &amp; Noble</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Built custom React components, integrated Sanity CMS and custom membership and rewards APIs, and sped up both the front end and back end.</span>
+      </a>
+      <a href="https://www.netflix.shop" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/netflix.svg" alt="Netflix" loading="lazy" style="width: 52%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Netflix Shop</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Worked on custom product and collection templates, header navigation updates, and bug fixes.</span>
+      </a>
+      <a href="https://skims.com" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/skims.svg" alt="SKIMS" loading="lazy" style="width: 52%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">SKIMS</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Helped build and launch SKIMS on Hydrogen, making it the first enterprise brand on Shopify's headless framework.</span>
+      </a>
+      <a href="https://www.glossier.com" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/glossier.svg" alt="Glossier" loading="lazy" style="width: 58%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Glossier</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Helped craft the custom UI behind product pages, collections, and the cart.</span>
+      </a>
+      <a href="https://store.moma.org" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/moma.svg" alt="MoMA" loading="lazy" style="width: 52%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">MoMA Design Store</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Part of the team building custom product pages, collection grids, and cart components for the Design Store.</span>
+      </a>
+      <a href="https://www.peets.com" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/peets.svg" alt="Peet's Coffee" loading="lazy" style="width: 52%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Peet's Coffee</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Contributed to the product, collection, and cart experience, and built and updated landing pages for store locations.</span>
+      </a>
+      <a href="https://hauslabs.com" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/hauslabs.svg" alt="HAUS Labs" loading="lazy" style="width: 66%; height: auto; max-height: 60px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">HAUS Labs</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Co-developed a custom Shopify app for creating and managing QR gift codes, alongside product, collection, and cart UI.</span>
+      </a>
+      <a href="https://www.indigo.ca" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px">
+        <div style="aspect-ratio: 3 / 2; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)"><img src="images/logos/indigo.svg" alt="Indigo" loading="lazy" style="width: 36%; height: auto; max-height: 72px; object-fit: contain; filter: var(--logo-filter)"></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Indigo</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted)">Shopify</span></div>
+        <span style="color: var(--text); font-size: 15px">Helped connect the store to Indigo's loyalty program with custom Shopify apps, and worked on shopping UI from product page to cart.</span>
+      </a>
+    </div>
+    <div style="margin-top: 72px; display: flex; flex-direction: column; gap: 24px">
+      <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">More Shopify storefronts</h3>
+      <ul aria-label="More Shopify clients" style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px">
+        <li style="height: 104px"><a href="https://shop.mattel.com" aria-label="Mattel" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/mattel.svg" alt="Mattel" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.framebridge.com" aria-label="Framebridge" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/framebridge.svg" alt="Framebridge" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://society6.com" aria-label="Society6" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/society6.svg" alt="Society6" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.revlon.com" aria-label="Revlon" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/revlon.svg" alt="Revlon" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.rarebeauty.com" aria-label="Rare Beauty" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/rarebeauty.svg" alt="Rare Beauty" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://magicspoon.com" aria-label="Magic Spoon" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/magicspoon.svg" alt="Magic Spoon" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.bigfacebrand.com/" aria-label="BIGFACE" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/bigface.svg" alt="BIGFACE" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.rugsusa.com" aria-label="Rugs USA" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/rugsusa.svg" alt="Rugs USA" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.meundies.com" aria-label="MeUndies" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/meundies.svg" alt="MeUndies" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.psychobunny.com" aria-label="Psycho Bunny" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/psychobunny.svg" alt="Psycho Bunny" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.houseplant.com" aria-label="Houseplant" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/houseplant.svg" alt="Houseplant" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+        <li style="height: 104px"><a href="https://www.everlane.com" aria-label="Everlane" style="height: 100%; border-radius: 14px; background: var(--tile); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box"><img src="images/logos/everlane.svg" alt="Everlane" loading="lazy" style="width: 100%; max-width: 140px; height: auto; max-height: 44px; object-fit: contain; filter: var(--logo-filter)"></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="maps" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+    <div style="background: var(--panel); color: #F7F7F4; border-radius: 24px; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #B8BCC6">Personal project · Founder &amp; developer · 2015 to now</span>
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Maps On Maps</h2>
+        <p style="margin: 0; font-size: 18px; color: #DADDE3">Compare several searches on one map. I rebuilt my 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">Expo</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">React Native</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">TypeScript</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">Cloudflare Workers</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">Mapbox</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">Apple MapKit</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
+          <a href="https://mapsonmaps.com/" style="text-decoration: none; background: #F7F7F4; color: #16181D; padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 16px">Try Maps On Maps</a>
+        </div>
+      </div>
+      <div style="flex: 1 1 360px; min-width: 0; display: flex; gap: clamp(12px, 3vw, 20px); justify-content: center">
+        <div role="img" aria-label="Maps On Maps results sheet listing nearby coffee shops over the map" style="flex: 0 1 220px; min-width: 0; aspect-ratio: 220 / 476; border-radius: 26px; overflow: hidden; border: 1px solid #4A4F5C; box-shadow: 0 18px 40px rgba(0,0,0,0.35)">
+          <img src="images/maps-on-maps/results.webp" alt="" width="390" height="844" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover">
+        </div>
+        <div role="img" aria-label="Maps On Maps place detail for Blue Door Coffee in the dark theme" style="flex: 0 1 220px; min-width: 0; aspect-ratio: 220 / 476; border-radius: 26px; overflow: hidden; border: 1px solid #4A4F5C; box-shadow: 0 18px 40px rgba(0,0,0,0.35); margin-top: 48px">
+          <img src="images/maps-on-maps/detail-dark.webp" alt="" width="390" height="844" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover">
+        </div>
+      </div>
+      <figure style="flex: 1 1 100%; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+        <div style="border-radius: 14px; overflow: hidden; border: 1px solid #4A4F5C; box-shadow: 0 18px 40px rgba(0,0,0,0.35); background: #23262D">
+          <div aria-hidden="true" style="height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid #4A4F5C">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #4A4F5C"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #4A4F5C"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #4A4F5C"></span>
+            <span style="margin-left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #B8BCC6">mapsonmaps.com</span>
+          </div>
+          <div role="img" aria-label="Maps On Maps on the web, with search results in a side panel next to the map" style="overflow: hidden">
+            <img src="images/maps-on-maps/web.webp" alt="" width="1440" height="900" loading="lazy" style="display: block; width: 100%; height: auto">
+          </div>
+        </div>
+        <figcaption style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #B8BCC6">One codebase: iOS, Android, and the web.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="experience" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 96px">
+    <h2 style="margin: 0 0 40px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Experience</h2>
+    <div style="display: flex; flex-direction: column">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; padding: 28px 0; border-top: 1px solid var(--line)">
+        <span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">2022 – 2026</span>
+        <div style="flex: 1 1 520px; min-width: 0">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600">Senior Front-End Engineer, SDG</h3>
+          <p style="margin: 8px 0 0; color: var(--text)">Custom large-scale headless (Hydrogen) and Liquid Shopify themes and custom Shopify apps for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. React, Node, TypeScript, and Remix, with AI-assisted workflows.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; padding: 28px 0; border-top: 1px solid var(--line)">
+        <span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">2016 – 2021</span>
+        <div style="flex: 1 1 520px; min-width: 0">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600">Web Developer, Gunn | Jerkens</h3>
+          <p style="margin: 8px 0 0; color: var(--text)">Marketing sites, WordPress themes, and React and PHP web apps for real estate and land management clients. Owned DevOps for the DigitalOcean Ubuntu fleet and led a migration from Ubuntu 14 to 18 with zero downtime.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; padding: 28px 0; border-top: 1px solid var(--line)">
+        <span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">2013 – 2015</span>
+        <div style="flex: 1 1 520px; min-width: 0">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600">Web Developer, CritiqueIt</h3>
+          <p style="margin: 8px 0 0; color: var(--text)">Shaped features, UX, domain model, and design for a web-based annotation app, front end and back end. Contracted for Mideo Systems and Film Solutions.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; padding: 28px 0; border-top: 1px solid var(--line)">
+        <span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">2014 – 2015</span>
+        <div style="flex: 1 1 520px; min-width: 0">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600">Front End Engineer, Bedrosians Tile &amp; Stone</h3>
+          <p style="margin: 8px 0 0; color: var(--text)">Implemented designs, fixed bugs, and shipped features in jQuery and React.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+        <span style="flex: 0 0 200px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--muted)">2012 – 2014</span>
+        <div style="flex: 1 1 520px; min-width: 0">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 600">Web Developer, Cookiepages</h3>
+          <p style="margin: 8px 0 0; color: var(--text)">Startup work, from custom Facebook pages for local businesses to 1smartmenu, an online ordering menu builder for restaurants.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills-h" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px">
+    <h2 id="skills-h" style="margin: 0 0 40px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Toolkit</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px">
+      <div style="background: var(--tile); border: 1px solid var(--line); border-radius: 16px; padding: 28px">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600">Front end</h3>
+        <p style="margin: 0; color: var(--text); font-size: 16px">React, TypeScript, Remix, Vue, HTML, CSS, and SCSS</p>
+      </div>
+      <div style="background: var(--tile); border: 1px solid var(--line); border-radius: 16px; padding: 28px">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600">Shopify</h3>
+        <p style="margin: 0; color: var(--text); font-size: 16px">Hydrogen, Liquid, custom apps, Flow. Badges: Developing Apps for Shopify, Liquid Storefronts for Theme Developers</p>
+      </div>
+      <div style="background: var(--tile); border: 1px solid var(--line); border-radius: 16px; padding: 28px">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600">Back end and ops</h3>
+        <p style="margin: 0; color: var(--text); font-size: 16px">Node, PHP, SQL, WordPress, Ubuntu, Apache2, Cloudflare Workers</p>
+      </div>
+      <div style="background: var(--tile); border: 1px solid var(--line); border-radius: 16px; padding: 28px">
+        <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 600">AI workflows</h3>
+        <p style="margin: 0; color: var(--text); font-size: 16px">Claude and Codex for faster, well-reviewed shipping</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 112px; display: flex; flex-wrap: wrap; gap: 48px; align-items: start">
+    <img src="images/alxdna.jpg" alt="Alex Medina" loading="lazy" style="flex: 0 1 300px; min-width: 0; width: 300px; max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 20px; border: 1px solid var(--line)">
+    <div style="flex: 1 1 480px; min-width: 0">
+      <h2 style="margin: 0 0 24px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">About</h2>
+      <p style="margin: 0; font-size: 19px; color: var(--text)">I've drawn and painted since I was a kid, all the way through high school, so it seemed natural to start community college in visual art. I'd also played guitar as a teen, and music pulled me toward jazz guitar. A friend from the music program, after we'd played in bands together, thought I'd make a great programmer and started teaching me the basics of web development. I eventually transferred to CSUF as a music student, then switched to computer science before leaving to build for the web full-time. Since then I've spent 14 years shipping for startups, agencies, and in-house teams, most recently building commerce for some of the biggest brands on Shopify.</p>
+    </div>
+  </section>
+
+  <footer style="background: var(--panel); color: #F7F7F4">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 48px; display: flex; flex-direction: column; gap: 48px">
+      <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: end">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(40px, 6vw, 80px); letter-spacing: -0.035em; line-height: 0.98; max-width: 760px">Hiring a senior front-end engineer?</h2>
+        <a href="mailto:alxdna@gmail.com" style="text-decoration: none; background: #F7F7F4; color: #16181D; padding: 16px 28px; border-radius: 999px; font-weight: 600; font-size: 17px">alxdna@gmail.com</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; border-top: 1px solid #3A3F4B; padding-top: 28px; font-size: 15px">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px 28px">
+          <a href="https://www.linkedin.com/in/alxdna/" style="color: #F7F7F4">LinkedIn</a>
+          <a href="https://github.com/guitarbeard" style="color: #F7F7F4">GitHub</a>
+          <a href="Alex-Medina-Resume.pdf" style="color: #F7F7F4">Resume (PDF)</a>
+        </div>
+        <span style="color: #B8BCC6">Made in Long Beach, CA</span>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+</div>
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  var mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+  function saved() { try { return localStorage.getItem('alx-theme'); } catch (e) { return null; } }
+  function apply(dark) {
+    var t = dark ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    var label = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', label);
+  }
+  apply(document.documentElement.getAttribute('data-theme') === 'dark');
+  if (mq && mq.addEventListener) mq.addEventListener('change', function (e) { if (!saved()) apply(e.matches); });
+  btn.addEventListener('click', function () {
+    var dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+    try { localStorage.setItem('alx-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    apply(dark);
+  });
+
+  function startDye() {
+        var canvas = document.getElementById('alx-dye-gl');
+    var gl = canvas && (canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false }) || canvas.getContext('experimental-webgl'));
+    if (!gl) { if (canvas) canvas.style.display = 'none'; return; }
+    var vs = 'attribute vec2 a; void main(){ gl_Position = vec4(a, 0.0, 1.0); }';
+    var fs = [
+      'precision mediump float;',
+      'uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse; uniform float uEnergy; uniform vec3 uRip[8]; uniform float uDark;',
+      'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+      'float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3.0 - 2.0 * f);',
+      '  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y); }',
+      'float fbm(vec2 p){ float v = 0.0, a = 0.5; mat2 m = mat2(1.6, 1.2, -1.2, 1.6); for (int i = 0; i < 5; i++) { v += a * noise(p); p = m * p; a *= 0.5; } return v; }',
+      'vec3 hsv(float h, float s, float v){ vec3 k = clamp(abs(mod(h * 6.0 + vec3(0.0, 4.0, 2.0), 6.0) - 3.0) - 1.0, 0.0, 1.0); return v * mix(vec3(1.0), k, s); }',
+      'void main(){',
+      '  vec2 uv = gl_FragCoord.xy / uRes; float asp = uRes.x / uRes.y; vec2 p = vec2(uv.x * asp, uv.y);',
+      '  vec2 m = vec2(uMouse.x * asp, uMouse.y);',
+      '  for (int i = 0; i < 8; i++) { vec3 r = uRip[i]; float age = uTime - r.z;',
+      '    if (age > 0.0 && age < 4.0) { vec2 d = p - vec2(r.x * asp, r.y); float dist = length(d);',
+      '      p += normalize(d + 1e-4) * sin(dist * 26.0 - age * 6.0) * exp(-age * 1.1) * exp(-dist * 3.0) * 0.006; } }',
+      '  vec2 d = p - m; float ang = uEnergy * exp(-length(d) * 2.6); float cs = cos(ang), sn = sin(ang); p = m + mat2(cs, -sn, sn, cs) * d;',
+      '  float t = uTime * 0.049;',
+      '  vec2 q = vec2(fbm(p * 1.6 + t), fbm(p * 1.6 + vec2(5.2, 1.3) - t));',
+      '  vec2 w = vec2(fbm(p * 1.6 + 3.0 * q + vec2(1.7, 9.2) + t * 1.3), fbm(p * 1.6 + 3.0 * q + vec2(8.3, 2.8) - t));',
+      '  vec2 pc = p - vec2(0.5 * asp, 0.55); float spiral = atan(pc.y, pc.x) / 6.2831 + length(pc) * 1.4 + 2.2 * w.x + t * 0.6;',
+      '  float h = fract(spiral * 2.0);',
+      '  vec3 col = mix(hsv(h, 0.38, 1.0), hsv(fract(h + 0.35), 0.32, 1.0), smoothstep(0.4, 0.9, w.y) * 0.5);',
+      '  col *= mix(1.0, 0.8, uDark);',
+      '  gl_FragColor = vec4(col, 1.0);',
+      '}'
+    ].join('\n');
+    function sh(type, src) { var o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { canvas.style.display = 'none'; return; }
+    gl.useProgram(prog);
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var U = {}; ['uRes', 'uTime', 'uMouse', 'uEnergy', 'uDark'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+    var uRip = gl.getUniformLocation(prog, 'uRip');
+    var rip = new Float32Array(24); for (var k = 0; k < 8; k++) rip[k * 3 + 2] = -99;
+    var ripI = 0, mx = 0.5, my = 0.5, tmx = 0.5, tmy = 0.5, energy = 0, lastX = null, lastY = null, lastRx = -999, lastRy = -999;
+    var t0 = performance.now();
+    var scale = 0.5;
+    function resize() {
+      var w = Math.max(1, Math.round(canvas.clientWidth * scale)), h = Math.max(1, Math.round(canvas.clientHeight * scale));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+    }
+    function draw(now) {
+      resize();
+      var t = (now - t0) / 1000;
+      energy *= 0.965;
+      mx += (tmx - mx) * 0.08; my += (tmy - my) * 0.08;
+      gl.uniform2f(U.uRes, canvas.width, canvas.height);
+      gl.uniform1f(U.uTime, t);
+      gl.uniform2f(U.uMouse, mx, my);
+      gl.uniform1f(U.uEnergy, energy);
+      gl.uniform1f(U.uDark, (document.documentElement.getAttribute('data-theme') === 'dark') ? 1 : 0);
+      gl.uniform3fv(uRip, rip);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { draw(t0 + 20000); window.addEventListener('resize', function () { draw(t0 + 20000); }); new MutationObserver(function () { draw(t0 + 20000); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); return; }
+    var onMove = function (e) {
+      var w = window.innerWidth, h = window.innerHeight;
+      tmx = e.clientX / w; tmy = 1 - e.clientY / h;
+      if (lastX !== null) energy = Math.min(0.35, energy + Math.hypot(e.clientX - lastX, e.clientY - lastY) * 0.0008);
+      lastX = e.clientX; lastY = e.clientY;
+      if (Math.hypot(e.clientX - lastRx, e.clientY - lastRy) > 60) {
+        lastRx = e.clientX; lastRy = e.clientY;
+        rip[ripI * 3] = tmx; rip[ripI * 3 + 1] = tmy; rip[ripI * 3 + 2] = (performance.now() - t0) / 1000;
+        ripI = (ripI + 1) % 8;
+      }
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    var loop = function (now) { draw(now); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
+
+  startDye();
+})();
+</script>
+</body>
 </html>
