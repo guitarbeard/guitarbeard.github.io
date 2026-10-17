@@ -257,12 +257,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   </section>
 
   <section id="about" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 112px; display: flex; flex-wrap: wrap; gap: 48px; align-items: start">
-    <figure class="then-now" data-show="now" style="flex: 0 1 300px; min-width: 0; width: 300px; max-width: 100%; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px">
+    <figure class="then-now" data-show="then" style="flex: 0 1 300px; min-width: 0; width: 300px; max-width: 100%; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px">
       <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; border: 1px solid var(--line); overflow: hidden; background: var(--tile)">
         <img class="then-now-then" src="images/alxdna.jpg" alt="Alex Medina, then" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
         <img class="then-now-now" src="images/alxdna-now.jpg" alt="Alex Medina, now" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
       </div>
-      <button type="button" id="then-now-toggle" role="switch" aria-checked="true" aria-label="Show current photo" class="then-now-switch">
+      <button type="button" id="then-now-toggle" role="switch" aria-checked="false" aria-label="Show current photo" class="then-now-switch">
         <span class="then-now-thumb" aria-hidden="true"></span>
         <span class="then-now-label" data-for="then">Then</span>
         <span class="then-now-label" data-for="now">Now</span>
