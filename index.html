@@ -44,6 +44,8 @@ html[data-theme="dark"] .alx{--accent:#8C9CFF;--bg:#0F1115;--ink:#F2F2EE;--text:
 .alx .logo-tile{border:1px solid var(--line)}
 .alx .card > div:first-child{transition:border-color .2s}
 .alx .logo-tile:hover,.alx .logo-tile:focus-visible,.alx .card:hover > div:first-child,.alx .card:focus-visible > div:first-child{border-color:var(--accent)!important}
+.alx .logo-tile:hover img,.alx .logo-tile:focus-visible img,.alx .card:hover img,.alx .card:focus-visible img{filter:url(#logo-tint)!important}
+html[data-theme="dark"] .alx .logo-tile:hover img,html[data-theme="dark"] .alx .logo-tile:focus-visible img,html[data-theme="dark"] .alx .card:hover img,html[data-theme="dark"] .alx .card:focus-visible img{filter:url(#logo-tint-dark)!important}
 .alx > .alx-content{position:relative;z-index:1}
 .alx .icon-sun{display:none}html[data-theme="dark"] .alx .icon-sun{display:block}html[data-theme="dark"] .alx .icon-moon{display:none}
 .then-now img{transition:opacity .4s ease}.then-now[data-show="now"] .then-now-then,.then-now[data-show="then"] .then-now-now{opacity:0}
@@ -57,6 +59,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 </style>
 </head>
 <body>
+<svg aria-hidden="true" width="0" height="0" style="position: absolute"><filter id="logo-tint" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="0.169 1"/><feFuncG type="table" tableValues="0.267 1"/><feFuncB type="table" tableValues="0.839 1"/></feComponentTransfer></filter><filter id="logo-tint-dark" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="0.549 0"/><feFuncG type="table" tableValues="0.612 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter></svg>
 <div class="alx" id="alx" style="position: relative; min-height: 100%; background: var(--bg); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6; transition: background-color 0.3s, color 0.3s">
   <div aria-hidden="true" style="position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none">
     <div class="alx-dye" style="position: absolute; inset: -15%; opacity: var(--dye-opacity); filter: blur(36px); background: radial-gradient(circle at 22% 28%, #FF5DA2 0, rgba(255,93,162,0) 32%), radial-gradient(circle at 78% 22%, #FFC94D 0, rgba(255,201,77,0) 30%), radial-gradient(circle at 70% 72%, #3FD0C9 0, rgba(63,208,201,0) 34%), radial-gradient(circle at 25% 80%, #7B61FF 0, rgba(123,97,255,0) 32%), repeating-conic-gradient(from 20deg at 50% 45%, #FF5DA2 0deg, #FF8A3D 30deg, #FFC94D 60deg, #5EDB8F 90deg, #3FD0C9 120deg, #4C7DFF 150deg, #7B61FF 180deg); transition: opacity 0.3s"></div>
