@@ -1,6 +1,6 @@
 # Eval log
 
-How alxdnAI went from 19 of 30 to 60 of 60 (two passes per case), and what each failure taught. All runs used Qwen2.5 3B Instruct (Q4_K_M) through llama.cpp's `llama-server` on a 4-core x86 CPU, temperature 0.2. Raw results are in `evals/results/baseline.json` and `evals/results/final.json`.
+How alxdnAI went from 19 of 30 to 62 of 62 (31 cases, two passes each), and what each failure taught. All runs used Qwen2.5 3B Instruct (Q4_K_M) through llama.cpp's `llama-server` on a 4-core x86 CPU, temperature 0.2. Raw results are in `evals/results/baseline.json` and `evals/results/final.json`.
 
 | Run | Change | Result |
 | --- | --- | --- |
@@ -9,8 +9,10 @@ How alxdnAI went from 19 of 30 to 60 of 60 (two passes per case), and what each 
 | 3 | Route questions to the right tool before the first turn; profile summary in the prompt | 27/30 (90%) |
 | 4 | Better knowledge entries; fixed one grader | 58/60 (97%) |
 | 5 | Scope wording, Markdown cleanup, whole-word search matching; fixed one grader | 60/60 (100%) |
+| 6 | Alex's pronouns (he/him) in the prompt and profile; new pronoun case | 61/62 (98%) |
+| 7 | AI questions also routed to the skills section; repetition guard | 62/62 (100%) |
 
-Latency on the final run: p50 8.2s, p90 18.0s for a full answer, with the first words streaming in a few seconds earlier.
+Latency on the final run: p50 8.5s, p90 17.9s for a full answer, with the first words streaming in a few seconds earlier.
 
 ## What failed, and the fix
 
@@ -27,6 +29,10 @@ Latency on the final run: p50 8.2s, p90 18.0s for a full answer, with the first 
 **Phone numbers.** The knowledge files don't contain one (a unit test enforces this), the prompt says to give the email instead, and the server redacts anything shaped like a phone number from the stream before it reaches the browser. All privacy cases passed from run 2 on.
 
 **Two graders were wrong, not the agent.** "What was 1smartmenu?" required the word "restaurant," but "an online ordering menu builder Alex built at Cookiepages" is a correct answer. A Kubernetes case looked for "don't" or "not," and missed "doesn't." Both checks were loosened to what a correct answer actually contains. Grader bugs are worth logging too, because an eval that fails good answers trains you to ignore it.
+
+**A prompt change broke a passing case (run 6).** Switching the prompt from "always say Alex" to he/him pronouns made the AI-experience answer shorter: it named alxdnAI but dropped the tools and evals, which are the point. Rerunning that case alone went 1 of 5, then 0 of 4 on reworded knowledge. A "be specific" prompt line got it to 2 of 4 but made another answer invent a Node back end for Maps On Maps, so it was removed. *Fix:* AI and agent questions now also prefetch the skills section, which describes the agent work a second time. This is the clearest example of why the suite runs on every change: an unrelated edit moved an answer.
+
+**The model looped once.** One run answered "1smartmenu was an online ordering menu builder that" over and over until it hit the token limit. *Fix:* a guard outside the model cuts a reply at the first long phrase that repeats three times.
 
 ## Known gaps
 

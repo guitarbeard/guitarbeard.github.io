@@ -68,3 +68,10 @@ test("plainText flattens Markdown links and bold", () => {
   assert.equal(plainText("See [the resume](https://alxdna.dev/r.pdf)"), "See the resume (https://alxdna.dev/r.pdf)");
   assert.equal(plainText("**SKIMS** on Hydrogen"), "SKIMS on Hydrogen");
 });
+
+test("checkReply cuts a reply that loops", () => {
+  const loop = "1smartmenu was an online ordering menu builder that ".repeat(6);
+  assert.ok(checkReply(loop).length < 60);
+  const normal = "Alex built SKIMS on Hydrogen. Alex built Glossier's cart.";
+  assert.equal(checkReply(normal), normal);
+});

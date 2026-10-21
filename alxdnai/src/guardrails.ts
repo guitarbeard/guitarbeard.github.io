@@ -39,8 +39,17 @@ export function offScript(reply: string): boolean {
   return /```|^\s*(def|class|function|import|const|let|public)\s/m.test(reply) || /\bI am (?!alxdnAI)[A-Z]{2,}\b/.test(reply);
 }
 
+// Small models sometimes loop ("X that X that X that..."). Cut the reply where a long phrase repeats.
+export function cutRepetition(reply: string): string {
+  const m = /(.{24,}?)\1{2,}/s.exec(reply);
+  if (!m) return reply;
+  const kept = reply.slice(0, m.index + m[1].length).trim();
+  const lastStop = Math.max(kept.lastIndexOf(". "), kept.endsWith(".") ? kept.length - 1 : -1);
+  return lastStop > 0 ? kept.slice(0, lastStop + 1) : kept;
+}
+
 export function checkReply(reply: string): string {
-  return offScript(reply) ? OFF_SCRIPT : reply;
+  return offScript(reply) ? OFF_SCRIPT : cutRepetition(reply);
 }
 
 // The widget shows plain text, so turn the Markdown small models like to write into readable text.

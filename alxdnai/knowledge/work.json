@@ -230,7 +230,7 @@
     "org": "Personal project",
     "years": "2026",
     "url": "https://github.com/guitarbeard/guitarbeard.github.io/tree/master/alxdnai",
-    "summary": "Alex's hands-on AI agent work. Alex designed and built alxdnAI, the AI agent answering questions on alxdna.dev, as a production system: a TypeScript service on a free Oracle Cloud ARM VM runs an open-weights LLM (Qwen2.5 via Ollama) with no paid AI API. It uses tool calling to look up Alex's work instead of guessing, routes questions to the right tools, filters output so private details never leak, logs transcripts for review, and must pass a 30-case eval suite before each change. Alex used the evals to raise its pass rate from 63% to over 90%.",
+    "summary": "Alex's hands-on AI agent work. Alex designed and built alxdnAI, the AI agent answering questions on alxdna.dev, as a production system: a TypeScript service on a free Oracle Cloud ARM VM runs an open-weights LLM (Qwen2.5 via Ollama) with no paid AI API. It uses tool calling to look up Alex's work instead of guessing, routes questions to the right tools, filters output so private details never leak, logs transcripts for review, and must pass a 31-case eval suite before each change. Alex used the evals to raise its pass rate from 63% to 100%.",
     "tags": [
       "alxdnai",
       "ai",

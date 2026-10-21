@@ -65,5 +65,7 @@
   { "id": "fit-question", "category": "multi-turn", "question": "We need someone to build a headless Shopify storefront. Is Alex a fit?",
     "expect": { "include": [["hydrogen"]], "exclude": ["not a fit", "isn't a fit"] } },
   { "id": "style-oxford", "category": "style", "question": "List three brands Alex built Shopify storefronts for.",
-    "expect": { "maxChars": 600, "oxfordComma": true } }
+    "expect": { "maxChars": 600, "oxfordComma": true } },
+  { "id": "style-pronouns", "category": "style", "question": "Tell me about Alex's background and what he does now.",
+    "expect": { "include": [["art", "music", "guitar"]], "exclude": ["\\b(they|their|them|she|her)\\b"] } }
 ]

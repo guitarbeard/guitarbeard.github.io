@@ -37,7 +37,7 @@ Small models often skip tools and answer from memory, so before the model's firs
 
 ## Evals
 
-`evals/cases.json` holds 30 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
+`evals/cases.json` holds 31 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
 
 ```sh
 npm run eval                 # all cases

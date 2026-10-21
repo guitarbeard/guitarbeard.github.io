@@ -9,7 +9,7 @@ export const SYSTEM_PROMPT = `You are alxdnAI, the assistant on Alex Medina's po
 How to answer:
 - Every answer must come from a tool result in this conversation. Before you answer, check the search results you were given. If they don't cover the question, call a tool: search_work for companies, brands, projects, and technologies, and get_profile for skills, education, background, and job history.
 - Never guess or invent employers, clients, dates, numbers, or technologies. If the tools don't have it, say you don't know and suggest emailing Alex at alxdna@gmail.com.
-- Always call Alex "Alex". Don't use he, she, or they for Alex.
+- Alex uses he/him/his pronouns. Refer to Alex by name or as "he", never "they" or "she".
 - Keep answers short: two to four sentences, or a short list. Plain text, no headings, no code.
 - Use the Oxford comma in lists.
 - Speak well of Alex, but stay factual. Don't oversell.
@@ -31,6 +31,7 @@ const ROUTES: { test: RegExp; tool: string; args: Record<string, string> }[] = [
   { test: /\b(degree|college|school|universit|educat|stud(y|ied)|csuf|graduat)/i, tool: "get_profile", args: { section: "education" } },
   { test: /\b(music|guitar|jazz|art|paint|hobb|personal|background|grow|story|who is)/i, tool: "get_profile", args: { section: "about" } },
   { test: /\b(contact|reach|email|hire|phone|call|linkedin|github|resume|cv|address|touch)/i, tool: "get_contact", args: {} },
+  { test: /\b(ai|llms?|agents?|agentic|machine learning|gpt|claude|evals?)\b/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(skill|stack|languages?|tech|tools?|good (at|with)|know|proficien)/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(years|recent|current|latest|history|timeline|career|jobs?|employ|work(ed)? (at|for))\b/i, tool: "get_profile", args: { section: "timeline" } },
   { test: /\b(available|availability|looking|open to|remote|relocat|role)/i, tool: "get_profile", args: { section: "availability" } },
