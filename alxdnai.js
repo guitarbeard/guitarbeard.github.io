@@ -23,7 +23,14 @@
     '.ai-msg.user{align-self:flex-end;background:var(--ink);color:var(--bg);border-bottom-right-radius:6px}' +
     '.ai-msg.bot{align-self:flex-start;background:var(--bg);color:var(--text);border:1px solid var(--line);border-bottom-left-radius:6px}' +
     '.ai-msg a{color:var(--accent)}' +
-    '.ai-status{align-self:flex-start;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--muted)}' +
+    '.ai-status{align-self:flex-start;display:flex;flex-direction:column;gap:4px;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--muted)}' +
+    '.ai-status-row{display:flex;align-items:center;gap:8px}' +
+    '.ai-dots{display:inline-flex;gap:4px}' +
+    '.ai-dots i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:ai-bounce 1.2s infinite ease-in-out}' +
+    '.ai-dots i:nth-child(2){animation-delay:.15s}.ai-dots i:nth-child(3){animation-delay:.3s}' +
+    '@keyframes ai-bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}' +
+    '.ai-timer{font-variant-numeric:tabular-nums}' +
+    '.ai-slow{font-family:"Instrument Sans",system-ui,sans-serif;font-size:13px}' +
     '.ai-chips{display:flex;flex-wrap:wrap;gap:8px}' +
     '.ai-chip{padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:14px;cursor:pointer;text-align:left}' +
     '.ai-chip:hover,.ai-chip:focus-visible{border-color:var(--accent);color:var(--accent)}' +
@@ -33,7 +40,7 @@
     '.ai-send{padding:0 18px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:inherit;font-weight:600;cursor:pointer}' +
     '.ai-send:disabled{opacity:.5;cursor:default}' +
     '@media (max-width:520px){.ai-panel{right:8px;left:8px;bottom:8px;width:auto;height:min(78vh,620px)}.ai-launch{right:16px;bottom:16px}}' +
-    '@media (prefers-reduced-motion:reduce){.ai-launch{transition:none}}';
+    '@media (prefers-reduced-motion:reduce){.ai-launch{transition:none}.ai-dots i{animation:none;opacity:.8}}';
 
   var STATUS = { search_work: 'Looking through Alex’s work…', get_profile: 'Checking Alex’s profile…', get_contact: 'Getting contact details…' };
   var EXAMPLES = ['What did Alex build for SKIMS?', 'What’s Alex’s tech stack?', 'Has Alex built AI agents?', 'How can I contact Alex?'];
@@ -98,7 +105,7 @@
     log = el('div', 'ai-log');
     log.setAttribute('aria-live', 'polite');
     log.appendChild(el('div', 'ai-msg bot', 'Hi! I’m alxdnAI, an AI agent Alex built. Ask me about Alex’s work, skills, or experience.'));
-    log.appendChild(el('p', 'ai-note', 'I run on Alex’s own server and answer from Alex’s resume and this site. I can still get things wrong. Chats are saved so Alex can improve my answers, so please don’t share personal details.'));
+    log.appendChild(el('p', 'ai-note', 'Heads up: I run on a free server Alex set up, so answers can take 20 to 60 seconds. I answer from Alex’s resume and this site, and I can still get things wrong. Chats are saved so Alex can improve my answers, so please don’t share personal details.'));
     chips = el('div', 'ai-chips');
     EXAMPLES.forEach(function (q) {
       var c = el('button', 'ai-chip', q);
@@ -155,13 +162,37 @@
     if (chips.parentNode) chips.parentNode.removeChild(chips);
     log.appendChild(el('div', 'ai-msg user', text));
     history.push({ role: 'user', content: text });
-    var status = el('div', 'ai-status', 'Thinking…');
+    // Status: bouncing dots, what the agent is doing, and how long the visitor has waited.
+    var status = el('div', 'ai-status');
+    var row = el('div', 'ai-status-row');
+    var dots = el('span', 'ai-dots');
+    dots.setAttribute('aria-hidden', 'true');
+    dots.innerHTML = '<i></i><i></i><i></i>';
+    var label = el('span', '', 'Thinking…');
+    var timer = el('span', 'ai-timer', '0s');
+    timer.setAttribute('aria-hidden', 'true');
+    row.appendChild(dots);
+    row.appendChild(label);
+    row.appendChild(timer);
+    status.appendChild(row);
     var bubble = el('div', 'ai-msg bot');
     log.appendChild(status);
     scroll();
     var answer = '';
+    var started = Date.now();
+    var slowShown = false;
+    var tick = setInterval(function () {
+      var secs = Math.floor((Date.now() - started) / 1000);
+      timer.textContent = secs + 's';
+      if (secs >= 10 && !slowShown) {
+        slowShown = true;
+        status.appendChild(el('div', 'ai-slow', 'Still working. Alex runs me on a free server, so this can take up to a minute.'));
+        scroll();
+      }
+    }, 1000);
 
     function finish(reply, isError) {
+      clearInterval(tick);
       if (status.parentNode) status.parentNode.removeChild(status);
       if (!bubble.parentNode) log.appendChild(bubble);
       setRich(bubble, reply);
@@ -188,13 +219,13 @@
       var buf = '';
       var done = false;
       function handle(event, data) {
-        if (event === 'queued' && data.position > 0) status.textContent = 'Waiting for a free spot…';
-        else if (event === 'tool') status.textContent = STATUS[data.name] || 'Looking that up…';
+        if (event === 'queued' && data.position > 0) label.textContent = 'Waiting for a free spot…';
+        else if (event === 'tool') label.textContent = STATUS[data.name] || 'Looking that up…';
         else if (event === 'reset') { answer = ''; if (bubble.parentNode) bubble.parentNode.removeChild(bubble); }
         else if (event === 'delta') {
           answer += data.text;
           if (!bubble.parentNode) log.insertBefore(bubble, status);
-          status.textContent = 'Typing…';
+          label.textContent = 'Typing…';
           setRich(bubble, answer);
           scroll();
         } else if (event === 'done') { done = true; finish(data.reply || answer); }
