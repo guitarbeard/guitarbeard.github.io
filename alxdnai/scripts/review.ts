@@ -1,11 +1,12 @@
 // Reads transcript logs and flags turns worth a human look, so real failures become eval cases.
-// Usage: npm run review [-- --days 7]
+// Usage: npm run review [-- --days 7] [--all]   (--all prints every turn, not just flagged ones)
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { config } from "../src/config.ts";
 import type { TranscriptRecord } from "../src/transcripts.ts";
 
 const daysArg = process.argv.indexOf("--days");
 const days = daysArg >= 0 ? Number(process.argv[daysArg + 1]) : 7;
+const all = process.argv.includes("--all");
 const since = new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
 
 const dir = config.transcriptDir;
@@ -40,9 +41,9 @@ console.log(`${records.length} turns across ${sessions.size} sessions. Latency p
 const counts = new Map<string, number>();
 for (const r of records) {
   const flags = rules.filter((rule) => rule.test(r)).map((rule) => rule.flag);
-  if (flags.length === 0) continue;
+  if (flags.length === 0 && !all) continue;
   for (const f of flags) counts.set(f, (counts.get(f) ?? 0) + 1);
-  console.log(`## ${r.ts} [${flags.join(", ")}]`);
+  console.log(`## ${r.ts} session ${r.sessionId.slice(0, 8)}${flags.length ? ` [${flags.join(", ")}]` : ""}`);
   console.log(`Q: ${r.user}`);
   console.log(`A: ${r.reply || r.error}`);
   console.log(`Tools: ${r.tools.map((t) => `${t.name}(${t.args})`).join(", ") || "none"}\n`);

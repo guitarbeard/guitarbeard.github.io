@@ -8,6 +8,7 @@ import { config } from "./config.ts";
 import { runAgent } from "./agent.ts";
 import { cleanHistory } from "./guardrails.ts";
 import { logTurn, visitorId } from "./transcripts.ts";
+import { cannedReply } from "./canned.ts";
 
 const hits = new Map<string, number[]>();
 function rateLimited(visitor: string) {
@@ -92,9 +93,9 @@ async function handleChat(req: IncomingMessage, res: ServerResponse) {
   const t0 = Date.now();
   send("queued", { position: waiting.length });
   try {
-    const result = await withSlot(() =>
-      runAgent(history, (e) => (e.type === "delta" ? send("delta", { text: e.text }) : send(e.type, e)), abort.signal),
-    );
+    const run = () => runAgent(history, (e) => (e.type === "delta" ? send("delta", { text: e.text }) : send(e.type, e)), abort.signal);
+    // Canned replies (meows, greetings, thanks) never reach the model, so they skip the queue.
+    const result = await (cannedReply(userText) ? run() : withSlot(run));
     send("done", { reply: result.reply });
     await logTurn({ ts: new Date().toISOString(), sessionId, visitor, model: config.model, user: userText, reply: result.reply,
       tools: result.tools, rounds: result.rounds, redacted: result.redacted, latencyMs: Date.now() - t0 });

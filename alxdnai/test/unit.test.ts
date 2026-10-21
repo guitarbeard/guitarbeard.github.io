@@ -3,7 +3,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { searchWork, getProfile, getContact, runTool } from "../src/tools.ts";
-import { redact, cleanHistory, checkReply, plainText } from "../src/guardrails.ts";
+import { redact, cleanHistory, checkReply, plainText, capSentences } from "../src/guardrails.ts";
+import { cannedReply } from "../src/canned.ts";
+import { prefetch } from "../src/agent.ts";
+import { isMeow, meowify, meowReply } from "../src/meow.ts";
 
 test("search_work finds clients by name and technology", () => {
   assert.equal(searchWork("SKIMS").results[0].title, "SKIMS");
@@ -74,4 +77,46 @@ test("checkReply cuts a reply that loops", () => {
   assert.ok(checkReply(loop).length < 60);
   const normal = "Alex built SKIMS on Hydrogen. Alex built Glossier's cart.";
   assert.equal(checkReply(normal), normal);
+});
+
+test("meow mode spots cat sounds and nothing else", () => {
+  for (const t of ["meow?", "Meow!", "MEOW", "meow meow", "meeeooow", "mew", "miaow", "mrrp?", "purr", "nyan~"]) assert.ok(isMeow(t), t);
+  for (const t of ["", "?", "can you meow?", "what did Alex build for SKIMS?", "meow, what's Alex's email?", "homeowner"]) assert.ok(!isMeow(t), t);
+});
+
+test("meowify keeps punctuation and capitalization", () => {
+  assert.equal(meowify("Hi, I'm alxdnAI! Ask me anything about Alex's work."), "Meow, Meow meow! Meow meow meow meow Meow meow.");
+  assert.equal(meowify("Email alxdna@gmail.com, and he'll reply."), "Meow meow@meow.meow, meow meow meow.");
+  assert.equal(meowify("SKIMS uses e-commerce, 24/7."), "MEOW meow meow-meow, meow/meow.");
+  assert.match(meowReply(() => 0.99), /^[^a-z]*(?:[Mm]eow|MEOW)(?:[^a-z]+(?:[Mm]eow|MEOW))*[^a-z]*$/i);
+});
+
+test("small talk gets a canned reply, real questions don't", () => {
+  for (const t of ["hi!", "Hello there", "hola!", "how are you doing today?", "ok", "thank you", "Thanks!", "who are you?", "who am i?", "bye"]) {
+    assert.ok(cannedReply(t), t);
+  }
+  assert.match(cannedReply("who am i?")!, /can't see who you are/);
+  assert.match(cannedReply("who are you?")!, /I'm alxdnAI/);
+  assert.match(cannedReply("meow?", () => 0)!, /^Meow, Meow meow!/);
+  for (const t of ["hi, what did Alex build for SKIMS?", "who is Alex?", "ok so what's his stack?", "thanks, does he know Vue?"]) {
+    assert.equal(cannedReply(t), null, t);
+  }
+});
+
+test("music questions route to Alex's background", () => {
+  for (const q of ["What instrument does he play?", "what does he play?", "what genre of music does alex play?"]) {
+    assert.ok(prefetch([{ role: "user", content: q }]).some((c) => c.name === "get_profile" && c.args.section === "about"), q);
+  }
+});
+
+test("generic link labels become bare URLs", () => {
+  assert.equal(plainText("LinkedIn: [Link](https://www.linkedin.com/in/alxdna/)"), "LinkedIn: https://www.linkedin.com/in/alxdna/");
+  assert.equal(plainText("[Resume](https://alxdna.dev/r.pdf)"), "Resume (https://alxdna.dev/r.pdf)");
+});
+
+test("long prose replies are capped at four sentences, lists are not", () => {
+  assert.equal(capSentences("One. Two. Three. Four. Five."), "One. Two. Three. Four.");
+  assert.equal(capSentences("He started a B.S. in Computer Science. Then he left."), "He started a B.S. in Computer Science. Then he left.");
+  const list = "Stack:\n- React\n- Node\nA. B. C. D. E.";
+  assert.equal(capSentences(list), list);
 });
