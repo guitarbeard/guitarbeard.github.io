@@ -178,7 +178,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
     <div style="background: var(--panel); color: #F7F7F4; border-radius: 24px; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
       <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8C9CFF">Personal project · Founder &amp; developer · 2015 to now</span>
-        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Maps On Maps</h2>
+        <div style="display: flex; align-items: center; gap: 18px">
+          <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" aria-label="Maps On Maps on the App Store" style="flex: none; display: block; width: clamp(52px, 6vw, 68px); aspect-ratio: 1; border-radius: 22%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.35)">
+            <img src="images/maps-on-maps/app-icon.png" alt="" width="256" height="256" style="display: block; width: 100%; height: 100%">
+          </a>
+          <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1">Maps On Maps</h2>
+        </div>
         <p style="margin: 0; font-size: 18px; color: #DADDE3">Compare several searches on one map. I rebuilt my 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API.</p>
         <div style="display: flex; flex-direction: column; gap: 10px">
           <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #B8BCC6">TL;DR</span>
@@ -192,8 +197,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
             <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 12px; border: 1px solid #4A4F5C; border-radius: 999px">Google Maps</span>
           </div>
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
-          <a href="https://mapsonmaps.com/" target="_blank" rel="noopener" class="pill-light" style="text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 16px">Try Maps On Maps</a>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 8px">
+          <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" style="display: block; line-height: 0">
+            <img src="images/maps-on-maps/app-store-badge.svg" alt="Download on the App Store" width="150" height="50" style="display: block; height: 50px; width: auto">
+          </a>
+          <a href="https://mapsonmaps.com/" target="_blank" rel="noopener" class="pill-light" style="text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 16px">Try it on the web</a>
         </div>
       </div>
       <div style="flex: 1 1 360px; min-width: 0; display: flex; gap: clamp(12px, 3vw, 20px); justify-content: center; align-items: flex-start">
