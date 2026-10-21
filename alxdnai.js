@@ -266,12 +266,12 @@
       function handle(event, data) {
         if (event === 'queued' && data.position > 0) label.textContent = 'Waiting for a free spot…';
         else if (event === 'tool') label.textContent = STATUS[data.name] || 'Looking that up…';
-        else if (event === 'reset') { answer = ''; talker.classList.remove('is-typing'); if (reply.parentNode) reply.parentNode.removeChild(reply); }
+        else if (event === 'reset') { answer = ''; thinker.style.display = ''; talker.classList.remove('is-typing'); if (reply.parentNode) reply.parentNode.removeChild(reply); }
         else if (event === 'delta') {
           answer += data.text;
           if (!reply.parentNode) log.insertBefore(reply, status);
           talker.classList.add('is-typing');
-          thinker.classList.remove('is-thinking');
+          thinker.style.display = 'none';
           label.textContent = 'Typing…';
           setRich(bubble, answer);
           scroll();
