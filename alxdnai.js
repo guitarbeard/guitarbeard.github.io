@@ -225,12 +225,14 @@
     var answer = '';
     var started = Date.now();
     var slowShown = false;
+    // Only shown while nothing has streamed yet; typing is feedback enough.
+    var slowNote = el('div', 'ai-slow', 'Still working. Alex runs me on a free server, so this can take up to a minute.');
     var tick = setInterval(function () {
       var secs = Math.floor((Date.now() - started) / 1000);
       timer.textContent = secs + 's';
-      if (secs >= 10 && !slowShown) {
+      if (secs >= 10 && !slowShown && !answer) {
         slowShown = true;
-        statusText.appendChild(el('div', 'ai-slow', 'Still working. Alex runs me on a free server, so this can take up to a minute.'));
+        statusText.appendChild(slowNote);
         scroll();
       }
     }, 1000);
@@ -272,6 +274,7 @@
           if (!reply.parentNode) log.insertBefore(reply, status);
           talker.classList.add('is-typing');
           thinker.style.display = 'none';
+          if (slowNote.parentNode) slowNote.parentNode.removeChild(slowNote);
           label.textContent = 'Typing…';
           setRich(bubble, answer);
           scroll();
