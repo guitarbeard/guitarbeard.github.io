@@ -1,6 +1,6 @@
-# Copy to ~/.cloudflared/config.yml on the server, replacing TUNNEL_ID with your tunnel's id.
+# Installed as /etc/cloudflared/config.yml with TUNNEL_ID filled in (see alxdnai/README.md).
 tunnel: TUNNEL_ID
-credentials-file: /home/ubuntu/.cloudflared/TUNNEL_ID.json
+credentials-file: /etc/cloudflared/TUNNEL_ID.json
 ingress:
   - hostname: ai.alxdna.dev
     service: http://127.0.0.1:8787
