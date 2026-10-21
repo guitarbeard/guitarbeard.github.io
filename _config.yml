@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
+# Jekyll prefix-matches excludes, so a bare "alxdnai" also dropped alxdnai.js.
+# The trailing slash limits it to the folder, and include keeps the widget either way.
+include:
+  - alxdnai.js
 exclude:
-  - alxdnai
+  - alxdnai/

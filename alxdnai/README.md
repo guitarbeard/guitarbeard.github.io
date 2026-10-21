@@ -81,11 +81,15 @@ Settings live in `src/config.ts` and can be overridden with environment variable
    That installs Node 22 and Ollama, pulls the model, checks out just this folder to `/opt/alxdnai`, writes `/etc/alxdnai.env`, and starts the `alxdnai` systemd service on `127.0.0.1:8787`.
 3. **Expose it with Cloudflare Tunnel** (alxdna.dev's DNS is already on Cloudflare):
    ```sh
-   # install cloudflared for arm64: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/
-   cloudflared tunnel login
+   curl -L -o cf.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb
+   sudo dpkg -i cf.deb
+   cloudflared tunnel login                     # open the printed link and pick alxdna.dev
    cloudflared tunnel create alxdnai
    cloudflared tunnel route dns alxdnai ai.alxdna.dev
-   cp /opt/alxdnai/alxdnai/deploy/cloudflared.yml ~/.cloudflared/config.yml   # fill in the tunnel id
+   # The system service reads /etc/cloudflared, so put the credentials and config there.
+   ID=$(cloudflared tunnel list | awk '/alxdnai/{print $1}')
+   sudo mkdir -p /etc/cloudflared && sudo cp ~/.cloudflared/$ID.json /etc/cloudflared/
+   sed "s/TUNNEL_ID/$ID/g" /opt/alxdnai/alxdnai/deploy/cloudflared.yml | sudo tee /etc/cloudflared/config.yml
    sudo cloudflared service install
    ```
 4. **Check it.** `curl https://ai.alxdna.dev/api/health` should return `{"ok":true,...}`. The site's widget checks the same URL and only shows the "Ask alxdnAI" button when it answers.
