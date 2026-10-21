@@ -1,0 +1,28 @@
+{
+  "name": "Alex Medina",
+  "pronouns": "he/him/his",
+  "headline": "Senior front-end engineer, full-stack when it counts",
+  "location": "Long Beach, CA. Open to remote roles.",
+  "availability": "Open to senior roles. Most interested in senior full-stack roles with a front-end focus, Shopify and React work, and AI agent and LLM product work.",
+  "summary": "14 years shipping for the web for startups, agencies, and in-house teams. From 2022 to 2026 Alex was a Senior Front-End Engineer at SDG in Los Angeles, building large custom headless (Hydrogen) and Liquid Shopify storefronts and custom Shopify apps for brands like Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. Alex also built alxdnAI, the self-hosted agent that answers questions on alxdna.dev, with its own tools, guardrails, transcript logging, and eval suite.",
+  "about": "Alex drew and painted from childhood through high school, so he started community college in visual art. He also played guitar as a teen, and music pulled him toward jazz guitar. A friend from the music program, after the two had played in bands together, thought Alex would make a great programmer and started teaching him the basics of web development. Alex transferred to CSUF as a music student, then switched to computer science before leaving to build for the web full-time.",
+  "skills": {
+    "Front end": "React, TypeScript, JavaScript, Remix, Vue, HTML, CSS, and SCSS",
+    "Shopify": "Hydrogen, Liquid, custom Shopify apps, and Shopify Flow. Shopify badges: Developing Apps for Shopify, and Liquid Storefronts for Theme Developers",
+    "Back end and ops": "Node, PHP, SQL, WordPress, Ubuntu, Apache2, DigitalOcean, and Cloudflare Workers",
+    "AI and agents": "Daily use of Claude and Codex in engineering workflows. Built alxdnAI: a tool-calling agent on a self-hosted open-weights model (Qwen2.5 via Ollama), with guardrails, transcript review, and a regression eval suite",
+    "Mobile": "Expo and React Native (iOS, Android, and web) for Maps On Maps"
+  },
+  "education": [
+    { "school": "California State University Fullerton", "where": "Fullerton, CA", "years": "2010 to 2013", "notes": "Started a B.A. in Music Performance (jazz guitar), switched to a B.S. in Computer Science, then left to work full-time as a web developer. No degree was completed." },
+    { "school": "Cypress College", "where": "Cypress, CA", "years": "2006 to 2009", "notes": "Studied art, engineering, and music, then transferred to CSUF." }
+  ],
+  "contact": {
+    "email": "alxdna@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/alxdna/",
+    "github": "https://github.com/guitarbeard",
+    "resume_pdf": "https://alxdna.dev/Alex-Medina-Resume.pdf",
+    "website": "https://alxdna.dev",
+    "note": "Email is the best way to reach Alex. Alex does not share a phone number publicly."
+  }
+}
