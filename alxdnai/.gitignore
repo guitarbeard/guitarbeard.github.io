@@ -1,0 +1,5 @@
+node_modules/
+data/
+evals/results/*.json
+!evals/results/baseline.json
+!evals/results/final.json

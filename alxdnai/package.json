@@ -1,0 +1,15 @@
+{
+  "name": "alxdnai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-hosted agent that answers questions about Alex Medina's work on alxdna.dev",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node src/server.ts",
+    "chat": "node scripts/chat.ts",
+    "eval": "node evals/run.ts",
+    "review": "node scripts/review.ts",
+    "test": "node --test test/*.test.ts"
+  }
+}

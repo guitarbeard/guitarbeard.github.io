@@ -1,0 +1,20 @@
+[Unit]
+Description=alxdnAI agent API
+After=network-online.target ollama.service
+Wants=network-online.target ollama.service
+
+[Service]
+User=alxdnai
+EnvironmentFile=/etc/alxdnai.env
+WorkingDirectory=/opt/alxdnai/alxdnai
+ExecStart=/usr/bin/node src/server.ts
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/alxdnai
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

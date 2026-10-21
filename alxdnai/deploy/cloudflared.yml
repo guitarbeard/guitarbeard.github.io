@@ -1,0 +1,11 @@
+# Copy to ~/.cloudflared/config.yml on the server, replacing TUNNEL_ID with your tunnel's id.
+tunnel: TUNNEL_ID
+credentials-file: /home/ubuntu/.cloudflared/TUNNEL_ID.json
+ingress:
+  - hostname: ai.alxdna.dev
+    service: http://127.0.0.1:8787
+    originRequest:
+      # Answers stream for a while on a CPU-only box.
+      connectTimeout: 30s
+      keepAliveTimeout: 120s
+  - service: http_status:404

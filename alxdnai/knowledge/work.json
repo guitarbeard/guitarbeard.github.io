@@ -1,0 +1,335 @@
+[
+  {
+    "id": "sdg",
+    "type": "job",
+    "title": "Senior Front-End Engineer",
+    "org": "SDG",
+    "where": "Los Angeles, CA",
+    "years": "March 2022 to July 2026",
+    "url": "https://sdg.la",
+    "summary": "Developed and maintained custom large-scale headless (Hydrogen) and non-headless (Liquid) Shopify themes and custom Shopify apps for clients such as Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. Extensive use of React, Node, TypeScript, and Remix, plus AI-assisted workflows with Claude and Codex.",
+    "tags": [
+      "shopify",
+      "hydrogen",
+      "liquid",
+      "react",
+      "typescript",
+      "node",
+      "remix",
+      "agency",
+      "ecommerce",
+      "commerce",
+      "headless",
+      "brands",
+      "clients"
+    ]
+  },
+  {
+    "id": "barnes-noble",
+    "type": "client",
+    "title": "Barnes & Noble",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Built custom React components, integrated Sanity CMS and custom membership and rewards APIs, and sped up both the front end and back end.",
+    "tags": [
+      "barnes",
+      "noble",
+      "bn",
+      "books",
+      "react",
+      "sanity",
+      "cms",
+      "membership",
+      "rewards",
+      "api",
+      "performance",
+      "shopify"
+    ]
+  },
+  {
+    "id": "netflix",
+    "type": "client",
+    "title": "Netflix Shop",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Worked on custom product and collection templates, header navigation updates, and bug fixes.",
+    "tags": [
+      "netflix",
+      "shop",
+      "merch",
+      "templates",
+      "navigation",
+      "shopify",
+      "liquid"
+    ]
+  },
+  {
+    "id": "skims",
+    "type": "client",
+    "title": "SKIMS",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Helped build and launch SKIMS on Hydrogen, making it the first enterprise brand on Shopify's headless framework.",
+    "tags": [
+      "skims",
+      "hydrogen",
+      "headless",
+      "launch",
+      "react",
+      "remix",
+      "enterprise",
+      "shopify"
+    ]
+  },
+  {
+    "id": "glossier",
+    "type": "client",
+    "title": "Glossier",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Helped craft the custom UI behind product pages, collections, and the cart.",
+    "tags": [
+      "glossier",
+      "beauty",
+      "product",
+      "collection",
+      "cart",
+      "ui",
+      "shopify"
+    ]
+  },
+  {
+    "id": "moma",
+    "type": "client",
+    "title": "MoMA Design Store",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Part of the team building custom product pages, collection grids, and cart components for the Design Store.",
+    "tags": [
+      "moma",
+      "museum",
+      "design",
+      "store",
+      "product",
+      "collection",
+      "cart",
+      "shopify"
+    ]
+  },
+  {
+    "id": "peets",
+    "type": "client",
+    "title": "Peet's Coffee",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Contributed to the product, collection, and cart experience, and built and updated landing pages for store locations.",
+    "tags": [
+      "peets",
+      "peet's",
+      "coffee",
+      "landing",
+      "locations",
+      "stores",
+      "cart",
+      "shopify"
+    ]
+  },
+  {
+    "id": "haus-labs",
+    "type": "client",
+    "title": "HAUS Labs",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Co-developed a custom Shopify app for creating and managing QR gift codes, alongside product, collection, and cart UI.",
+    "tags": [
+      "haus",
+      "labs",
+      "beauty",
+      "app",
+      "custom app",
+      "qr",
+      "gift",
+      "codes",
+      "shopify"
+    ]
+  },
+  {
+    "id": "indigo",
+    "type": "client",
+    "title": "Indigo",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Helped connect the store to Indigo's loyalty program with custom Shopify apps, and worked on shopping UI from product page to cart.",
+    "tags": [
+      "indigo",
+      "books",
+      "canada",
+      "loyalty",
+      "app",
+      "custom app",
+      "integration",
+      "shopify"
+    ]
+  },
+  {
+    "id": "more-storefronts",
+    "type": "client-list",
+    "title": "More Shopify storefronts",
+    "org": "SDG",
+    "years": "2022 to 2026",
+    "summary": "Besides the featured clients (Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo), the site's logo wall lists more Shopify storefronts from Alex's SDG years: Mattel, Framebridge, Society6, Revlon, Rare Beauty, Magic Spoon, BIGFACE, Rugs USA, MeUndies, Psycho Bunny, Houseplant, and Everlane. The site does not describe Alex's specific role on the logo-wall stores, so for details, ask Alex directly.",
+    "tags": [
+      "mattel",
+      "framebridge",
+      "society6",
+      "revlon",
+      "rare beauty",
+      "magic spoon",
+      "bigface",
+      "rugs usa",
+      "meundies",
+      "psycho bunny",
+      "houseplant",
+      "everlane",
+      "clients",
+      "brands",
+      "shopify"
+    ]
+  },
+  {
+    "id": "maps-on-maps",
+    "type": "project",
+    "title": "Maps On Maps",
+    "org": "Personal project (founder and developer)",
+    "years": "2015 to now",
+    "url": "https://mapsonmaps.com",
+    "summary": "Compares several place searches on one map. Alex rebuilt the 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API. Stack: Expo, React Native, TypeScript, Cloudflare Workers, Mapbox, Apple MapKit, and Google Maps.",
+    "tags": [
+      "maps",
+      "mapsonmaps",
+      "personal",
+      "side project",
+      "expo",
+      "react native",
+      "mobile",
+      "ios",
+      "android",
+      "cloudflare",
+      "workers",
+      "mapbox",
+      "mapkit",
+      "google",
+      "places",
+      "typescript"
+    ]
+  },
+  {
+    "id": "alxdnai",
+    "type": "project",
+    "title": "alxdnAI",
+    "org": "Personal project",
+    "years": "2026",
+    "url": "https://github.com/guitarbeard/guitarbeard.github.io/tree/master/alxdnai",
+    "summary": "Alex's hands-on AI agent work. Alex designed and built alxdnAI, the AI agent answering questions on alxdna.dev, as a production system: a TypeScript service on a free Oracle Cloud ARM VM runs an open-weights LLM (Qwen2.5 via Ollama) with no paid AI API. It uses tool calling to look up Alex's work instead of guessing, routes questions to the right tools, filters output so private details never leak, logs transcripts for review, and must pass a 30-case eval suite before each change. Alex used the evals to raise its pass rate from 63% to over 90%.",
+    "tags": [
+      "alxdnai",
+      "ai",
+      "agent",
+      "chatbot",
+      "llm",
+      "evals",
+      "tools",
+      "tool calling",
+      "ollama",
+      "qwen",
+      "self-hosted",
+      "typescript",
+      "this bot",
+      "you",
+      "llms",
+      "agents",
+      "machine learning",
+      "artificial intelligence",
+      "experience"
+    ]
+  },
+  {
+    "id": "gunn-jerkens",
+    "type": "job",
+    "title": "Web Developer",
+    "org": "Gunn | Jerkens Marketing Communications",
+    "where": "Long Beach, CA",
+    "years": "January 2016 to July 2021",
+    "url": "https://gunnjerkens.com",
+    "summary": "Developed and maintained marketing websites, WordPress themes, and React and PHP web applications for clients, mostly real estate development and land management companies. Owned DevOps for the agency's Ubuntu servers on DigitalOcean, and coordinated a large migration of sites from Ubuntu 14 to 18 with zero downtime.",
+    "tags": [
+      "gunn",
+      "jerkens",
+      "agency",
+      "wordpress",
+      "php",
+      "react",
+      "devops",
+      "ubuntu",
+      "digitalocean",
+      "servers",
+      "migration",
+      "real estate"
+    ]
+  },
+  {
+    "id": "critiqueit",
+    "type": "job",
+    "title": "Web Developer",
+    "org": "CritiqueIt",
+    "where": "Long Beach, CA",
+    "years": "2013 to December 2015",
+    "url": "https://critiqueit.com",
+    "summary": "Main project was a web-based annotation app, where Alex helped shape features, UX, domain modeling, and design on both the front and back end. Also contracted through CritiqueIt for Mideo Systems (web port of a Windows app, plus the main website) and Film Solutions (design changes and bug fixes on their PKO photo management app).",
+    "tags": [
+      "critiqueit",
+      "annotation",
+      "startup",
+      "full stack",
+      "ux",
+      "mideo",
+      "film solutions",
+      "contract"
+    ]
+  },
+  {
+    "id": "bedrosians",
+    "type": "job",
+    "title": "Front End Engineer",
+    "org": "Bedrosians Tile & Stone",
+    "where": "Anaheim, CA",
+    "years": "September 2014 to February 2015",
+    "url": "https://bedrosians.com",
+    "summary": "Implemented designs, fixed bugs, and added features in client-side jQuery and React.",
+    "tags": [
+      "bedrosians",
+      "tile",
+      "jquery",
+      "react",
+      "front end"
+    ]
+  },
+  {
+    "id": "cookiepages",
+    "type": "job",
+    "title": "Web Developer",
+    "org": "Cookiepages, Inc.",
+    "where": "Huntington Beach, CA",
+    "years": "January 2012 to May 2014",
+    "summary": "Startup that began with custom Facebook profile pages for local businesses and went on to build 1smartmenu, an online ordering menu builder for restaurants.",
+    "tags": [
+      "cookiepages",
+      "startup",
+      "facebook",
+      "1smartmenu",
+      "restaurants",
+      "ordering",
+      "menu"
+    ]
+  }
+]
