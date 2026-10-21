@@ -61,6 +61,7 @@ html[data-theme="dark"] .alx .logo-tile:hover img,html[data-theme="dark"] .alx .
 .then-now[data-show="now"] .then-now-thumb{transform:translateX(100%)}
 .then-now[data-show="then"] [data-for="then"],.then-now[data-show="now"] [data-for="now"]{color:var(--bg)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width: 760px){.alx .maps-section{padding-left:0 !important;padding-right:0 !important}.alx .maps-panel{border-radius:0 !important;padding:48px 24px !important}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.alx a,.alx .card > div:first-child{transition:none}.then-now img,.then-now-thumb,.then-now-label{transition:none}}
 </style>
 </head>
@@ -174,8 +175,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
     </div>
   </section>
 
-  <section id="maps" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
-    <div style="background: var(--panel); color: #F7F7F4; border-radius: 24px; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+  <section id="maps" class="maps-section" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+    <div class="maps-panel" style="background: var(--panel); color: #F7F7F4; border-radius: 24px; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
       <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8C9CFF">Personal project · Founder &amp; developer · 2015 to now</span>
         <div style="display: flex; align-items: center; gap: 18px">
