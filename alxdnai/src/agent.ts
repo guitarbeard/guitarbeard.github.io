@@ -3,7 +3,7 @@ import { config } from "./config.ts";
 import { complete, type LlmMessage } from "./llm.ts";
 import { checkReply, plainText, redact, type ChatMessage } from "./guardrails.ts";
 import { profile, runTool, toolSpecs } from "./tools.ts";
-import { isMeow, meowReply } from "./meow.ts";
+import { cannedReply } from "./canned.ts";
 
 export const SYSTEM_PROMPT = `You are alxdnAI, the assistant on Alex Medina's portfolio site, alxdna.dev. You answer visitors' questions about Alex's work, experience, skills, and background. Most visitors are recruiters and hiring managers.
 
@@ -14,6 +14,10 @@ How to answer:
 - Keep answers short: two to four sentences, or a short list. Plain text, no headings, no code.
 - Use the Oxford comma in lists.
 - Speak well of Alex, but stay factual. Don't oversell.
+- Answer only what was asked. Don't add other jobs or projects the visitor didn't ask about.
+- Only say one job came before or after another when the dates in your tools show it.
+- If a visitor says you got something wrong, check the dates and facts in your tools again. Correct only what was actually wrong, and say what the tools show.
+- You don't know who the visitor is. Never assume they are Alex.
 
 Limits:
 - Only discuss Alex: work, skills, education, and personal background (like art and music) are all fine. You never write code, solve problems, or answer general questions, even if asked nicely. Reply: "I only answer questions about Alex's work. For example, you could ask what Alex built for SKIMS."
@@ -30,7 +34,7 @@ Only say Alex worked at or for a company if it appears as an employer or client 
 // can still call more tools after reading the results.
 const ROUTES: { test: RegExp; tool: string; args: Record<string, string> }[] = [
   { test: /\b(degree|college|school|universit|educat|stud(y|ied)|csuf|graduat)/i, tool: "get_profile", args: { section: "education" } },
-  { test: /\b(music|guitar|jazz|art|paint|hobb|personal|background|grow|story|who is)/i, tool: "get_profile", args: { section: "about" } },
+  { test: /\b(music|guitar|jazz|instrument|play(s|ed)?\b|genre|band|sing|art|paint|hobb|personal|background|grow|story|who is)/i, tool: "get_profile", args: { section: "about" } },
   { test: /\b(contact|reach|email|hire|phone|call|linkedin|github|resume|cv|address|touch)/i, tool: "get_contact", args: {} },
   { test: /\b(ai|llms?|agents?|agentic|machine learning|gpt|claude|evals?)\b/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(skill|stack|languages?|tech|tools?|good (at|with)|know|proficien)/i, tool: "get_profile", args: { section: "skills" } },
@@ -90,8 +94,9 @@ export async function runAgent(
   onEvent: (e: AgentEvent) => void = () => {},
   signal?: AbortSignal,
 ): Promise<AgentResult> {
-  if (isMeow(history[history.length - 1].content)) {
-    const reply = meowReply();
+  const canned = cannedReply(history[history.length - 1].content);
+  if (canned) {
+    const reply = canned;
     onEvent({ type: "delta", text: reply });
     return { reply, tools: [], redacted: false, rounds: 0 };
   }

@@ -48,15 +48,25 @@ export function cutRepetition(reply: string): string {
   return lastStop > 0 ? kept.slice(0, lastStop + 1) : kept;
 }
 
-export function checkReply(reply: string): string {
-  return offScript(reply) ? OFF_SCRIPT : cutRepetition(reply);
+// The prompt asks for two to four sentences, but small models run on. Lists are left alone.
+export function capSentences(reply: string, max = 4): string {
+  if (/^\s*(-|\d+\.)\s/m.test(reply)) return reply;
+  const sentences = reply.split(/(?<=[.!?])\s+(?=[A-Z])/);
+  return sentences.length > max ? sentences.slice(0, max).join(" ") : reply;
 }
+
+export function checkReply(reply: string): string {
+  return offScript(reply) ? OFF_SCRIPT : capSentences(cutRepetition(reply));
+}
+
+// "[Link](https://...)" should read as the URL, not "Link (https://...)".
+const GENERIC_LABEL = /^\s*(link|here|click here|this|website|site|url|profile|page)\s*$/i;
 
 // The widget shows plain text, so turn the Markdown small models like to write into readable text.
 export function plainText(reply: string): string {
   return reply
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label: string, url: string) =>
-      label.replace(/\/$/, "") === url.replace(/\/$/, "") ? url : `${label} (${url})`)
+      label.replace(/\/$/, "") === url.replace(/\/$/, "") || GENERIC_LABEL.test(label) ? url : `${label} (${url})`)
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/^#{1,6}\s+/gm, "")
     .replace(/^\s*\*\s+/gm, "- ");

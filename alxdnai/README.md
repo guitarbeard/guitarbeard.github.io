@@ -35,11 +35,13 @@ Small models often skip tools and answer from memory, so before the model's firs
 
 **Meow mode.** A message made only of cat sounds ("meow?", "Meow!", "mrrp", "purr") skips the model and the queue. alxdnAI picks one of a few sentences about Alex and replies with every word turned into "meow", keeping the punctuation and capitalization, so "Hi, I'm alxdnAI!" comes back as "Meow, Meow meow!". It lives in `src/meow.ts`.
 
+**Canned small talk.** Greetings, thanks, "ok", "who are you?", and "who am I?" get a fixed friendly reply from `src/canned.ts` instead of the model, which used to answer "hi!" with a dump of work history. The whole message has to match, so "hi, what did Alex build for SKIMS?" still goes to the model.
+
 **Model host is swappable.** The server speaks the OpenAI-compatible `/chat/completions` API, so it runs against Ollama in production and llama.cpp's `llama-server` in development. Changing models is one environment variable.
 
 ## Evals
 
-`evals/cases.json` holds 32 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
+`evals/cases.json` holds 36 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
 
 ```sh
 npm run eval                 # all cases
