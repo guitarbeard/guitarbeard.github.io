@@ -3,6 +3,7 @@ import { config } from "./config.ts";
 import { complete, type LlmMessage } from "./llm.ts";
 import { checkReply, plainText, redact, type ChatMessage } from "./guardrails.ts";
 import { profile, runTool, toolSpecs } from "./tools.ts";
+import { isMeow, meowReply } from "./meow.ts";
 
 export const SYSTEM_PROMPT = `You are alxdnAI, the assistant on Alex Medina's portfolio site, alxdna.dev. You answer visitors' questions about Alex's work, experience, skills, and background. Most visitors are recruiters and hiring managers.
 
@@ -89,6 +90,11 @@ export async function runAgent(
   onEvent: (e: AgentEvent) => void = () => {},
   signal?: AbortSignal,
 ): Promise<AgentResult> {
+  if (isMeow(history[history.length - 1].content)) {
+    const reply = meowReply();
+    onEvent({ type: "delta", text: reply });
+    return { reply, tools: [], redacted: false, rounds: 0 };
+  }
   const messages: LlmMessage[] = [{ role: "system", content: SYSTEM_PROMPT }, ...history];
   const tools: ToolTrace[] = [];
   const pre = prefetch(history);

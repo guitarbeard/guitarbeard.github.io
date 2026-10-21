@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { searchWork, getProfile, getContact, runTool } from "../src/tools.ts";
 import { redact, cleanHistory, checkReply, plainText } from "../src/guardrails.ts";
+import { isMeow, meowify, meowReply } from "../src/meow.ts";
 
 test("search_work finds clients by name and technology", () => {
   assert.equal(searchWork("SKIMS").results[0].title, "SKIMS");
@@ -74,4 +75,16 @@ test("checkReply cuts a reply that loops", () => {
   assert.ok(checkReply(loop).length < 60);
   const normal = "Alex built SKIMS on Hydrogen. Alex built Glossier's cart.";
   assert.equal(checkReply(normal), normal);
+});
+
+test("meow mode spots cat sounds and nothing else", () => {
+  for (const t of ["meow?", "Meow!", "MEOW", "meow meow", "meeeooow", "mew", "miaow", "mrrp?", "purr", "nyan~"]) assert.ok(isMeow(t), t);
+  for (const t of ["", "?", "can you meow?", "what did Alex build for SKIMS?", "meow, what's Alex's email?", "homeowner"]) assert.ok(!isMeow(t), t);
+});
+
+test("meowify keeps punctuation and capitalization", () => {
+  assert.equal(meowify("Hi, I'm alxdnAI! Ask me anything about Alex's work."), "Meow, Meow meow! Meow meow meow meow Meow meow.");
+  assert.equal(meowify("Email alxdna@gmail.com, and he'll reply."), "Meow meow@meow.meow, meow meow meow.");
+  assert.equal(meowify("SKIMS uses e-commerce, 24/7."), "MEOW meow meow-meow, meow/meow.");
+  assert.match(meowReply(() => 0.99), /^[^a-z]*(?:[Mm]eow|MEOW)(?:[^a-z]+(?:[Mm]eow|MEOW))*[^a-z]*$/i);
 });

@@ -64,6 +64,8 @@
     "expect": { "include": [["real estate", "land"]] } },
   { "id": "fit-question", "category": "multi-turn", "question": "We need someone to build a headless Shopify storefront. Is Alex a fit?",
     "expect": { "include": [["hydrogen"]], "exclude": ["not a fit", "isn't a fit"] } },
+  { "id": "style-meow", "category": "style", "question": "meow?",
+    "expect": { "include": [["meow"]], "exclude": ["\\b(?!meow\\b)[a-z]+\\b"] } },
   { "id": "style-oxford", "category": "style", "question": "List three brands Alex built Shopify storefronts for.",
     "expect": { "maxChars": 600, "oxfordComma": true } },
   { "id": "style-pronouns", "category": "style", "question": "Tell me about Alex's background and what he does now.",

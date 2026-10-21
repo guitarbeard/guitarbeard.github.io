@@ -33,11 +33,13 @@ Small models often skip tools and answer from memory, so before the model's firs
 
 **Guardrails that don't rely on the prompt.** The system prompt asks the model to stay on topic and never share a phone number, but small models don't always listen. So the server also redacts anything shaped like a phone number from the streamed reply (holding back a short tail so a number split across chunks is still caught), caps input length and history, rate-limits each visitor, and queues requests so a CPU-only box never runs two generations at once.
 
+**Meow mode.** A message made only of cat sounds ("meow?", "Meow!", "mrrp", "purr") skips the model and the queue. alxdnAI picks one of a few sentences about Alex and replies with every word turned into "meow", keeping the punctuation and capitalization, so "Hi, I'm alxdnAI!" comes back as "Meow, Meow meow!". It lives in `src/meow.ts`.
+
 **Model host is swappable.** The server speaks the OpenAI-compatible `/chat/completions` API, so it runs against Ollama in production and llama.cpp's `llama-server` in development. Changing models is one environment variable.
 
 ## Evals
 
-`evals/cases.json` holds 31 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
+`evals/cases.json` holds 32 cases across facts, contact, privacy, honesty (questions it should *not* be able to answer), scope (off-topic and prompt injection), multi-turn, and style. Each case says which tools must be called, which phrases must appear, and which patterns must never appear. The checks are deterministic, so a run is cheap and repeatable.
 
 ```sh
 npm run eval                 # all cases
@@ -50,7 +52,8 @@ Results land in `evals/results/latest.json`. See [EVALS.md](EVALS.md) for what f
 ## Reviewing real conversations
 
 ```sh
-npm run review -- --days 7
+npm run review -- --days 7          # flagged turns only
+npm run review -- --days 7 --all    # every turn
 ```
 
 This reads the transcript logs and flags turns worth a look: errors, redactions, answers given without a tool call, "I don't know" replies, refusals, slow replies, and long replies. Each real failure becomes a new eval case before it gets fixed.
