@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 exclude:
-  - alxdnai
+  # Trailing slash: Jekyll prefix-matches excludes, so a bare "alxdnai" also dropped alxdnai.js.
+  - alxdnai/
