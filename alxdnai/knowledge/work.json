@@ -200,10 +200,10 @@
     "id": "maps-on-maps",
     "type": "project",
     "title": "Maps On Maps",
-    "org": "Personal project (founder and developer)",
+    "org": "Personal project (founder, designer, and developer)",
     "years": "2015 to now",
     "url": "https://mapsonmaps.com",
-    "summary": "Compares several place searches on one map. Alex rebuilt the 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API. Stack: Expo, React Native, TypeScript, Cloudflare Workers, Mapbox, Apple MapKit, and Google Maps. The iOS app is live on the App Store at https://apps.apple.com/us/app/maps-on-maps/id6823845844, and the web version is at https://mapsonmaps.com.",
+    "summary": "Compares several place searches on one map. Alex rebuilt the 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API. Alex also led the product and UI design, from AI-assisted prototypes to a shared design system with light and dark themes. Stack: Expo, React Native, TypeScript, Cloudflare Workers, Mapbox, Apple MapKit, and Google Maps. The iOS app is live on the App Store at https://apps.apple.com/us/app/maps-on-maps/id6823845844, and the web version is at https://mapsonmaps.com.",
     "tags": [
       "maps",
       "mapsonmaps",
@@ -224,7 +224,33 @@
       "mapkit",
       "google",
       "places",
-      "typescript"
+      "typescript",
+      "design",
+      "ui",
+      "ux",
+      "design system"
+    ]
+  },
+  {
+    "id": "alxdna-dev",
+    "type": "project",
+    "title": "alxdna.dev",
+    "org": "Personal project (designer and developer)",
+    "years": "2026",
+    "url": "https://alxdna.dev",
+    "summary": "Alex's portfolio site. Alex set the design direction and prototyped the site with AI design tools, then shipped it as a single static page with light and dark themes, a WebGL background, and alxdnAI, the self-hosted chat agent that answers questions about Alex's work.",
+    "tags": [
+      "alxdna.dev",
+      "portfolio",
+      "website",
+      "this site",
+      "site",
+      "design",
+      "ui",
+      "designer",
+      "webgl",
+      "dark mode",
+      "light mode"
     ]
   },
   {

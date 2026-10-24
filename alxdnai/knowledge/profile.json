@@ -9,6 +9,7 @@
   "skills": {
     "Front end": "React, TypeScript, JavaScript, Remix, Vue, HTML, CSS, and SCSS",
     "Shopify": "Hydrogen, Liquid, custom Shopify apps, and Shopify Flow. Shopify badges: Developing Apps for Shopify, and Liquid Storefronts for Theme Developers",
+    "Design": "UI and product design for Maps On Maps and alxdna.dev, prototyped with AI design tools and shipped in code. Design systems, light and dark themes, and a background in visual art. Design is a supporting strength; Alex is a front-end engineer first",
     "Back end and ops": "Node, PHP, SQL, WordPress, Ubuntu, Apache2, DigitalOcean, and Cloudflare Workers",
     "AI and agents": "Daily use of Claude and Codex in engineering workflows. Built alxdnAI: a tool-calling agent on a self-hosted open-weights model (Qwen2.5 via Ollama), with guardrails, transcript review, and a regression eval suite",
     "Mobile": "Expo and React Native (iOS, Android, and web) for Maps On Maps"
