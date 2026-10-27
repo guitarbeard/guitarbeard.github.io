@@ -570,6 +570,56 @@ html[data-theme="dark"] .alx .client-card:focus-visible img {
   filter: url(#logo-tint-dark);
 }
 
+/* Mobile: both lists become swipeable scroll-snap carousels that bleed to
+   the screen edge, with the next item peeking in as a swipe hint. */
+@media (max-width: 760px) {
+  .client-grid,
+  .logo-wall {
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding: 4px var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .client-grid::-webkit-scrollbar,
+  .logo-wall::-webkit-scrollbar {
+    display: none;
+  }
+
+  .client-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: 16px;
+  }
+
+  .client-card,
+  .logo-wall li {
+    scroll-snap-align: start;
+  }
+
+  /* Two rows of logos, two and a bit columns visible */
+  .logo-wall {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, 88px);
+    grid-auto-flow: column;
+    grid-auto-columns: 40%;
+    gap: 12px;
+  }
+
+  .logo-wall li {
+    height: auto;
+  }
+
+  .more-clients {
+    margin-top: 56px;
+  }
+}
+
 /* ==========================================================================
    Maps On Maps
    ========================================================================== */
