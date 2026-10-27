@@ -570,56 +570,6 @@ html[data-theme="dark"] .alx .client-card:focus-visible img {
   filter: url(#logo-tint-dark);
 }
 
-/* Mobile: both lists become swipeable scroll-snap carousels that bleed to
-   the screen edge, with the next item peeking in as a swipe hint. */
-@media (max-width: 760px) {
-  .client-grid,
-  .logo-wall {
-    margin-left: calc(var(--gutter) * -1);
-    margin-right: calc(var(--gutter) * -1);
-    padding: 4px var(--gutter);
-    scroll-padding-inline: var(--gutter);
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .client-grid::-webkit-scrollbar,
-  .logo-wall::-webkit-scrollbar {
-    display: none;
-  }
-
-  .client-grid {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 78%;
-    gap: 16px;
-  }
-
-  .client-card,
-  .logo-wall li {
-    scroll-snap-align: start;
-  }
-
-  /* Two rows of logos, two and a bit columns visible */
-  .logo-wall {
-    grid-template-columns: none;
-    grid-template-rows: repeat(2, 88px);
-    grid-auto-flow: column;
-    grid-auto-columns: 40%;
-    gap: 12px;
-  }
-
-  .logo-wall li {
-    height: auto;
-  }
-
-  .more-clients {
-    margin-top: 56px;
-  }
-}
-
 /* ==========================================================================
    Maps On Maps
    ========================================================================== */
@@ -803,6 +753,11 @@ html[data-theme="dark"] .alx .client-card:focus-visible img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Groups the screenshots for the mobile carousel; no box of its own on desktop */
+.maps__shots {
+  display: contents;
 }
 
 @media (max-width: 760px) {
@@ -1092,6 +1047,98 @@ html[data-theme="dark"] .alx .client-card:focus-visible img {
   display: block;
   flex: none;
   transform: rotate(-10deg);
+}
+
+/* ==========================================================================
+   Mobile carousels
+   ========================================================================== */
+
+/* On phones, long lists become swipeable scroll-snap rows that bleed to the
+   screen edge, with the next item peeking in as a swipe hint. */
+@media (max-width: 760px) {
+  .mobile-carousel {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: 16px;
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+    padding: 4px var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .mobile-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-carousel > * {
+    scroll-snap-align: start;
+  }
+
+  /* More Shopify storefronts: two rows of logos */
+  .logo-wall {
+    grid-template-rows: repeat(2, 88px);
+    grid-auto-columns: 40%;
+    gap: 12px;
+  }
+
+  .logo-wall li {
+    height: auto;
+  }
+
+  .more-clients {
+    margin-top: 56px;
+  }
+
+  /* Maps On Maps: two phones, then the web screenshot */
+  .maps__shots {
+    flex: 1 1 100%;
+    min-width: 0;
+    grid-auto-columns: auto;
+    align-items: center;
+  }
+
+  .phones {
+    display: contents;
+  }
+
+  /* The phones wrapper has no box here, so each phone is its own snap point */
+  .phone {
+    width: 52vw;
+    scroll-snap-align: start;
+  }
+
+  .phone + .phone {
+    margin-top: 0;
+  }
+
+  .browser {
+    width: 84vw;
+  }
+
+  /* Experience: each role becomes a card */
+  .timeline {
+    border-bottom: 0;
+  }
+
+  .timeline__item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--tile);
+  }
+
+  .timeline__dates,
+  .timeline__body {
+    flex: none;
+  }
 }
 
 /* ==========================================================================

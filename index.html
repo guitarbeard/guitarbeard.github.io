@@ -82,7 +82,7 @@
           <h2 class="section-title">Selected Shopify work</h2>
           <p class="work__intro">Built at SDG, 2022 to 2026: large custom themes, headless Hydrogen storefronts, and custom Shopify apps.</p>
         </div>
-        <div class="client-grid">
+        <div class="client-grid mobile-carousel">
           <a href="https://www.barnesandnoble.com" target="_blank" rel="noopener" class="client-card">
             <div class="client-card__logo"><img src="images/logos/barnesnoble.svg" alt="Barnes &amp; Noble" loading="lazy" class="logo--w88"></div>
             <div class="client-card__meta"><span class="client-card__name">Barnes &amp; Noble</span><span class="client-card__tag">Shopify</span></div>
@@ -127,7 +127,7 @@
 
         <div class="more-clients">
           <h3 class="more-clients__title">More Shopify storefronts</h3>
-          <ul class="logo-wall" aria-label="More Shopify clients">
+          <ul class="logo-wall mobile-carousel" aria-label="More Shopify clients">
             <li><a href="https://shop.mattel.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/mattel.svg" alt="Mattel" loading="lazy"></a></li>
             <li><a href="https://www.framebridge.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/framebridge.svg" alt="Framebridge" loading="lazy"></a></li>
             <li><a href="https://society6.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/society6.svg" alt="Society6" loading="lazy"></a></li>
@@ -174,29 +174,31 @@
               <a href="https://mapsonmaps.com/" target="_blank" rel="noopener" class="btn btn--light">Try it on the web</a>
             </div>
           </div>
-          <div class="phones">
-            <div class="phone">
-              <img src="images/maps-on-maps/results.webp" alt="Maps On Maps results sheet listing nearby coffee shops over the map" width="390" height="844" loading="lazy">
+          <div class="maps__shots mobile-carousel">
+            <div class="phones">
+              <div class="phone">
+                <img src="images/maps-on-maps/results.webp" alt="Maps On Maps results sheet listing nearby coffee shops over the map" width="390" height="844" loading="lazy">
+              </div>
+              <div class="phone">
+                <img src="images/maps-on-maps/detail-dark.webp" alt="Maps On Maps place detail for Blue Door Coffee in the dark theme" width="390" height="844" loading="lazy">
+              </div>
             </div>
-            <div class="phone">
-              <img src="images/maps-on-maps/detail-dark.webp" alt="Maps On Maps place detail for Blue Door Coffee in the dark theme" width="390" height="844" loading="lazy">
-            </div>
+            <figure class="browser">
+              <div class="browser__bar" aria-hidden="true">
+                <span class="browser__dot"></span>
+                <span class="browser__dot"></span>
+                <span class="browser__dot"></span>
+                <span class="browser__url">mapsonmaps.com</span>
+              </div>
+              <img src="images/maps-on-maps/web.webp" alt="Maps On Maps on the web, with search results in a side panel next to the map" width="1440" height="900" loading="lazy">
+            </figure>
           </div>
-          <figure class="browser">
-            <div class="browser__bar" aria-hidden="true">
-              <span class="browser__dot"></span>
-              <span class="browser__dot"></span>
-              <span class="browser__dot"></span>
-              <span class="browser__url">mapsonmaps.com</span>
-            </div>
-            <img src="images/maps-on-maps/web.webp" alt="Maps On Maps on the web, with search results in a side panel next to the map" width="1440" height="900" loading="lazy">
-          </figure>
         </div>
       </section>
 
       <section id="experience" class="experience container">
         <h2 class="section-title">Experience</h2>
-        <ol class="timeline">
+        <ol class="timeline mobile-carousel">
           <li class="timeline__item">
             <span class="timeline__dates">2022 – 2026</span>
             <div class="timeline__body">
@@ -237,10 +239,10 @@
 
       <section class="toolkit container" aria-labelledby="skills-h">
         <h2 id="skills-h" class="section-title">Toolkit</h2>
-        <div class="toolkit__grid">
+        <div class="toolkit__grid mobile-carousel">
           <div class="tool-card">
             <h3 class="tool-card__title">Front end</h3>
-            <p class="tool-card__desc">React, TypeScript, Remix, Vue, HTML, CSS, and SCSS</p>
+            <p class="tool-card__desc">React, TypeScript, Remix, Vue, HTML, CSS, SCSS, and Tailwind</p>
           </div>
           <div class="tool-card">
             <h3 class="tool-card__title">Shopify</h3>
