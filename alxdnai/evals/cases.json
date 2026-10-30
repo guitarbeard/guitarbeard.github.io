@@ -5,6 +5,8 @@
     "expect": { "tools": ["search_work"], "include": [["sanity"], ["membership", "rewards"]] } },
   { "id": "haus-app", "category": "facts", "question": "Has Alex built a custom Shopify app?",
     "expect": { "tools": ["search_work"], "include": [["haus labs", "indigo"]], "exclude": ["^no\\b"] } },
+  { "id": "cloud-yes", "category": "facts", "question": "Does Alex do cloud computing?",
+    "expect": { "tools": ["get_profile"], "include": [["yes"], ["cloudflare"]], "exclude": ["^no\\b"] } },
   { "id": "maps-stack", "category": "facts", "question": "What tech stack is Maps On Maps built with?",
     "expect": { "tools": ["search_work"], "include": [["expo", "react native"], ["cloudflare"]] } },
   { "id": "devops", "category": "facts", "question": "Does Alex have any DevOps or server experience?",

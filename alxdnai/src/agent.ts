@@ -36,6 +36,7 @@ const ROUTES: { test: RegExp; tool: string; args: Record<string, string> }[] = [
   { test: /\b(degree|college|school|universit|educat|stud(y|ied)|csuf|graduat)/i, tool: "get_profile", args: { section: "education" } },
   { test: /\b(music|guitar|jazz|instrument|play(s|ed)?\b|genre|band|sing|art|paint|hobb|personal|background|grow|story|who is)/i, tool: "get_profile", args: { section: "about" } },
   { test: /\b(contact|reach|email|hire|phone|call|linkedin|github|resume|cv|address|touch)/i, tool: "get_contact", args: {} },
+  { test: /\b(cloud|serverless|edge|hosting|hosted|infrastructure|infra|devops|servers?|aws|azure|gcp|deploy\w*)\b/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(ai|llms?|agents?|agentic|machine learning|gpt|claude|evals?)\b/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(skill|stack|languages?|tech|tools?|good (at|with)|know|proficien)/i, tool: "get_profile", args: { section: "skills" } },
   { test: /\b(years|recent|current|latest|history|timeline|career|jobs?|employ|work(ed)? (at|for))\b/i, tool: "get_profile", args: { section: "timeline" } },

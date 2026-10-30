@@ -4,24 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alex Medina, Senior Front-End Engineer</title>
-<meta name="description" content="Alex Medina is a senior front-end engineer in Long Beach, CA, building Shopify storefronts for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, and more.">
+<meta name="description" content="Alex Medina builds Shopify storefronts for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, and more. Senior front-end engineer in Long Beach, CA.">
 <link rel="canonical" href="https://alxdna.dev/">
 <meta name="alxdnai-api" content="https://ai.alxdna.dev">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alxdna.dev/">
 <meta property="og:title" content="Alex Medina, Senior Front-End Engineer">
-<meta property="og:description" content="Front-end engineer behind storefronts for Barnes &amp; Noble, Netflix, and SKIMS.">
+<meta property="og:description" content="I build Shopify storefronts. Lately for Barnes &amp; Noble, Netflix, SKIMS, and Glossier.">
 <meta property="og:image" content="https://alxdna.dev/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="alxdna.dev, portfolio site and AI agent designed and built by Alex Medina">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F7F7F4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFBF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161C" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&amp;family=Silkscreen&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
 (function () {
@@ -33,276 +33,259 @@
 </script>
 </head>
 <body>
-<svg class="svg-defs" aria-hidden="true" width="0" height="0"><filter id="logo-tint" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="0.169 1"/><feFuncG type="table" tableValues="0.267 1"/><feFuncB type="table" tableValues="0.839 1"/></feComponentTransfer></filter><filter id="logo-tint-dark" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="table" tableValues="0.549 0"/><feFuncG type="table" tableValues="0.612 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter></svg>
+<canvas id="pixel-grid" class="pixel-grid" aria-hidden="true"></canvas>
+
 <div class="alx" id="alx">
-  <div class="backdrop" aria-hidden="true">
-    <div class="backdrop__dye"></div>
-    <canvas id="alx-dye-gl" class="backdrop__gl"></canvas>
-    <div class="backdrop__veil"></div>
-  </div>
+  <header id="alx-header" class="site-header container" data-menu="closed">
+    <a href="#top" class="brand"><span class="brand__head" aria-hidden="true"></span>alxdna</a>
+    <div class="site-header__actions">
+      <nav id="alx-nav" class="site-nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#maps">Maps On Maps</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener" class="site-nav__resume">Resume</a>
+      </nav>
+      <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="icon-sun" aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M4 0h2v1H4zM4 9h2v1H4zM0 4h1v2H0zM9 4h1v2H9zM1 1h1v1H1zM8 1h1v1H8zM1 8h1v1H1zM8 8h1v1H8zM3 2h4v1H3zM2 3h6v4H2zM3 7h4v1H3z"/></svg>
+        <svg class="icon-moon" aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M3 1h3v1H3zM2 2h2v1H2zM1 3h2v4H1zM2 7h2v1H2zM3 8h4v1H3zM6 7h2v1H6zM8 5h1v2H8zM3 2h1v1H3z"/></svg>
+      </button>
+      <button type="button" id="menu-toggle" class="icon-btn menu-toggle" aria-controls="alx-nav" aria-expanded="false" aria-label="Open menu">
+        <svg class="icon-menu" aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M1 2h8v1H1zM1 5h8v1H1zM1 8h8v1H1z"/></svg>
+        <svg class="icon-close" aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1H1zM7 1h2v1H7zM2 2h2v1H2zM6 2h2v1H6zM3 3h4v1H3zM4 4h2v2H4zM3 6h4v1H3zM2 7h2v1H2zM6 7h2v1H6zM1 8h2v1H1zM7 8h2v1H7z"/></svg>
+      </button>
+    </div>
+  </header>
 
-  <div class="alx-content">
-    <header id="alx-header" class="site-header container" data-menu="closed">
-      <a href="#top" class="brand">alxdna<span class="brand__dot">.</span></a>
-      <div class="site-header__actions">
-        <nav id="alx-nav" class="site-nav" aria-label="Main">
-          <a href="#work">Work</a>
-          <a href="#maps">Maps On Maps</a>
-          <a href="#experience">Experience</a>
-          <a href="#about">About</a>
-          <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener" class="btn--outline site-nav__resume">Resume</a>
-        </nav>
-        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Switch to dark mode" title="Switch to dark mode">
-          <svg class="icon-sun" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-          <svg class="icon-moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
-        </button>
-        <button type="button" id="menu-toggle" class="icon-btn menu-toggle" aria-controls="alx-nav" aria-expanded="false" aria-label="Open menu">
-          <svg class="icon-menu" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-          <svg class="icon-close" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-        </button>
-      </div>
-    </header>
-
-    <main>
-      <section id="top" class="hero container">
-        <p class="hero__meta">
-          <span class="status"><span class="status__dot" aria-hidden="true"></span>Open to senior roles</span>
-          <span>Long Beach, CA · Remote friendly</span>
-        </p>
-        <h1 class="hero__title">Front-end engineer behind storefronts for <span class="hero__highlight">Barnes &amp; Noble, Netflix, and SKIMS</span>.</h1>
-        <p class="hero__lede">Senior front-end engineer, full-stack when it counts. 14 years shipping for the web, most recently headless Hydrogen and Liquid storefronts and custom Shopify apps for brands like Glossier, MoMA, and Peet's Coffee.</p>
+  <main id="top" class="container">
+    <section class="hero px px--mint" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <h1 id="hero-title" class="hero__title" data-platform>I build <em>Shopify storefronts.</em></h1>
+        <p class="hero__lede">Lately for Barnes &amp; Noble, Netflix, SKIMS, and Glossier. I'm Alex Medina, a senior front-end engineer in Long Beach, CA. I work in Hydrogen, Liquid, and React, and I design, too.</p>
         <div class="hero__actions">
-          <a href="mailto:alxdna@gmail.com" target="_blank" rel="noopener" class="btn btn--accent">Get in touch</a>
-          <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener" class="btn btn--outline">Download resume (PDF)</a>
+          <a href="mailto:alxdna@gmail.com" class="btn btn--go" data-platform>Email me</a>
+          <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener" class="btn btn--alt" data-platform>Resume (PDF)</a>
         </div>
-      </section>
+        <p class="hero__meta">14 years on the web · Open to senior roles · Remote or LA</p>
+      </div>
+      <div class="scene" data-platform="bottom" aria-hidden="true">
+        <span class="hud" data-platform><i></i>Player 1 ready</span>
+        <span class="guide guide--h"></span><span class="guide guide--v"></span>
+        <div class="win" data-platform>
+          <div class="win__bar"><span></span><span></span><span></span><b></b></div>
+          <div class="win__body">
+            <div class="tile"><div class="tile__img"></div><div class="tile__line"></div><div class="tile__line tile__line--price"></div></div>
+            <div class="tile"><div class="tile__img"></div><div class="tile__line"></div><div class="tile__line tile__line--price"></div></div>
+            <div class="tile"><div class="tile__img"></div><div class="tile__line"></div><div class="tile__line tile__line--price"></div></div>
+          </div>
+          <div class="win__cart">Add to cart</div>
+        </div>
+        <p class="controls"><kbd>A</kbd><kbd>D</kbd> move · <kbd>Space</kbd> jump · <kbd>S</kbd> drop · type to code</p>
+      </div>
+    </section>
 
-      <section id="work" class="work container">
-        <div class="work__head">
-          <h2 class="section-title">Selected Shopify work</h2>
-          <p class="work__intro">Built at SDG, 2022 to 2026: large custom themes, headless Hydrogen storefronts, and custom Shopify apps.</p>
-        </div>
-        <div class="client-grid mobile-carousel">
-          <a href="https://www.barnesandnoble.com" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/barnesnoble.svg" alt="Barnes &amp; Noble" loading="lazy" class="logo--w88"></div>
-            <div class="client-card__meta"><span class="client-card__name">Barnes &amp; Noble</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Built custom React components, integrated Sanity CMS and custom membership and rewards APIs, and sped up both the front end and back end.</span>
-          </a>
-          <a href="https://www.netflix.shop" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/netflix.svg" alt="Netflix" loading="lazy"></div>
-            <div class="client-card__meta"><span class="client-card__name">Netflix Shop</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Worked on custom product and collection templates, header navigation updates, and bug fixes.</span>
-          </a>
-          <a href="https://skims.com" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/skims.svg" alt="SKIMS" loading="lazy"></div>
-            <div class="client-card__meta"><span class="client-card__name">SKIMS</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Helped build and launch SKIMS on Hydrogen, making it the first enterprise brand on Shopify's headless framework.</span>
-          </a>
-          <a href="https://www.glossier.com" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/glossier.svg" alt="Glossier" loading="lazy" class="logo--w58"></div>
-            <div class="client-card__meta"><span class="client-card__name">Glossier</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Helped craft the custom UI behind product pages, collections, and the cart.</span>
-          </a>
-          <a href="https://store.moma.org" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/moma.svg" alt="MoMA" loading="lazy"></div>
-            <div class="client-card__meta"><span class="client-card__name">MoMA Design Store</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Part of the team building custom product pages, collection grids, and cart components for the Design Store.</span>
-          </a>
-          <a href="https://www.peets.com" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/peets.svg" alt="Peet's Coffee" loading="lazy"></div>
-            <div class="client-card__meta"><span class="client-card__name">Peet's Coffee</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Contributed to the product, collection, and cart experience, and built and updated landing pages for store locations.</span>
-          </a>
-          <a href="https://hauslabs.com" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/hauslabs.svg" alt="HAUS Labs" loading="lazy" class="logo--w66"></div>
-            <div class="client-card__meta"><span class="client-card__name">HAUS Labs</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Co-developed a custom Shopify app for creating and managing QR gift codes, alongside product, collection, and cart UI.</span>
-          </a>
-          <a href="https://www.indigo.ca" target="_blank" rel="noopener" class="client-card">
-            <div class="client-card__logo"><img src="images/logos/indigo.svg" alt="Indigo" loading="lazy" class="logo--w36"></div>
-            <div class="client-card__meta"><span class="client-card__name">Indigo</span><span class="client-card__tag">Shopify</span></div>
-            <span class="client-card__desc">Helped connect the store to Indigo's loyalty program with custom Shopify apps, and worked on shopping UI from product page to cart.</span>
-          </a>
-        </div>
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section__head">
+        <h2 id="work-title" class="section__title" data-platform>Shopify storefronts</h2>
+        <p class="section__note">Built at SDG, 2022 to 2026</p>
+      </div>
+      <p class="section__intro">Big custom themes, headless Hydrogen builds, and custom Shopify apps, for brands you've probably shopped.</p>
+      <div class="client-grid mobile-carousel">
+        <a href="https://www.barnesandnoble.com" target="_blank" rel="noopener" class="client-card px px--lav" data-platform>
+          <img class="client-card__logo" src="images/logos/barnesnoble.svg" alt="Barnes &amp; Noble" loading="lazy">
+          <span class="client-card__level">React and APIs</span>
+          <span class="client-card__desc">Built custom React components, wired in Sanity CMS and the membership and rewards APIs, and made the front end and back end faster.</span>
+        </a>
+        <a href="https://www.netflix.shop" target="_blank" rel="noopener" class="client-card px px--sky" data-platform>
+          <img class="client-card__logo" src="images/logos/netflix.svg" alt="Netflix Shop" loading="lazy">
+          <span class="client-card__level">Templates and nav</span>
+          <span class="client-card__desc">Built custom product and collection templates, updated the header navigation, and fixed bugs.</span>
+        </a>
+        <a href="https://skims.com" target="_blank" rel="noopener" class="client-card px px--peach" data-platform>
+          <img class="client-card__logo" src="images/logos/skims.svg" alt="SKIMS" loading="lazy">
+          <span class="client-card__level">First on Hydrogen</span>
+          <span class="client-card__desc">Helped build and launch SKIMS on Hydrogen, making it the first enterprise brand on Shopify's headless framework.</span>
+        </a>
+        <a href="https://www.glossier.com" target="_blank" rel="noopener" class="client-card px px--mint" data-platform>
+          <img class="client-card__logo client-card__logo--short" src="images/logos/glossier.svg" alt="Glossier" loading="lazy">
+          <span class="client-card__level">Shopping UI</span>
+          <span class="client-card__desc">Helped build the custom UI behind product pages, collections, and the cart.</span>
+        </a>
+        <a href="https://store.moma.org" target="_blank" rel="noopener" class="client-card px px--sky" data-platform>
+          <img class="client-card__logo" src="images/logos/moma.svg" alt="MoMA Design Store" loading="lazy">
+          <span class="client-card__level">Product to cart</span>
+          <span class="client-card__desc">Worked on the team building custom product pages, collection grids, and cart components for the Design Store.</span>
+        </a>
+        <a href="https://www.peets.com" target="_blank" rel="noopener" class="client-card px px--peach" data-platform>
+          <img class="client-card__logo" src="images/logos/peets.svg" alt="Peet's Coffee" loading="lazy">
+          <span class="client-card__level">Store locations</span>
+          <span class="client-card__desc">Worked on product, collection, and cart pages, and built and updated landing pages for store locations.</span>
+        </a>
+        <a href="https://hauslabs.com" target="_blank" rel="noopener" class="client-card px px--mint" data-platform>
+          <img class="client-card__logo" src="images/logos/hauslabs.svg" alt="HAUS Labs" loading="lazy">
+          <span class="client-card__level">Custom app</span>
+          <span class="client-card__desc">Co-built a custom Shopify app for creating and managing QR gift codes, plus product, collection, and cart UI.</span>
+        </a>
+        <a href="https://www.indigo.ca" target="_blank" rel="noopener" class="client-card px px--lav" data-platform>
+          <img class="client-card__logo client-card__logo--short" src="images/logos/indigo.svg" alt="Indigo" loading="lazy">
+          <span class="client-card__level">Loyalty apps</span>
+          <span class="client-card__desc">Helped connect the store to Indigo's loyalty program with custom Shopify apps, and worked on shopping UI from product page to cart.</span>
+        </a>
+      </div>
 
-        <div class="more-clients">
-          <h3 class="more-clients__title">More Shopify storefronts</h3>
-          <ul class="logo-wall mobile-carousel" aria-label="More Shopify clients">
-            <li><a href="https://shop.mattel.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/mattel.svg" alt="Mattel" loading="lazy"></a></li>
-            <li><a href="https://www.framebridge.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/framebridge.svg" alt="Framebridge" loading="lazy"></a></li>
-            <li><a href="https://society6.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/society6.svg" alt="Society6" loading="lazy"></a></li>
-            <li><a href="https://www.revlon.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/revlon.svg" alt="Revlon" loading="lazy"></a></li>
-            <li><a href="https://www.rarebeauty.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/rarebeauty.svg" alt="Rare Beauty" loading="lazy"></a></li>
-            <li><a href="https://magicspoon.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/magicspoon.svg" alt="Magic Spoon" loading="lazy"></a></li>
-            <li><a href="https://www.bigfacebrand.com/" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/bigface.svg" alt="BIGFACE" loading="lazy"></a></li>
-            <li><a href="https://www.rugsusa.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/rugsusa.svg" alt="Rugs USA" loading="lazy"></a></li>
-            <li><a href="https://www.meundies.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/meundies.svg" alt="MeUndies" loading="lazy"></a></li>
-            <li><a href="https://www.psychobunny.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/psychobunny.svg" alt="Psycho Bunny" loading="lazy"></a></li>
-            <li><a href="https://www.houseplant.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/houseplant.svg" alt="Houseplant" loading="lazy"></a></li>
-            <li><a href="https://www.everlane.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/everlane.svg" alt="Everlane" loading="lazy"></a></li>
-          </ul>
-        </div>
-      </section>
+      <h3 class="more-clients__title">More Shopify storefronts</h3>
+      <ul class="logo-wall mobile-carousel" aria-label="More Shopify clients" data-platform>
+        <li><a href="https://shop.mattel.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/mattel.svg" alt="Mattel" loading="lazy"></a></li>
+        <li><a href="https://www.framebridge.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/framebridge.svg" alt="Framebridge" loading="lazy"></a></li>
+        <li><a href="https://society6.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/society6.svg" alt="Society6" loading="lazy"></a></li>
+        <li><a href="https://www.revlon.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/revlon.svg" alt="Revlon" loading="lazy"></a></li>
+        <li><a href="https://www.rarebeauty.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/rarebeauty.svg" alt="Rare Beauty" loading="lazy"></a></li>
+        <li><a href="https://magicspoon.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/magicspoon.svg" alt="Magic Spoon" loading="lazy"></a></li>
+        <li><a href="https://www.bigfacebrand.com/" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/bigface.svg" alt="BIGFACE" loading="lazy"></a></li>
+        <li><a href="https://www.rugsusa.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/rugsusa.svg" alt="Rugs USA" loading="lazy"></a></li>
+        <li><a href="https://www.meundies.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/meundies.svg" alt="MeUndies" loading="lazy"></a></li>
+        <li><a href="https://www.psychobunny.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/psychobunny.svg" alt="Psycho Bunny" loading="lazy"></a></li>
+        <li><a href="https://www.houseplant.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/houseplant.svg" alt="Houseplant" loading="lazy"></a></li>
+        <li><a href="https://www.everlane.com" target="_blank" rel="noopener" class="logo-tile"><img src="images/logos/everlane.svg" alt="Everlane" loading="lazy"></a></li>
+      </ul>
+    </section>
 
-      <section id="maps" class="maps container">
-        <div class="maps__panel">
-          <div class="maps__copy">
-            <span class="maps__eyebrow">Personal project · Founder, designer, and developer · 2015 to now</span>
-            <div class="maps__title-row">
-              <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" class="app-icon" aria-label="Maps On Maps on the App Store">
-                <img src="images/maps-on-maps/app-icon.png" alt="" width="256" height="256">
-              </a>
-              <h2 class="section-title">Maps On Maps</h2>
-            </div>
-            <p class="maps__desc">Compare several searches on one map. I rebuilt my 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web, using Google Places, Mapbox, and Apple MapKit behind a cost-limited Cloudflare Workers API.</p>
-            <div class="tldr">
-              <span class="tldr__label" id="tldr-label">TL;DR</span>
-              <ul class="chips" aria-labelledby="tldr-label">
-                <li class="chip">Expo</li>
-                <li class="chip">React Native</li>
-                <li class="chip">TypeScript</li>
-                <li class="chip">Cloudflare Workers</li>
-                <li class="chip">Mapbox</li>
-                <li class="chip">Apple MapKit</li>
-                <li class="chip">Google Maps</li>
-              </ul>
-            </div>
-            <div class="maps__actions">
-              <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" class="store-badge">
-                <img src="images/maps-on-maps/app-store-badge.svg" alt="Download on the App Store" width="150" height="50">
-              </a>
-              <a href="https://mapsonmaps.com/" target="_blank" rel="noopener" class="btn btn--light">Try it on the web</a>
-            </div>
-          </div>
-          <div class="maps__shots mobile-carousel">
-            <div class="phones">
-              <div class="phone">
-                <img src="images/maps-on-maps/results.webp" alt="Maps On Maps results sheet listing nearby coffee shops over the map" width="390" height="844" loading="lazy">
-              </div>
-              <div class="phone">
-                <img src="images/maps-on-maps/detail-dark.webp" alt="Maps On Maps place detail for Blue Door Coffee in the dark theme" width="390" height="844" loading="lazy">
-              </div>
-            </div>
-            <figure class="browser">
-              <div class="browser__bar" aria-hidden="true">
-                <span class="browser__dot"></span>
-                <span class="browser__dot"></span>
-                <span class="browser__dot"></span>
-                <span class="browser__url">mapsonmaps.com</span>
-              </div>
-              <img src="images/maps-on-maps/web.webp" alt="Maps On Maps on the web, with search results in a side panel next to the map" width="1440" height="900" loading="lazy">
-            </figure>
-          </div>
+    <section id="maps" class="section maps px px--ink" aria-labelledby="maps-title">
+      <div class="maps__copy">
+        <div class="maps__title-row" data-platform>
+          <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" class="app-icon" aria-label="Maps On Maps on the App Store">
+            <img src="images/maps-on-maps/app-icon.png" alt="" width="256" height="256">
+          </a>
+          <h2 id="maps-title" class="section__title">Maps On Maps</h2>
         </div>
-      </section>
-
-      <section id="experience" class="experience container">
-        <h2 class="section-title">Experience</h2>
-        <ol class="timeline mobile-carousel">
-          <li class="timeline__item">
-            <span class="timeline__dates">2022 – 2026</span>
-            <div class="timeline__body">
-              <h3 class="timeline__role">Senior Front-End Engineer, SDG</h3>
-              <p class="timeline__desc">Custom large-scale headless (Hydrogen) and Liquid Shopify themes and custom Shopify apps for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. React, Node, TypeScript, and Remix, with AI-assisted workflows.</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dates">2016 – 2021</span>
-            <div class="timeline__body">
-              <h3 class="timeline__role">Web Developer, Gunn | Jerkens</h3>
-              <p class="timeline__desc">Marketing sites, WordPress themes, and React and PHP web apps for real estate and land management clients. Owned DevOps for the DigitalOcean Ubuntu fleet and led a migration from Ubuntu 14 to 18 with zero downtime.</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dates">2013 – 2015</span>
-            <div class="timeline__body">
-              <h3 class="timeline__role">Web Developer, CritiqueIt</h3>
-              <p class="timeline__desc">Shaped features, UX, domain model, and design for a web-based annotation app, front end and back end. Contracted for Mideo Systems and Film Solutions.</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dates">2014 – 2015</span>
-            <div class="timeline__body">
-              <h3 class="timeline__role">Front End Engineer, Bedrosians Tile &amp; Stone</h3>
-              <p class="timeline__desc">Implemented designs, fixed bugs, and shipped features in jQuery and React.</p>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__dates">2012 – 2014</span>
-            <div class="timeline__body">
-              <h3 class="timeline__role">Web Developer, Cookiepages</h3>
-              <p class="timeline__desc">Startup work, from custom Facebook pages for local businesses to 1smartmenu, an online ordering menu builder for restaurants.</p>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <section class="toolkit container" aria-labelledby="skills-h">
-        <h2 id="skills-h" class="section-title">Toolkit</h2>
-        <div class="toolkit__grid mobile-carousel">
-          <div class="tool-card">
-            <h3 class="tool-card__title">Front end</h3>
-            <p class="tool-card__desc">React, TypeScript, Remix, Vue, HTML, CSS, SCSS, and Tailwind</p>
-          </div>
-          <div class="tool-card">
-            <h3 class="tool-card__title">Shopify</h3>
-            <p class="tool-card__desc">Hydrogen, Liquid, custom apps, Flow. Badges: <a href="https://www.credly.com/badges/38eb7a58-3574-44da-9bad-03603187d5ed" target="_blank" rel="noopener">Developing Apps for Shopify</a>, <a href="https://www.credly.com/badges/a84e81a4-9efc-4ade-9b53-b5ed39826b91" target="_blank" rel="noopener">Liquid Storefronts for Theme Developers</a></p>
-          </div>
-          <div class="tool-card">
-            <h3 class="tool-card__title">Back end and ops</h3>
-            <p class="tool-card__desc">Node, PHP, SQL, WordPress, Ubuntu, Apache2, Cloudflare Workers</p>
-          </div>
-          <div class="tool-card">
-            <h3 class="tool-card__title">AI workflows</h3>
-            <p class="tool-card__desc">Claude and Codex for faster, well-reviewed shipping</p>
-          </div>
-          <div class="tool-card">
-            <h3 class="tool-card__title">Design</h3>
-            <p class="tool-card__desc">UI and product design for Maps On Maps and this site, prototyped with AI design tools and shipped in code. Design systems, light and dark themes, and a background in visual art.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="about container">
-        <figure class="then-now" data-show="then">
-          <div class="then-now__frame">
-            <img class="then-now-then" src="images/alxdna.jpg" alt="Alex Medina, then" loading="lazy">
-            <img class="then-now-now" src="images/alxdna-now.jpg" alt="Alex Medina, now" loading="lazy">
-          </div>
-          <button type="button" id="then-now-toggle" class="then-now-switch" role="switch" aria-checked="false" aria-label="Show current photo">
-            <span class="then-now-thumb" aria-hidden="true"></span>
-            <span class="then-now-label" data-for="then">Then</span>
-            <span class="then-now-label" data-for="now">Now</span>
-          </button>
-        </figure>
-        <div class="about__copy">
-          <h2 class="section-title">About</h2>
-          <p class="about__text">I've drawn and painted since I was a kid, all the way through high school, so it seemed natural to start community college in visual art. I'd also played guitar as a teen, and music pulled me toward jazz guitar. A friend from the music program, after we'd played in bands together, thought I'd make a great programmer and started teaching me the basics of web development. I eventually transferred to CSUF as a music student, then switched to computer science before leaving to build for the web full-time. Since then I've spent 14 years shipping for startups, agencies, and in-house teams, most recently building commerce for some of the biggest brands on Shopify.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="site-footer__inner container">
-        <div class="site-footer__cta">
-          <h2 class="site-footer__title">Hiring a senior front-end engineer?</h2>
-          <a href="mailto:alxdna@gmail.com" target="_blank" rel="noopener" class="btn btn--light btn--lg">alxdna@gmail.com</a>
-        </div>
-        <div class="site-footer__bottom">
-          <div class="site-footer__links">
-            <a href="https://www.linkedin.com/in/alxdna/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/guitarbeard" target="_blank" rel="noopener">GitHub</a>
-            <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-          </div>
-          <div class="credit">
-            <span class="credit__text"><span>Designed and built by Alex Medina</span><span>Made in Long Beach, CA</span></span>
-            <img class="credit__stamp" src="images/alxdna-stamp.svg" alt="" width="72" height="72">
-          </div>
+        <p class="maps__role">My own app. Founder, designer, and developer, 2015 to now.</p>
+        <p class="maps__desc">Search for a few things at once, like coffee, tacos, and a park, and see them all on one map. I rebuilt my 2016 web app as a cross-platform Expo and React Native app for iOS, Android, and web. It runs on Google Places, Mapbox, and Apple MapKit behind a Cloudflare Workers API with cost limits.</p>
+        <ul class="chips" aria-label="Maps On Maps tech stack">
+          <li>Expo</li><li>React Native</li><li>TypeScript</li><li>Cloudflare Workers</li><li>Mapbox</li><li>Apple MapKit</li><li>Google Maps</li>
+        </ul>
+        <div class="maps__actions">
+          <a href="https://apps.apple.com/us/app/maps-on-maps/id6823845844" target="_blank" rel="noopener" class="store-badge">
+            <img src="images/maps-on-maps/app-store-badge.svg" alt="Download on the App Store" width="150" height="50">
+          </a>
+          <a href="https://mapsonmaps.com/" target="_blank" rel="noopener" class="btn btn--alt">Try it on the web</a>
         </div>
       </div>
-    </footer>
+      <div class="maps__shots mobile-carousel">
+        <div class="phones">
+          <div class="phone" data-platform><img src="images/maps-on-maps/results.webp" alt="Maps On Maps results sheet listing nearby coffee shops over the map" width="390" height="844" loading="lazy"></div>
+          <div class="phone" data-platform><img src="images/maps-on-maps/detail-dark.webp" alt="Maps On Maps place detail for Blue Door Coffee in the dark theme" width="390" height="844" loading="lazy"></div>
+        </div>
+        <figure class="browser" data-platform>
+          <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span><b>mapsonmaps.com</b></div>
+          <img src="images/maps-on-maps/web.webp" alt="Maps On Maps on the web, with search results in a side panel next to the map" width="1440" height="900" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <h2 id="experience-title" class="section__title" data-platform>Experience</h2>
+      <ol class="timeline mobile-carousel">
+        <li class="timeline__item px px--bg" data-platform>
+          <span class="timeline__dates">2022 to 2026</span>
+          <h3 class="timeline__role">Senior Front-End Engineer, SDG</h3>
+          <p class="timeline__desc">Large custom Shopify builds, both headless (Hydrogen) and Liquid, plus custom Shopify apps, for Barnes &amp; Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. React, Node, TypeScript, and Remix, with AI-assisted workflows.</p>
+        </li>
+        <li class="timeline__item px px--bg" data-platform>
+          <span class="timeline__dates">2016 to 2021</span>
+          <h3 class="timeline__role">Web Developer, Gunn | Jerkens</h3>
+          <p class="timeline__desc">Marketing sites, WordPress themes, and React and PHP web apps, mostly for real estate and land management clients. I ran the DigitalOcean Ubuntu servers and moved them from Ubuntu 14 to 18 with zero downtime.</p>
+        </li>
+        <li class="timeline__item px px--bg" data-platform>
+          <span class="timeline__dates">2013 to 2015</span>
+          <h3 class="timeline__role">Web Developer, CritiqueIt</h3>
+          <p class="timeline__desc">Helped shape the features, UX, data model, and design of a web annotation app, front end and back end. Also built for Mideo Systems and Film Solutions as a contractor.</p>
+        </li>
+        <li class="timeline__item px px--bg" data-platform>
+          <span class="timeline__dates">2014 to 2015</span>
+          <h3 class="timeline__role">Front-End Engineer, Bedrosians Tile &amp; Stone</h3>
+          <p class="timeline__desc">Built features from designs and fixed bugs in jQuery and React.</p>
+        </li>
+        <li class="timeline__item px px--bg" data-platform>
+          <span class="timeline__dates">2012 to 2014</span>
+          <h3 class="timeline__role">Web Developer, Cookiepages</h3>
+          <p class="timeline__desc">Startup work, from custom Facebook pages for local businesses to 1smartmenu, an online ordering menu builder for restaurants.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="toolkit-title">
+      <h2 id="toolkit-title" class="section__title" data-platform>Toolkit</h2>
+      <div class="toolkit mobile-carousel">
+        <div class="tool px px--lav" data-platform>
+          <h3 class="tool__title">Front end</h3>
+          <p class="tool__desc">React, TypeScript, Remix, Vue, HTML, CSS, SCSS, and Tailwind.</p>
+        </div>
+        <div class="tool px px--mint" data-platform>
+          <h3 class="tool__title">Shopify</h3>
+          <p class="tool__desc">Hydrogen, Liquid, custom apps, and Flow. Certified in <a href="https://www.credly.com/badges/38eb7a58-3574-44da-9bad-03603187d5ed" target="_blank" rel="noopener">Developing Apps for Shopify</a> and <a href="https://www.credly.com/badges/a84e81a4-9efc-4ade-9b53-b5ed39826b91" target="_blank" rel="noopener">Liquid Storefronts for Theme Developers</a>.</p>
+        </div>
+        <div class="tool px px--sky" data-platform>
+          <h3 class="tool__title">Back end and cloud</h3>
+          <p class="tool__desc">Node, PHP, SQL, and WordPress. Cloudflare Workers, Oracle Cloud, DigitalOcean, Ubuntu, and Apache2.</p>
+        </div>
+        <div class="tool px px--peach" data-platform>
+          <h3 class="tool__title">AI</h3>
+          <p class="tool__desc">Claude and Codex every day. I also built alxdnAI, the agent in the corner of this page, on a self-hosted open model with tools, guardrails, and evals.</p>
+        </div>
+        <div class="tool px px--bg" data-platform>
+          <h3 class="tool__title">Design</h3>
+          <p class="tool__desc">UI and product design for Maps On Maps and this site, including the design systems and light and dark themes. I started out in visual art.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="about__media">
+        <figure class="then-now px px--lav" data-show="then" data-platform>
+          <div class="then-now__frame">
+            <img class="then-now__then" src="images/alxdna.jpg" alt="Alex Medina, then" loading="lazy">
+            <img class="then-now__now" src="images/alxdna-now.jpg" alt="Alex Medina, now" loading="lazy">
+          </div>
+        </figure>
+        <button type="button" id="then-now-toggle" class="era" role="switch" aria-checked="false" aria-label="Show current photo" data-platform data-bonk>
+          <span class="era__then">Then</span><span class="era__now">Now</span>
+        </button>
+      </div>
+      <div class="about__copy">
+        <h2 id="about-title" class="section__title" data-platform>About</h2>
+        <p class="about__text">I drew and painted all through school, so I started college in visual art. Music pulled me toward jazz guitar, and a bandmate started teaching me web development on the side. I transferred to CSUF for music, switched to computer science, then left to build for the web full-time.</p>
+        <p class="about__text">That was 14 years ago. Since then I've shipped for startups, agencies, and in-house teams, most recently commerce for some of the biggest brands on Shopify.</p>
+        <p class="about__hint">Jump into the Then/Now block from below to switch.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <div class="site-footer__panel px px--bg" data-platform>
+      <div class="site-footer__cta">
+        <h2 class="site-footer__title">Hiring a senior front-end engineer?</h2>
+        <a href="mailto:alxdna@gmail.com" class="btn btn--go btn--lg">alxdna@gmail.com</a>
+      </div>
+      <div class="site-footer__bottom">
+        <div class="site-footer__links">
+          <a href="https://www.linkedin.com/in/alxdna/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/guitarbeard" target="_blank" rel="noopener">GitHub</a>
+          <a href="Alex-Medina-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        </div>
+        <p class="credit">Designed and built by Alex Medina · Made in Long Beach, CA</p>
+        <span class="stamp" aria-hidden="true"></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="playfield" id="playfield" aria-hidden="true">
+  <div class="player" id="player">
+    <canvas class="player__sprite" id="sprite" width="33" height="54"></canvas>
+    <canvas class="player__laptop" id="laptop" width="18" height="14"></canvas>
   </div>
 </div>
+
 <script src="main.js" defer></script>
 <script src="alxdnai.js" defer></script>
 </body>

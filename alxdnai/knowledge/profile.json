@@ -11,6 +11,7 @@
     "Shopify": "Hydrogen, Liquid, custom Shopify apps, and Shopify Flow. Shopify badges: Developing Apps for Shopify, and Liquid Storefronts for Theme Developers",
     "Design": "UI and product design for Maps On Maps and alxdna.dev, prototyped with AI design tools and shipped in code. Design systems, light and dark themes, and a background in visual art. Design is a supporting strength; Alex is a front-end engineer first",
     "Back end and ops": "Node, PHP, SQL, WordPress, Ubuntu, Apache2, DigitalOcean, and Cloudflare Workers",
+    "Cloud": "Yes, Alex does cloud computing. He built the serverless Cloudflare Workers API (with cost limits) behind Maps On Maps, runs alxdnAI on an Oracle Cloud ARM VM exposed through Cloudflare Tunnel, runs alxdna.dev's DNS and redirects on Cloudflare, and ran DigitalOcean Ubuntu servers for years, including a zero-downtime upgrade from Ubuntu 14 to 18. He has not listed AWS, GCP, or Azure work",
     "AI and agents": "Daily use of Claude and Codex in engineering workflows. Built alxdnAI: a tool-calling agent on a self-hosted open-weights model (Qwen2.5 via Ollama), with guardrails, transcript review, and a regression eval suite",
     "Mobile": "Expo and React Native (iOS, Android, and web) for Maps On Maps"
   },
