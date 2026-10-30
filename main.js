@@ -42,6 +42,9 @@
     era.setAttribute('aria-checked', now ? 'true' : 'false');
     era.setAttribute('aria-label', now ? 'Show earlier photo' : 'Show current photo');
     photo.setAttribute('data-show', now ? 'now' : 'then');
+    // Only the photo on show is read out
+    photo.querySelector('.then-now__then').setAttribute('aria-hidden', now ? 'true' : 'false');
+    photo.querySelector('.then-now__now').setAttribute('aria-hidden', now ? 'false' : 'true');
     document.dispatchEvent(new CustomEvent('alx:era', { detail: now ? 'now' : 'then' }));
   });
 
@@ -279,18 +282,21 @@
       requestAnimationFrame(step);
     }
 
-    // Keyboard: only while Alex is on screen and focus isn't in a field, link, or button
+    // Keyboard: only while Alex is on screen and focus isn't in a field, link, or button. Letter keys start the
+    // game; Space and the arrows keep scrolling the page until then, and Escape hands them back.
     var MAP = { ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right', ArrowUp: 'jump', KeyW: 'jump', Space: 'jump', ArrowDown: 'down', KeyS: 'down' };
+    var armed = false;
     function inView() { var r = sp.getBoundingClientRect(); return r.bottom > -40 && r.top < innerHeight + 40; }
     function busy(t) { return t.closest && t.closest('input, textarea, select, button, a, [contenteditable], .ai-panel'); }
     addEventListener('keydown', function (e) {
       if (e.metaKey || e.ctrlKey || e.altKey || busy(e.target) || !inView()) return;
+      if (e.key === 'Escape') { armed = false; keys = {}; lastKey = -1e9; return; }
       var k = MAP[e.code], now = performance.now();
+      if (!armed && (e.code === 'Space' || /^Arrow/.test(e.code))) return;
       if (k) { e.preventDefault(); if (k === 'jump') { if (!e.repeat) jump(); } else keys[k] = true; }
       else if (e.key.length === 1) { e.preventDefault(); shoot(now, e.key.toUpperCase()); }
-      else if (/^(Enter|Backspace|Delete|Insert|CapsLock)$/.test(e.key)) shoot(now, e.key.toUpperCase());
       else return;
-      lastKey = now; played = true;
+      armed = true; lastKey = now; played = true;
     });
     addEventListener('keyup', function (e) { var k = MAP[e.code]; if (k) { keys[k] = false; if (k === 'down') keys.downHeld = false; } });
     addEventListener('blur', function () { keys = {}; });

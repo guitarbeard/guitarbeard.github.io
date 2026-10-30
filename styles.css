@@ -188,6 +188,10 @@ p {
   );
 }
 
+.px:focus-visible {
+  outline-offset: -10px;
+}
+
 .px--bg { background: var(--bg); }
 .px--mint { background: var(--mint); }
 .px--lav { background: var(--lav); }
@@ -922,22 +926,71 @@ p {
 }
 
 /* ==========================================================================
-   Experience
+   Experience: a level track
    ========================================================================== */
 
+/* Each role is a ledge on a stair that steps down from the latest job, with a
+   checkpoint block on a dashed rail. Pixel Alex can hop down them. */
 .timeline {
+  position: relative;
   display: grid;
-  gap: 20px;
+  gap: 34px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 44px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  left: 13px;
+  border-left: 3px dashed rgba(var(--dot-a), .6);
 }
 
 .timeline__item {
+  position: relative;
   display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
+  grid-template-columns: 150px minmax(0, 1fr);
   gap: 4px 28px;
-  padding: 22px 26px;
+  max-width: 900px;
+  margin-left: var(--step, 0px);
+  padding-top: 30px;
+}
+
+.timeline__item:nth-child(2) { --step: 40px; }
+.timeline__item:nth-child(3) { --step: 80px; }
+.timeline__item:nth-child(4) { --step: 120px; }
+.timeline__item:nth-child(5) { --step: 160px; }
+
+/* The ledge */
+.timeline__item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  border: 3px solid var(--panel-line);
+  background: repeating-linear-gradient(90deg, var(--green-2) 0 18px, var(--mint) 18px 36px);
+  box-shadow: 4px 4px 0 var(--panel-line);
+}
+
+/* The checkpoint block on the rail; the current job's is lit */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: calc(-40px - var(--step, 0px));
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--panel-line);
+  background: var(--bg);
+}
+
+.timeline__item:first-child::before {
+  background: var(--green);
 }
 
 .timeline__dates {
@@ -954,13 +1007,27 @@ p {
 }
 
 .timeline__desc {
-  max-width: 72ch;
+  max-width: 68ch;
 }
 
 @media (max-width: 760px) {
-  .timeline__item {
+  .timeline {
+    padding-left: var(--gutter);
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline__item,
+  .timeline__item:nth-child(n) {
     grid-template-columns: 1fr;
     align-content: start;
+    --step: 0px;
+  }
+
+  .timeline__item::before {
+    display: none;
   }
 
   .timeline__dates {
