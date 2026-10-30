@@ -232,6 +232,51 @@
     ]
   },
   {
+    "id": "reorder-nudge",
+    "type": "project",
+    "title": "Reorder Nudge",
+    "org": "Personal project (Alex's own Shopify app)",
+    "url": "https://reordernudge.com/",
+    "summary": "A Shopify app for wholesale (B2B) brands. It finds every B2B company in the store (or customers tagged wholesale), learns how often each shop usually reorders, flags the overdue and lapsed accounts, and drafts a reorder email listing their last order with a one-click cart link that rebuilds it. The merchant reviews and sends it from their own inbox. Free for up to 5 accounts, then $19 or $39 a month, billed through Shopify. Built as a React Router Shopify app. Site: https://reordernudge.com/.",
+    "tags": [
+      "reorder nudge",
+      "reordernudge",
+      "reorder",
+      "shopify app",
+      "app",
+      "b2b",
+      "wholesale",
+      "personal",
+      "side project",
+      "project",
+      "react router",
+      "saas"
+    ]
+  },
+  {
+    "id": "zombicide-odds",
+    "type": "project",
+    "title": "Zombicide Weapon Odds",
+    "org": "Personal project (designed and built by Alex)",
+    "url": "https://alxdna.dev/zombicide/",
+    "summary": "A web calculator for the Zombicide 2nd edition board game. Set two weapon loadouts side by side and see which is more likely to clear a zone in one attack. It covers every weapon in the core box, survivor skills, re-rolls (Plenty of Bullets, Plenty of Shells, Lucky), cars, and Molotovs, using binomial probability math. Plain HTML, CSS, and JavaScript with light and dark themes. Live at https://alxdna.dev/zombicide/.",
+    "tags": [
+      "zombicide",
+      "zombie",
+      "board game",
+      "calculator",
+      "odds",
+      "probability",
+      "math",
+      "dice",
+      "game",
+      "personal",
+      "side project",
+      "project",
+      "javascript"
+    ]
+  },
+  {
     "id": "alxdna-dev",
     "type": "project",
     "title": "alxdna.dev",

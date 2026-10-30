@@ -732,6 +732,7 @@ p {
 
 /* Shot by a code glyph */
 .client-card.is-hit,
+.project.is-hit,
 .tool.is-hit,
 .timeline__item.is-hit {
   animation: hit .24s steps(2);
@@ -795,6 +796,10 @@ p {
   gap: 48px;
   align-items: center;
   padding: clamp(24px, 4vw, 52px);
+}
+
+.maps__title {
+  font-size: clamp(28px, 3.2vw, 40px);
 }
 
 .maps__title-row {
@@ -921,6 +926,66 @@ p {
 
 @media (max-width: 900px) {
   .maps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Smaller projects: a screenshot in a browser frame over the write-up */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 26px;
+  margin-top: 34px;
+}
+
+.project {
+  display: grid;
+  align-content: start;
+}
+
+.project__shot {
+  display: block;
+  border-bottom: 3px solid var(--panel-line);
+  background: var(--bg);
+}
+
+.project__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project__body {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.project__title {
+  font-size: 26px;
+}
+
+.project__title a {
+  text-decoration: none;
+}
+
+.project__title a:hover {
+  color: var(--green);
+}
+
+.project__role {
+  font-family: var(--label);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.project .chips {
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .project-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1426,6 +1491,7 @@ p {
   .era.is-bumped,
   .era.is-bumped::after,
   .client-card.is-hit,
+  .project.is-hit,
   .tool.is-hit,
   .timeline__item.is-hit {
     animation: none;

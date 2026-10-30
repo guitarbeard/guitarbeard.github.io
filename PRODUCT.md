@@ -8,15 +8,15 @@ web
 
 ## Users
 
-Hiring managers, recruiters, and engineering leads at companies hiring a senior front-end or full-stack engineer, most often for Shopify and React commerce work. They usually arrive from a resume, LinkedIn, or a job application, skim for a minute or two on desktop or phone, and decide whether Alex is worth an interview.
+Hiring managers, recruiters, and engineering leads at companies hiring a senior front-end or full-stack engineer, for any kind of web work: React and TypeScript apps, commerce, and AI products. They usually arrive from a resume, LinkedIn, or a job application, skim for a minute or two on desktop or phone, and decide whether Alex is worth an interview.
 
 ## Product Purpose
 
-alxdna.dev is Alex Medina's portfolio. It exists to get Alex hired into a senior full-stack role with a front-end focus (Shopify and React). Success is a visitor emailing Alex, downloading the resume, or asking alxdnAI a question about his work.
+alxdna.dev is Alex Medina's portfolio. It exists to get Alex hired into a senior full-stack role with a front-end focus. Shopify is his most recent work, but the site must show he can do any web-based work, not only Shopify. Success is a visitor emailing Alex, downloading the resume, or asking alxdnAI a question about his work.
 
 ## Positioning
 
-Fourteen years shipping for the web, the last four building Shopify storefronts for brands everyone recognizes (Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo) at SDG, including SKIMS as the first enterprise brand on Hydrogen. Alex also designs, founded and built Maps On Maps (Expo and React Native, iOS, Android, and web), and has a background in visual art and jazz guitar. The site itself, including the self-hosted alxdnAI agent, is designed and built by Alex, so the code is part of the portfolio.
+Fourteen years shipping for the web, the last four building Shopify storefronts for brands everyone recognizes (Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo) at SDG, including SKIMS as the first enterprise brand on Hydrogen. Alex also designs, founded and built Maps On Maps (Expo and React Native, iOS, Android, and web), built Reorder Nudge (his own Shopify app for wholesale reorders) and Zombicide Weapon Odds (a board game probability calculator at alxdna.dev/zombicide/), and has a background in visual art and jazz guitar. The site itself, including the self-hosted alxdnAI agent, is designed and built by Alex, so the code is part of the portfolio.
 
 ## Operating Context
 

@@ -111,7 +111,7 @@
     };
     // Shots move a little faster than he runs
     var SPEED = 280, GRAVITY = 2300, JUMP = 900, AIR_JUMP = 780, SHOT_SPEED = 360, SHOT_LIFE = 2.2;
-    var TARGETS = '.client-card, .tool, .timeline__item';
+    var TARGETS = '.client-card, .project, .tool, .timeline__item';
     var W = 99, H = 162, fx = 0, fy = 0, vy = 0, dir = 1, ground = null, jumps = 0, home = null;
     var cur = '', frame = 0, ft = 0, dead = false, dropEl = null, dropUntil = 0, lapUntil = 0, lastShot = 0;
     var plats = [], floorY = 0, docW = 0, keys = {}, lastKey = -1e9, played = false, last = 0, shots = [];
