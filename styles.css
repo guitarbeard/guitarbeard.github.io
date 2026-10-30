@@ -1333,14 +1333,13 @@ p {
   color: var(--muted);
 }
 
-/* The ALXDNA DEV stamp stays a crisp vector, inked in green */
+/* The ALXDNA DEV stamp stays a crisp vector, in ink, upright like the original */
 .stamp {
   display: block;
   width: 96px;
   height: 96px;
   margin-left: auto;
-  background: var(--green);
-  transform: rotate(-10deg);
+  background: var(--ink);
   -webkit-mask: url(images/alxdna-stamp.svg) center / contain no-repeat;
   mask: url(images/alxdna-stamp.svg) center / contain no-repeat;
 }
