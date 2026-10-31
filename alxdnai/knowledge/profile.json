@@ -1,9 +1,9 @@
 {
   "name": "Alex Medina",
   "pronouns": "he/him/his",
-  "headline": "Senior front-end engineer, full-stack when it counts",
+  "headline": "Senior web engineer: front end first, full stack when it counts",
   "location": "Long Beach, CA. Open to remote roles.",
-  "availability": "Open to senior roles. Most interested in senior full-stack roles with a front-end focus, Shopify and React work, and AI agent and LLM product work.",
+  "availability": "Open to senior roles across web work, not only Shopify: full-stack roles with a front-end focus, React and TypeScript web apps, commerce, and AI agent and LLM product work.",
   "summary": "14 years shipping for the web for startups, agencies, and in-house teams. From 2022 to 2026 Alex was a Senior Front-End Engineer at SDG in Los Angeles, building large custom headless (Hydrogen) and Liquid Shopify storefronts and custom Shopify apps for brands like Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. Alex also built alxdnAI, the self-hosted agent that answers questions on alxdna.dev, with its own tools, guardrails, transcript logging, and eval suite.",
   "about": "Alex drew and painted from childhood through high school, so he started community college in visual art. He also played guitar as a teen, and music pulled him toward jazz guitar. A friend from the music program, after the two had played in bands together, thought Alex would make a great programmer and started teaching him the basics of web development. Alex transferred to CSUF as a music student, then switched to computer science before leaving to build for the web full-time.",
   "skills": {
@@ -11,6 +11,7 @@
     "Shopify": "Hydrogen, Liquid, custom Shopify apps, and Shopify Flow. Shopify badges: Developing Apps for Shopify, and Liquid Storefronts for Theme Developers",
     "Design": "UI and product design for Maps On Maps and alxdna.dev, prototyped with AI design tools and shipped in code. Design systems, light and dark themes, and a background in visual art. Design is a supporting strength; Alex is a front-end engineer first",
     "Back end and ops": "Node, PHP, SQL, WordPress, Ubuntu, Apache2, DigitalOcean, and Cloudflare Workers",
+    "Cloud": "Yes, Alex does cloud computing. He built the serverless Cloudflare Workers API (with cost limits) behind Maps On Maps, runs alxdnAI on an Oracle Cloud ARM VM exposed through Cloudflare Tunnel, runs alxdna.dev's DNS and redirects on Cloudflare, and ran DigitalOcean Ubuntu servers for years, including a zero-downtime upgrade from Ubuntu 14 to 18. He has not listed AWS, GCP, or Azure work",
     "AI and agents": "Daily use of Claude and Codex in engineering workflows. Built alxdnAI: a tool-calling agent on a self-hosted open-weights model (Qwen2.5 via Ollama), with guardrails, transcript review, and a regression eval suite",
     "Mobile": "Expo and React Native (iOS, Android, and web) for Maps On Maps"
   },
