@@ -151,15 +151,40 @@
       player.style.setProperty('--dir', dir);
     }
 
+    // Ledges: every [data-platform] block, plus the small things he can hop between (buttons, chips, labels,
+    // links) and each line of text, so there is always a way back up the page
+    var LEDGES = '.btn, .chips li, .hud, .controls kbd, .site-nav a, .brand, .icon-btn, .logo-tile, .app-icon, .store-badge, ' +
+      '.client-card__level, .project__role, .maps__role, .timeline__dates, .section__note, .site-footer__links a, .about__hint';
+    var TEXT = 'h1, h2, h3, p:not(.controls):not(.about__hint):not(.section__note), .client-card__desc';
+    function ledge(el, r, key) {
+      return { el: el, key: key, top: r.top + scrollY, l: r.left + scrollX, r: r.right + scrollX, b: r.bottom + scrollY };
+    }
+    function lines(el) {   // one ledge per rendered line of text
+      var range = document.createRange(), out = [];
+      range.selectNodeContents(el);
+      Array.prototype.forEach.call(range.getClientRects(), function (r) {
+        if (r.width < 4) return;
+        var line = out.filter(function (o) { return Math.abs(o.top - r.top) < 4; })[0];
+        if (line) { line.left = Math.min(line.left, r.left); line.right = Math.max(line.right, r.right); }
+        else out.push({ top: r.top, bottom: r.bottom, left: r.left, right: r.right });
+      });
+      return out;
+    }
     function scan() {
       W = sp.offsetWidth; H = sp.offsetHeight;
-      plats = Array.prototype.map.call(document.querySelectorAll('[data-platform]'), function (el) {
-        var r = el.getBoundingClientRect();
-        return { el: el, top: (el.dataset.platform === 'bottom' ? r.bottom : r.top) + scrollY, l: r.left + scrollX, r: r.right + scrollX, b: r.bottom + scrollY };
-      }).filter(function (p) { return p.r > p.l; });
+      plats = [];
+      Array.prototype.forEach.call(document.querySelectorAll('[data-platform], ' + LEDGES), function (el, i) {
+        var r = el.getBoundingClientRect(), p = ledge(el, r, 'b' + i);
+        if (el.dataset.platform === 'bottom') p.top = r.bottom + scrollY;
+        if (r.width > 0) plats.push(p);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll(TEXT), function (el, i) {
+        if (el.closest('.playfield, .ai-panel, .scene')) return;
+        lines(el).forEach(function (r, j) { plats.push(ledge(el, r, 't' + i + '.' + j)); });
+      });
       floorY = root.scrollHeight; docW = root.clientWidth;
       home = plats.filter(function (p) { return p.el.classList.contains('scene'); })[0];
-      if (ground && ground !== 'floor') ground = plats.filter(function (p) { return p.el === ground.el; })[0] || null;
+      if (ground && ground !== 'floor') ground = plats.filter(function (p) { return p.key === ground.key; })[0] || null;
     }
     function spawn() { scan(); fx = home.l + W / 2 + 6; fy = home.top; ground = home; vy = 0; jumps = 0; place(); }
 
@@ -233,7 +258,7 @@
         }
         if (move) dir = move;
         if (playing && keys.down && ground) {
-          if (ground !== 'floor' && !keys.downHeld) { dropEl = ground.el; dropUntil = now + 260; ground = null; vy = 60; jumps = 1; }
+          if (ground !== 'floor' && !keys.downHeld) { dropEl = ground.top; dropUntil = now + 260; ground = null; vy = 60; jumps = 1; }
           else { crouch = true; move = 0; }
           keys.downHeld = true;
         }
@@ -248,7 +273,7 @@
             ny = p.b + H; vy = 80; bump(p.el, 'is-bumped'); p.el.click();
           });
           if (vy >= 0) plats.forEach(function (p) {
-            if (p.el === dropEl && now < dropUntil) return;
+            if (now < dropUntil && Math.abs(p.top - dropEl) < 6) return;   // drop through everything at that height
             if (fy <= p.top + 1 && ny >= p.top && fx >= p.l - 12 && fx <= p.r + 12 && (!hit || p.top < hit.top)) hit = p;
           });
           if (hit) { fy = hit.top; vy = 0; ground = hit; jumps = 0; }
@@ -303,8 +328,14 @@
     addEventListener('resize', function () { if (played) scan(); else spawn(); });
     setInterval(scan, 1000);
 
-    sp.addEventListener('pointerenter', function () { if (ground) jump(); });
-    sp.addEventListener('click', die);
+    // Mouse: hover hops, click knocks him out. Touch: a tap does one or the other at random.
+    var tapType = 'mouse';
+    sp.addEventListener('pointerdown', function (e) { tapType = e.pointerType; });
+    sp.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' && ground) jump(); });
+    sp.addEventListener('click', function () {
+      if (tapType !== 'mouse' && Math.random() < .5) { if (ground) jump(); }
+      else die();
+    });
 
     // Both eras get a lighter skin tone, closer to the photos. "Now" Alex also gets salt-and-pepper hair and
     // beard and a navy shirt with lemons, like the Now photo. Recolored from the same sheet.
