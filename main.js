@@ -132,7 +132,7 @@
     var PAL = {
       k: '#1B1E24', H: '#2A1F1A', p: '#C9CED6', N: '#5A3A22', F: '#EDE3C8', B: '#9E3B1B', Y: '#F2A93B',
       S: '#D8DCE2', M: '#2A1F1A', T: '#C9CED6', P: '#E65FA6', b: '#E8D2A6', A: '#A7AEB8', a: '#E3E7EC',
-      R: '#2F6FD6', G: '#BFE3EA', W: '#FFFFFF'
+      R: '#2F6FD6', G: '#BFE3EA', W: '#FFFFFF', o: '#D9A066', O: '#B07A3E', g: '#3BCE9A'
     };
     var ART = {
       // Sunburst archtop with f-holes, like the jazz guitar from About
@@ -148,6 +148,11 @@
       brush: [
         '..k..', '.kPk.', '.kPk.', 'kPPPk', 'kPPPk', 'kbPbk', 'kbbbk', 'kbbbk', 'kAAAk', 'kAaAk', 'kAAAk',
         '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '..k..'
+      ],
+      // Wooden artist palette with a thumb notch and four paints
+      palette: [
+        '...kkkkkkk...', '.kkoooooookk.', 'koPPoYYooRRok', 'koPoooYooRook', 'koooooooooook', 'ko.ooooogggok',
+        'k..ooooooggok', 'koooooooooOk.', '.kkoooooOOk..', '...kkkkkkk...'
       ],
       // The brush on the shelf stands in a water jar
       jar: [
@@ -185,8 +190,11 @@
     PROP.guitar = paint(rows('guitar'), ART.guitar, 0, 0);
     HELD.guitar = sideways(PROP.guitar);
     var brush = paint(rows('brush'), ART.brush, 0, 0);
-    HELD.brush = sideways(brush);
-    PROP.brush = paint(paint(sheetFor(9, 21), ART.brush.slice(0, 14), 2, 0), ART.jar, 0, 14);
+    // In his hands: the palette in the back hand, the brush pointing forward from the front hand
+    HELD.brush = paint(sheetFor(44, 10), ART.palette, 0, 0);
+    HELD.brush.getContext('2d').drawImage(sideways(brush), 22, 3);
+    // On the shelf: the palette leans behind the jar
+    PROP.brush = paint(paint(paint(sheetFor(18, 21), ART.palette, 5, 11), ART.brush.slice(0, 14), 2, 0), ART.jar, 0, 14);
 
     function draw(c, art) {   // the canvas keeps the art's native size; CSS scales it by whole pixels
       c.width = art.width; c.height = art.height;
