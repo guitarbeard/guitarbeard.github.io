@@ -1259,6 +1259,7 @@ p {
 }
 
 .about__hint {
+  max-width: 58ch;
   font-family: var(--label);
   font-size: 12px;
   text-transform: uppercase;
@@ -1267,6 +1268,48 @@ p {
 
 @media (hover: none) {
   .about__hint { display: none; }
+}
+
+/* The shelf: the guitar and the brush stand on a pixel floor line. Each slot
+   keeps a fixed size so swapping items never shifts the page. */
+.props {
+  --u: 3px;
+  position: relative;
+  display: flex;
+  gap: 48px;
+  justify-self: start;
+  margin-top: 12px;
+  padding: 0 32px;
+}
+
+.props::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: var(--edge);
+  background: var(--panel-line);
+  box-shadow: 0 var(--edge) 0 var(--green-2);
+}
+
+.props__slot {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: calc(18 * var(--u));
+  height: calc(31 * var(--u));
+}
+
+.prop {
+  width: calc(var(--iw) * var(--u));
+  height: calc(var(--ih) * var(--u));
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.prop.is-bumped {
+  animation: bump .22s steps(3);
 }
 
 @media (max-width: 760px) {
@@ -1366,6 +1409,7 @@ p {
   width: 99px;
   height: 162px;
   transform: translate(var(--x, 0), var(--y, 0)) scaleX(var(--dir, 1));
+  --u: 3px;   /* one art pixel */
 }
 
 .player__sprite {
@@ -1376,26 +1420,50 @@ p {
   cursor: pointer;
 }
 
-.player__laptop {
+.player__item {
   position: absolute;
-  left: 66px;
-  top: 84px;
-  width: 54px;
-  height: 42px;
+  left: calc(var(--ix) * var(--u));
+  top: calc(var(--iy) * var(--u));
+  width: calc(var(--iw) * var(--u));
+  height: calc(var(--ih) * var(--u));
   image-rendering: pixelated;
   visibility: hidden;
 }
 
-.player.is-coding .player__laptop {
+/* Where each item sits in his hands, in art pixels */
+.player__item[data-item="laptop"] { --ix: 22; --iy: 28; }
+.player__item[data-item="guitar"] { --ix: 8; --iy: 32; }
+.player__item[data-item="brush"] { --ix: 22; --iy: 37; }
+
+.player.is-using .player__item {
   visibility: visible;
 }
 
-.code-shot {
+/* Shots and props are tiny bitmaps; --iw and --ih are their size in art pixels */
+.shot {
   position: absolute;
   top: 0;
   left: 0;
+  width: calc(var(--iw) * var(--s));
+  height: calc(var(--ih) * var(--s));
   image-rendering: pixelated;
   pointer-events: none;
+}
+
+.shot--code { --s: 6px; }
+
+.shot--note,
+.shot--paint,
+.shot--splat { --s: 4px; }
+
+.shot--splat {
+  transform: translate(var(--sx), var(--sy));
+  animation: splat 1.4s steps(4) forwards;
+}
+
+@keyframes splat {
+  0%, 60% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @media (max-width: 760px) {
@@ -1405,11 +1473,8 @@ p {
     height: 108px;
   }
 
-  .player__laptop {
-    left: 44px;
-    top: 56px;
-    width: 36px;
-    height: 28px;
+  .player {
+    --u: 2px;
   }
 }
 

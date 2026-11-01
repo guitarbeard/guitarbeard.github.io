@@ -80,7 +80,7 @@
           </div>
           <div class="win__cart">Add to cart</div>
         </div>
-        <p class="controls"><kbd>A</kbd><kbd>D</kbd> move · <kbd>Space</kbd> jump · <kbd>S</kbd> drop · type to code · <kbd>Esc</kbd> stop</p>
+        <p class="controls"><kbd>A</kbd><kbd>D</kbd> move · <kbd>Space</kbd> jump · <kbd>S</kbd> drop · type to code, play, or paint · <kbd>Esc</kbd> stop</p>
       </div>
     </section>
 
@@ -292,7 +292,11 @@
         <h2 id="about-title" class="section__title" data-platform>About</h2>
         <p class="about__text">I drew and painted all through school, so I started college in visual art. Music pulled me toward jazz guitar, and a bandmate started teaching me web development on the side. I transferred to CSUF for music, switched to computer science, then left to build for the web full-time.</p>
         <p class="about__text">That was 14 years ago. Since then I've shipped web apps, marketing sites, mobile apps, and commerce for startups, agencies, and in-house teams, and I keep building my own projects on the side.</p>
-        <p class="about__hint">Jump into the Then/Now block from below to switch.</p>
+        <p class="about__hint">Jump into the Then/Now block from below to switch. Walk into the guitar or the brush to grab it.</p>
+        <div class="props" data-platform="bottom" aria-hidden="true">
+          <span class="props__slot"><canvas class="prop" data-item="guitar"></canvas></span>
+          <span class="props__slot"><canvas class="prop" data-item="brush"></canvas></span>
+        </div>
       </div>
     </section>
   </main>
@@ -319,7 +323,7 @@
 <div class="playfield" id="playfield" aria-hidden="true">
   <div class="player" id="player">
     <canvas class="player__sprite" id="sprite" width="33" height="54"></canvas>
-    <canvas class="player__laptop" id="laptop" width="18" height="14"></canvas>
+    <canvas class="player__item" id="held"></canvas>
   </div>
 </div>
 
