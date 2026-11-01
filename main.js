@@ -95,11 +95,12 @@
 
   // Pixel Alex, playable across the whole page. Every [data-platform] element is a one-way ledge (its top
   // edge, or its bottom edge for data-platform="bottom"). Arrows/WASD move, Space/W/Up jumps (up to three
-  // times), S/Down squats or drops through a ledge, and any other key types on the laptop and fires that key.
-  // Jumping into a [data-bonk] block from below presses it.
+  // times), S/Down squats or drops through a ledge, and any other key uses whatever he's holding: the laptop
+  // fires that key, the guitar fires music notes, and the brush flicks paint. Walking into a prop in About
+  // swaps it for the item in his hands. Jumping into a [data-bonk] block from below presses it.
   (function () {
     var player = document.getElementById('player'), sp = document.getElementById('sprite'), sx = sp.getContext('2d');
-    var lap = document.getElementById('laptop'), playfield = document.getElementById('playfield');
+    var hand = document.getElementById('held'), playfield = document.getElementById('playfield');
     var sheet = new Image(), sheets = {}, active = null;
     var ANIMS = {
       stop: { frames: [0] },
@@ -113,8 +114,8 @@
     var SPEED = 280, GRAVITY = 2300, JUMP = 900, AIR_JUMP = 780, SHOT_SPEED = 360, SHOT_LIFE = 2.2;
     var TARGETS = '.client-card, .project, .tool, .timeline__item';
     var W = 99, H = 162, fx = 0, fy = 0, vy = 0, dir = 1, ground = null, jumps = 0, home = null;
-    var cur = '', frame = 0, ft = 0, dead = false, dropEl = null, dropUntil = 0, lapUntil = 0, lastShot = 0;
-    var plats = [], floorY = 0, docW = 0, keys = {}, lastKey = -1e9, played = false, last = 0, shots = [];
+    var cur = '', frame = 0, ft = 0, dead = false, dropEl = null, dropUntil = 0, useUntil = 0, lastShot = 0;
+    var held = 'laptop', slots = [], plats = [], floorY = 0, docW = 0, keys = {}, lastKey = -1e9, played = false, last = 0, shots = [];
     var auto = { move: 0, until: 0 };
 
     // Frame 7 (squat) isn't in the sheet: the stand frame with 3 art pixels cut from the torso and legs
@@ -126,17 +127,74 @@
       [[0, 33], [39, 8], [50, 4]].forEach(function (b) { c.drawImage(active, 0, b[0], 33, b[1], 0, y, 33, b[1]); y += b[1]; });
     }
 
+    // Things he can hold, one character per art pixel ('.' is empty). Props stand upright on the shelf in
+    // About; in his hands the guitar and brush turn sideways so the neck and bristles point the way he faces.
+    var PAL = {
+      k: '#1B1E24', H: '#2A1F1A', p: '#C9CED6', N: '#5A3A22', F: '#EDE3C8', B: '#9E3B1B', Y: '#F2A93B',
+      S: '#D8DCE2', M: '#2A1F1A', T: '#C9CED6', P: '#E65FA6', b: '#E8D2A6', A: '#A7AEB8', a: '#E3E7EC',
+      R: '#2F6FD6', G: '#BFE3EA', W: '#FFFFFF'
+    };
+    var ART = {
+      // Sunburst archtop with f-holes, like the jazz guitar from About
+      guitar: [
+        '.....kkk.....', '....kHHHk....', '...pkHHHkp...', '....kHHHk....', '...pkHHHkp...', '....kkNkk....',
+        '.....kNk.....', '.....kFk.....', '.....kNk.....', '.....kNk.....', '.....kFk.....', '.....kNk.....',
+        '.....kNk.....', '.....kFk.....', '....kkNkk....', '...kBYSYBk...', '..kBYYSYYBk..', '..kBYYSYYBk..',
+        '..kBYYSYYBk..', '...kBYSYBk...', '..kBYkSkYBk..', '.kBYYkSkYYBk.', 'kBYYYkSkYYYBk', 'kBYYYYSYYYYBk',
+        'kBYYYMMMYYYBk', 'kBYYYYSYYYYBk', 'kBYYYYTYYYYBk', '.kBYYYTYYYBk.', '.kBBYYYYYBBk.', '..kkBBBBBkk..',
+        '....kkkkk....'
+      ],
+      // Round brush with pink paint on the tip
+      brush: [
+        '..k..', '.kPk.', '.kPk.', 'kPPPk', 'kPPPk', 'kbPbk', 'kbbbk', 'kbbbk', 'kAAAk', 'kAaAk', 'kAAAk',
+        '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '.kRk.', '..k..'
+      ],
+      // The brush on the shelf stands in a water jar
+      jar: [
+        '.kkkkkkk.', '.kGGRGGk.', '.kWGRGGk.', '.kWGGGGk.', '.kGGGGGk.', '.kGGGGGk.', '..kkkkk..'
+      ]
+    };
+    function sheetFor(w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+    function paint(c, rows, dx, dy) {
+      var x = c.getContext('2d');
+      rows.forEach(function (row, y) {
+        for (var i = 0; i < row.length; i++) if (row[i] !== '.') { x.fillStyle = PAL[row[i]]; x.fillRect(dx + i, dy + y, 1, 1); }
+      });
+      return c;
+    }
+    function rows(name) { var a = ART[name]; return sheetFor(a[0].length, a.length); }
     // Dark gray laptop in three-quarter view from behind: the back of the lid leans away, the base peeks out below
-    (function drawLaptop() {
-      var c = lap.getContext('2d');
-      function px(x, y, col) { c.fillStyle = col; c.fillRect(x, y, 1, 1); }
+    function laptop() {
+      var c = sheetFor(18, 14), x = c.getContext('2d');
+      function px(X, Y, col) { x.fillStyle = col; x.fillRect(X, Y, 1, 1); }
       for (var y = 0; y < 12; y++) {
         var off = Math.round((11 - y) * 3 / 11), l = 3 + off, r = 14 + off;
-        for (var x = l; x <= r; x++) px(x, y, (x === l || x === r || y === 0 || y === 11) ? '#1B1E24' : x === l + 1 ? '#5A5F6A' : '#3A3D44');
+        for (var X = l; X <= r; X++) px(X, y, (X === l || X === r || y === 0 || y === 11) ? '#1B1E24' : X === l + 1 ? '#5A5F6A' : '#3A3D44');
       }
       px(10, 5, '#8A909B'); px(11, 5, '#8A909B'); px(10, 6, '#8A909B'); px(11, 6, '#8A909B');
       for (var bx = 1; bx < 16; bx++) { px(bx, 12, '#4A4E57'); px(bx, 13, '#1B1E24'); }
-    })();
+      return c;
+    }
+    function sideways(src) {   // a quarter turn clockwise: the top of the art points forward
+      var c = sheetFor(src.height, src.width), x = c.getContext('2d');
+      x.translate(src.height, 0); x.rotate(Math.PI / 2); x.drawImage(src, 0, 0);
+      return c;
+    }
+    var PROP = {}, HELD = {};
+    PROP.laptop = HELD.laptop = laptop();
+    PROP.guitar = paint(rows('guitar'), ART.guitar, 0, 0);
+    HELD.guitar = sideways(PROP.guitar);
+    var brush = paint(rows('brush'), ART.brush, 0, 0);
+    HELD.brush = sideways(brush);
+    PROP.brush = paint(paint(sheetFor(9, 21), ART.brush.slice(0, 14), 2, 0), ART.jar, 0, 14);
+
+    function draw(c, art) {   // the canvas keeps the art's native size; CSS scales it by whole pixels
+      c.width = art.width; c.height = art.height;
+      c.style.setProperty('--iw', art.width); c.style.setProperty('--ih', art.height);
+      c.getContext('2d').drawImage(art, 0, 0);
+    }
+    function hold(item) { held = item; hand.dataset.item = item; draw(hand, HELD[item]); }
+    hold('laptop');
 
     function show(f) {
       sx.clearRect(0, 0, 33, 54);
@@ -182,6 +240,10 @@
         if (el.closest('.playfield, .ai-panel, .scene')) return;
         lines(el).forEach(function (r, j) { plats.push(ledge(el, r, 't' + i + '.' + j)); });
       });
+      slots = Array.prototype.map.call(document.querySelectorAll('.props__slot'), function (el, i) {
+        var r = el.getBoundingClientRect(), old = slots[i] || {};
+        return { el: el, prop: el.firstElementChild, touch: old.touch, l: r.left + scrollX, r: r.right + scrollX, top: r.top + scrollY, b: r.bottom + scrollY };
+      });
       floorY = root.scrollHeight; docW = root.clientWidth;
       home = plats.filter(function (p) { return p.el.classList.contains('scene'); })[0];
       if (ground && ground !== 'floor') ground = plats.filter(function (p) { return p.key === ground.key; })[0] || null;
@@ -194,11 +256,38 @@
       if (ground) { vy = -JUMP; ground = null; jumps = 1; }
       else if (jumps < 3) { vy = -AIR_JUMP; jumps++; }   // triple jump: one from the ground, two in the air
     }
+    // Walking into a prop trades it for whatever he's holding, which is left standing in its spot
+    function swap(slot, now) {
+      var item = slot.prop.dataset.item;
+      if (item === held) return;
+      slot.prop.dataset.item = held; draw(slot.prop, PROP[held]); bump(slot.prop, 'is-bumped');
+      hold(item); useUntil = now + 900;
+    }
+    function touchProps(now) {
+      slots.forEach(function (s) {
+        var touch = fx + W * .25 > s.l && fx - W * .25 < s.r && fy > s.top && fy - H < s.b;
+        if (touch && !s.touch) swap(s, now);   // only on the way in, so he doesn't swap right back
+        s.touch = touch;
+      });
+    }
     function die() { if (!dead) { dead = true; play('die'); } }
 
-    // The key you pressed in Silkscreen, a true pixel font: at 16px each font pixel is 2x2, so sample one per
-    // cell to get the native bitmap, add a 1px drop shadow, and show it at 6x
+    // Shots are tiny bitmaps with a 1px drop shadow, scaled up in CSS by whole pixels
     function hex(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+    function stamp(on, w, h, fill, kind, flat) {
+      var c = sheetFor(w, h), cx = c.getContext('2d'), d = cx.createImageData(w, h), ink = hex(css('--panel-line'));
+      fill = hex(fill);
+      for (var i = 0; i < on.length; i++) {
+        var shadow = !flat && !on[i] && i % w > 0 && i >= w && on[i - w - 1], col = on[i] ? fill : shadow ? ink : null;
+        if (col) { d.data[i * 4] = col[0]; d.data[i * 4 + 1] = col[1]; d.data[i * 4 + 2] = col[2]; d.data[i * 4 + 3] = 255; }
+      }
+      cx.putImageData(d, 0, 0);
+      c.className = 'shot shot--' + kind;
+      c.style.setProperty('--iw', w); c.style.setProperty('--ih', h);
+      return c;
+    }
+    // The key you pressed in Silkscreen, a true pixel font: at 16px each font pixel is 2x2, so sample one per
+    // cell to get the native bitmap
     function glyph(text) {
       var big = document.createElement('canvas'), bx = big.getContext('2d'), font = '16px Silkscreen, monospace';
       bx.font = font; big.width = Math.ceil(bx.measureText(text).width / 2) * 2 + 4; big.height = 24;
@@ -208,24 +297,42 @@
         var sx2 = x * 2 + 1, sy2 = y * 2 + 1;
         on[y * w + x] = sx2 < big.width && sy2 < big.height && src[(sy2 * big.width + sx2) * 4 + 3] > 127;
       }
-      var c = document.createElement('canvas'), cx = c.getContext('2d');
-      c.width = w; c.height = h;
-      var d = cx.createImageData(w, h), ink = hex(css('--panel-line')), fill = hex(css('--green'));
-      for (var i = 0; i < on.length; i++) {
-        var shadow = !on[i] && i % w > 0 && i >= w && on[i - w - 1], col = on[i] ? fill : shadow ? ink : null;
-        if (col) { d.data[i * 4] = col[0]; d.data[i * 4 + 1] = col[1]; d.data[i * 4 + 2] = col[2]; d.data[i * 4 + 3] = 255; }
-      }
-      cx.putImageData(d, 0, 0);
-      c.className = 'code-shot';
-      c.style.width = w * 6 + 'px'; c.style.height = h * 6 + 'px';
-      return c;
+      return stamp(on, w, h, css('--green'), 'code');
     }
-    function shoot(now, text) {
+    var SHAPES = {
+      note: ['...##..', '...###.', '...#.##', '...#..#', '...#...', '...#...', '.###...', '####...', '####...', '.##....'],
+      notes: ['...######', '...######', '...#....#', '...#....#', '...#....#', '.###..###', '####.####', '####.####', '.##...##.'],
+      drop: ['..#..', '.###.', '.###.', '#####', '#####', '#####', '.###.'],
+      splat: ['.#..#..', '.#####.', '#######']
+    };
+    function shape(name, fill, kind, flat) {
+      var a = SHAPES[name], w = a[0].length + 1, h = a.length + 1, on = [];
+      for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) on[y * w + x] = !!a[y] && a[y][x] === '#';
+      return stamp(on, w, h, fill, kind, flat);
+    }
+    var PAINT = ['#E65FA6', '#F2A93B', '#2F6FD6', '#3BCE9A'];
+    function shoot(now, key) {
       if (dead || now - lastShot < 90) return;
-      lastShot = now; lapUntil = now + 900;
-      var s = glyph(text);
-      playfield.appendChild(s);
-      shots.push({ el: s, x: fx + dir * (W / 2 + 10), y: fy - H * .5, v: dir * SHOT_SPEED, t: 0, w: 0 });
+      lastShot = now; useUntil = now + 900;
+      var x = fx + dir * (W / 2 + 10), y = fy - H * .5, s;
+      if (held === 'guitar') {   // plain black notes (white in dark mode) bob along like a melody
+        s = { el: shape(Math.random() < .5 ? 'note' : 'notes', css('--ink'), 'note', true), vx: SHOT_SPEED * .8, vy: -30, g: 0, wave: 10 };
+      } else if (held === 'brush') {   // paint flicks up and arcs down, then splats on whatever it lands on
+        var fill = PAINT[Math.floor(Math.random() * PAINT.length)];
+        s = { el: shape('drop', fill, 'paint'), fill: fill, vx: SHOT_SPEED * (.8 + Math.random() * .5), vy: -420 - Math.random() * 200, g: 1500, wave: 0 };
+      } else {
+        s = { el: glyph(key), vx: SHOT_SPEED, vy: 0, g: 0, wave: 0 };
+      }
+      s.x = x; s.y = y; s.vx *= dir; s.t = 0; s.w = 0;
+      playfield.appendChild(s.el);
+      shots.push(s);
+    }
+    function splat(s, top) {
+      var el = shape('splat', s.fill, 'splat');
+      playfield.appendChild(el);
+      el.style.setProperty('--sx', Math.round(s.cx - el.width * 2) + 'px');
+      el.style.setProperty('--sy', Math.round(top - (el.height - 1) * 4) + 'px');
+      el.addEventListener('animationend', function () { el.remove(); });
     }
 
     // Wander on the home ledge when nobody is playing
@@ -287,20 +394,28 @@
           else if (bottom > innerHeight - 40) scrollTo(0, scrollY + (bottom - innerHeight + 40) * .2);
         }
       }
-      player.classList.toggle('is-coding', now < lapUntil);
+      player.classList.toggle('is-using', now < useUntil);
+      if (!dead) touchProps(now);
       place();
 
       shots = shots.filter(function (s) {
-        s.t += dt; s.x += s.v * dt;
-        if (!s.w) s.w = s.el.offsetWidth;
-        var tip = s.v > 0 ? s.x + s.w : s.x, target = null;
-        plats.forEach(function (p) { if (p.el.matches(TARGETS) && tip > p.l && tip < p.r && s.y > p.top && s.y < p.b) target = p.el; });
-        if (target || s.t > SHOT_LIFE || tip < 0 || tip > docW) {
+        var py = s.y;
+        s.t += dt; s.x += s.vx * dt; s.vy += s.g * dt; s.y += s.vy * dt;
+        if (!s.w) { s.w = s.el.offsetWidth; s.h = s.el.offsetHeight; }
+        var y = Math.round(s.y + Math.sin(s.t * 9) * s.wave), left = s.vx > 0 ? s.x : s.x - s.w;
+        var tip = s.vx > 0 ? s.x + s.w : s.x, target = null, land = null;
+        s.cx = left + s.w / 2;
+        plats.forEach(function (p) {
+          if (p.el.matches(TARGETS) && tip > p.l && tip < p.r && y > p.top && y < p.b) target = p.el;
+          if (s.g && s.vy > 0 && py + s.h <= p.top && s.y + s.h >= p.top && s.cx > p.l && s.cx < p.r && (!land || p.top < land.top)) land = p;
+        });
+        if (target || land || s.t > SHOT_LIFE || tip < 0 || tip > docW || s.y > floorY) {
           if (target) bump(target, 'is-hit');
+          if (land && !target) splat(s, land.top);
           s.el.remove();
           return false;
         }
-        s.el.style.transform = 'translate(' + Math.round(s.v > 0 ? s.x : s.x - s.w) + 'px,' + Math.round(s.y) + 'px)';
+        s.el.style.transform = 'translate(' + Math.round(left) + 'px,' + y + 'px)';
         s.el.style.opacity = Math.min(1, (SHOT_LIFE - s.t) * 4);
         return true;
       });
@@ -360,6 +475,14 @@
     }
     function setEra(name) { active = sheets[name] || sheets.then; buildSquat(); if (cur) show(ANIMS[cur].frames[frame]); }
     document.addEventListener('alx:era', function (e) { setEra(e.detail); });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.prop'), function (c) {
+      draw(c, PROP[c.dataset.item]);
+      c.addEventListener('click', function () {   // or click one to toss it to him
+        var slot = slots.filter(function (s) { return s.prop === c; })[0];
+        if (slot && !dead) swap(slot, performance.now());
+      });
+    });
 
     function start() { spawn(); play('stop'); requestAnimationFrame(step); }
     sheet.onload = function () {
