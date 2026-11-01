@@ -1462,7 +1462,7 @@ p {
 /* Where each item sits in his hands, in art pixels */
 .player__item[data-item="laptop"] { --ix: 22; --iy: 28; }
 .player__item[data-item="guitar"] { --ix: 8; --iy: 32; }
-.player__item[data-item="brush"] { --ix: 0; --iy: 34; }
+.player__item[data-item="brush"] { --ix: 0; --iy: 31; }
 
 .player.is-using .player__item {
   visibility: visible;
