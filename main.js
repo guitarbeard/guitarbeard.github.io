@@ -274,11 +274,11 @@
 
     // Shots are tiny bitmaps with a 1px drop shadow, scaled up in CSS by whole pixels
     function hex(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
-    function stamp(on, w, h, fill, kind) {
+    function stamp(on, w, h, fill, kind, flat) {
       var c = sheetFor(w, h), cx = c.getContext('2d'), d = cx.createImageData(w, h), ink = hex(css('--panel-line'));
       fill = hex(fill);
       for (var i = 0; i < on.length; i++) {
-        var shadow = !on[i] && i % w > 0 && i >= w && on[i - w - 1], col = on[i] ? fill : shadow ? ink : null;
+        var shadow = !flat && !on[i] && i % w > 0 && i >= w && on[i - w - 1], col = on[i] ? fill : shadow ? ink : null;
         if (col) { d.data[i * 4] = col[0]; d.data[i * 4 + 1] = col[1]; d.data[i * 4 + 2] = col[2]; d.data[i * 4 + 3] = 255; }
       }
       cx.putImageData(d, 0, 0);
@@ -305,18 +305,18 @@
       drop: ['..#..', '.###.', '.###.', '#####', '#####', '#####', '.###.'],
       splat: ['.#..#..', '.#####.', '#######']
     };
-    function shape(name, fill, kind) {
+    function shape(name, fill, kind, flat) {
       var a = SHAPES[name], w = a[0].length + 1, h = a.length + 1, on = [];
       for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) on[y * w + x] = !!a[y] && a[y][x] === '#';
-      return stamp(on, w, h, fill, kind);
+      return stamp(on, w, h, fill, kind, flat);
     }
     var PAINT = ['#E65FA6', '#F2A93B', '#2F6FD6', '#3BCE9A'];
     function shoot(now, key) {
       if (dead || now - lastShot < 90) return;
       lastShot = now; useUntil = now + 900;
       var x = fx + dir * (W / 2 + 10), y = fy - H * .5, s;
-      if (held === 'guitar') {   // notes bob along like a melody
-        s = { el: shape(Math.random() < .5 ? 'note' : 'notes', css('--pink'), 'note'), vx: SHOT_SPEED * .8, vy: -30, g: 0, wave: 10 };
+      if (held === 'guitar') {   // plain black notes (white in dark mode) bob along like a melody
+        s = { el: shape(Math.random() < .5 ? 'note' : 'notes', css('--ink'), 'note', true), vx: SHOT_SPEED * .8, vy: -30, g: 0, wave: 10 };
       } else if (held === 'brush') {   // paint flicks up and arcs down, then splats on whatever it lands on
         var fill = PAINT[Math.floor(Math.random() * PAINT.length)];
         s = { el: shape('drop', fill, 'paint'), fill: fill, vx: SHOT_SPEED * (.8 + Math.random() * .5), vy: -420 - Math.random() * 200, g: 1500, wave: 0 };

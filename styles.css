@@ -22,6 +22,7 @@
   --dot-a: 15, 122, 91;
   --dot-b: 126, 108, 230;
   --dot-alpha: .16;
+  --item-outline: transparent;
 
   --display: "Pixelify Sans", "Courier New", monospace;
   --label: "Silkscreen", "Courier New", monospace;
@@ -50,6 +51,7 @@
     --dot-a: 94, 211, 166;
     --dot-b: 160, 146, 255;
     --dot-alpha: .14;
+  --item-outline: #E8ECF1;   /* items get a light outline on the dark page */
     color-scheme: dark;
   }
 }
@@ -70,6 +72,7 @@
   --dot-a: 94, 211, 166;
   --dot-b: 160, 146, 255;
   --dot-alpha: .14;
+  --item-outline: #E8ECF1;   /* items get a light outline on the dark page */
   color-scheme: dark;
 }
 
@@ -1418,6 +1421,17 @@ p {
   height: 162px;
   image-rendering: pixelated;
   cursor: pointer;
+}
+
+/* A one-art-pixel outline around held items and props, crisp because it has
+   no blur. Transparent in light mode, light in dark mode. */
+.player__item,
+.prop {
+  filter:
+    drop-shadow(var(--u) 0 0 var(--item-outline))
+    drop-shadow(calc(var(--u) * -1) 0 0 var(--item-outline))
+    drop-shadow(0 var(--u) 0 var(--item-outline))
+    drop-shadow(0 calc(var(--u) * -1) 0 var(--item-outline));
 }
 
 .player__item {
