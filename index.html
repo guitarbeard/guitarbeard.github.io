@@ -80,6 +80,7 @@
           </div>
           <div class="win__cart">Add to cart</div>
         </div>
+        <button type="button" class="btn btn--go play-btn" id="play-toggle" tabindex="-1">Play</button>
         <p class="controls"><kbd>A</kbd><kbd>D</kbd> move · <kbd>Space</kbd> jump · <kbd>S</kbd> drop · type to code, play, or paint · <kbd>Esc</kbd> stop</p>
       </div>
     </section>
@@ -324,6 +325,28 @@
   <div class="player" id="player">
     <canvas class="player__sprite" id="sprite" width="33" height="54"></canvas>
     <canvas class="player__item" id="held"></canvas>
+  </div>
+</div>
+
+<!-- On touchscreens, Play opens this gamepad. Keyboard players use the keys. -->
+<div class="pad" id="pad" role="group" aria-label="Game controls" hidden>
+  <div class="pad__dpad">
+    <button type="button" class="pad__btn" data-key="left" aria-label="Move left">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M6 1h1v8H6zM5 2h1v6H5zM4 3h1v4H4zM3 4h1v2H3z"/></svg>
+    </button>
+    <button type="button" class="pad__btn" data-key="down" aria-label="Drop down">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M1 3h8v1H1zM2 4h6v1H2zM3 5h4v1H3zM4 6h2v1H4z"/></svg>
+    </button>
+    <button type="button" class="pad__btn" data-key="right" aria-label="Move right">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M3 1h1v8H3zM4 2h1v6H4zM5 3h1v4H5zM6 4h1v2H6z"/></svg>
+    </button>
+  </div>
+  <button type="button" class="pad__close" id="pad-close" aria-label="Stop playing">
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 10 10" shape-rendering="crispEdges" fill="currentColor"><path d="M1 1h2v1H1zM7 1h2v1H7zM2 2h2v1H2zM6 2h2v1H6zM3 3h4v1H3zM4 4h2v2H4zM3 6h4v1H3zM2 7h2v1H2zM6 7h2v1H6zM1 8h2v1H1zM7 8h2v1H7z"/></svg>
+  </button>
+  <div class="pad__actions">
+    <button type="button" class="pad__btn pad__btn--round pad__btn--b" data-key="fire">B<span class="pad__label">Fire</span></button>
+    <button type="button" class="pad__btn pad__btn--round pad__btn--a" data-key="jump">A<span class="pad__label">Jump</span></button>
   </div>
 </div>
 

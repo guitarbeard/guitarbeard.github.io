@@ -116,7 +116,7 @@
     var W = 99, H = 162, fx = 0, fy = 0, vy = 0, dir = 1, ground = null, jumps = 0, home = null;
     var cur = '', frame = 0, ft = 0, dead = false, dropEl = null, dropUntil = 0, useUntil = 0, lastShot = 0;
     var held = 'laptop', slots = [], plats = [], floorY = 0, docW = 0, keys = {}, lastKey = -1e9, played = false, last = 0, shots = [];
-    var auto = { move: 0, until: 0 };
+    var auto = { move: 0, until: 0, burst: 0, nextShot: 0 };
 
     // Frame 7 (squat) isn't in the sheet: the stand frame with 3 art pixels cut from the torso and legs
     var squat = document.createElement('canvas');
@@ -336,11 +336,19 @@
     }
 
     // Wander on the home ledge when nobody is playing
+    // and, now and then, stop to fire a short burst from whatever he's holding
+    var CODE = '</>{}();=';
     function think(now) {
+      if (auto.burst && now >= auto.nextShot) {
+        shoot(now, CODE[Math.floor(Math.random() * CODE.length)]);
+        auto.burst--; auto.nextShot = now + 140 + Math.random() * 120;
+      }
       if (now < auto.until) return;
       var r = Math.random();
       auto.move = r < .25 ? -1 : r < .5 ? 1 : 0;
-      if (r > .88) jump(); else if (!auto.move && Math.random() < .5) dir = -dir;
+      if (r > .88) jump();
+      else if (!auto.move && Math.random() < .5) dir = -dir;
+      else if (!auto.move) { auto.burst = 2 + Math.floor(Math.random() * 3); auto.nextShot = now + 250; }
       auto.until = now + (auto.move ? 600 + Math.random() * 700 : 1400 + Math.random() * 1800);
     }
 
@@ -357,7 +365,7 @@
         if (cur) show(ANIMS[cur].frames[frame]);
       }
       if (!dead) {
-        var playing = now - lastKey < 6000, move = 0, crouch = false;
+        var playing = padOn || now - lastKey < 6000, move = 0, crouch = false;
         if (playing) move = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
         else if (!reduce && ground === home) {
           think(now); move = auto.move;
@@ -389,9 +397,9 @@
         }
         play(!ground ? (vy < 0 ? 'jump' : 'fall') : crouch ? 'squat' : move ? 'run' : 'stop');
         if (playing) {   // the camera follows while you play
-          var top = fy - H - scrollY, bottom = fy - scrollY;
+          var top = fy - H - scrollY, bottom = fy - scrollY, floorGap = padOn ? pad.offsetHeight + 40 : 40;
           if (top < 90) scrollTo(0, scrollY + (top - 90) * .2);
-          else if (bottom > innerHeight - 40) scrollTo(0, scrollY + (bottom - innerHeight + 40) * .2);
+          else if (bottom > innerHeight - floorGap) scrollTo(0, scrollY + (bottom - innerHeight + floorGap) * .2);
         }
       }
       player.classList.toggle('is-using', now < useUntil);
@@ -442,6 +450,36 @@
     addEventListener('blur', function () { keys = {}; });
     addEventListener('resize', function () { if (played) scan(); else spawn(); });
     setInterval(scan, 1000);
+
+    // Touch: Play opens an on-screen pixel gamepad. The arrows hold like keys, A jumps, and B fires whatever
+    // he's holding, again and again while it's held down.
+    var pad = document.getElementById('pad'), padOn = false, fireTimer = 0;
+    function setPad(on) {
+      padOn = on; pad.hidden = !on; keys = {};
+      document.body.classList.toggle('is-gaming', on);
+      clearInterval(fireTimer);
+      if (on) played = true; else lastKey = -1e9;
+    }
+    function fire() { shoot(performance.now(), CODE[Math.floor(Math.random() * CODE.length)]); }
+    function press(k, down) {
+      lastKey = performance.now();
+      if (k === 'jump') { if (down) jump(); }
+      else if (k === 'fire') { clearInterval(fireTimer); if (down) { fire(); fireTimer = setInterval(fire, 180); } }
+      else { keys[k] = down; if (k === 'down' && !down) keys.downHeld = false; }
+    }
+    document.getElementById('play-toggle').addEventListener('click', function () { setPad(true); });
+    document.getElementById('pad-close').addEventListener('click', function () { setPad(false); });
+    Array.prototype.forEach.call(pad.querySelectorAll('[data-key]'), function (b) {
+      var k = b.dataset.key;
+      function up() { if (b.classList.contains('is-down')) { b.classList.remove('is-down'); press(k, false); } }
+      b.addEventListener('pointerdown', function (e) {
+        e.preventDefault(); b.setPointerCapture(e.pointerId); b.classList.add('is-down'); press(k, true);
+      });
+      b.addEventListener('pointerup', up);
+      b.addEventListener('pointercancel', up);
+      b.addEventListener('lostpointercapture', up);
+      b.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    });
 
     // Mouse: hover hops, click knocks him out. Touch: a tap does one or the other at random.
     var tapType = 'mouse';
