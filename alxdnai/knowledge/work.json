@@ -7,7 +7,7 @@
     "where": "Los Angeles, CA",
     "years": "March 2022 to July 2026",
     "url": "https://sdg.la",
-    "summary": "Developed and maintained custom large-scale headless (Hydrogen) and non-headless (Liquid) Shopify themes and custom Shopify apps for clients such as Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo. Extensive use of React, Node, TypeScript, and Remix, plus AI-assisted workflows with Claude and Codex.",
+    "summary": "Developed and maintained custom large-scale headless (Hydrogen) and non-headless (Liquid) Shopify themes and custom Shopify apps for clients such as Barnes & Noble, Netflix, SKIMS, Apple, Glossier, MoMA, Peet's Coffee, and HAUS Labs. Extensive use of React, Node, TypeScript, and Remix, plus AI-assisted workflows with Claude and Codex.",
     "tags": [
       "shopify",
       "hydrogen",
@@ -154,20 +154,21 @@
     ]
   },
   {
-    "id": "indigo",
+    "id": "apple",
     "type": "client",
-    "title": "Indigo",
+    "title": "Apple",
     "org": "SDG",
     "years": "2022 to 2026",
-    "summary": "Helped connect the store to Indigo's loyalty program with custom Shopify apps, and worked on shopping UI from product page to cart.",
+    "summary": "Worked on Apple's international storefront theme, rebuilding key components, improving site load speed, and helping implement a custom product builder.",
     "tags": [
-      "indigo",
-      "books",
-      "canada",
-      "loyalty",
-      "app",
-      "custom app",
-      "integration",
+      "apple",
+      "international",
+      "storefront",
+      "theme",
+      "performance",
+      "speed",
+      "product builder",
+      "configurator",
       "shopify"
     ]
   },
@@ -177,7 +178,7 @@
     "title": "More Shopify storefronts",
     "org": "SDG",
     "years": "2022 to 2026",
-    "summary": "Besides the featured clients (Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo), the site's logo wall lists more Shopify storefronts from Alex's SDG years: Mattel, Framebridge, Society6, Revlon, Rare Beauty, Magic Spoon, BIGFACE, Rugs USA, MeUndies, Psycho Bunny, Houseplant, and Everlane. The site does not describe Alex's specific role on the logo-wall stores, so for details, ask Alex directly.",
+    "summary": "Besides the featured clients (Barnes & Noble, Netflix, SKIMS, Apple, Glossier, MoMA, Peet's Coffee, and HAUS Labs), the site's logo wall lists more Shopify storefronts from Alex's SDG years: Mattel, Framebridge, Society6, Revlon, Rare Beauty, Magic Spoon, BIGFACE, Rugs USA, MeUndies, Psycho Bunny, Houseplant, and Everlane. The site does not describe Alex's specific role on the logo-wall stores, so for details, ask Alex directly.",
     "tags": [
       "mattel",
       "framebridge",

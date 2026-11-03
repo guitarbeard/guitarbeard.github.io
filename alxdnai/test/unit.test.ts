@@ -12,7 +12,7 @@ test("search_work finds clients by name and technology", () => {
   assert.equal(searchWork("SKIMS").results[0].title, "SKIMS");
   assert.equal(searchWork("Barnes & Noble").results[0].title, "Barnes & Noble");
   assert.equal(searchWork("expo react native").results[0].title, "Maps On Maps");
-  assert.match(JSON.stringify(searchWork("custom shopify apps").results), /HAUS Labs|Indigo/);
+  assert.match(JSON.stringify(searchWork("custom shopify apps").results), /HAUS Labs/);
 });
 
 test("search_work admits when nothing matches", () => {

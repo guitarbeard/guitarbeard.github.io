@@ -16,7 +16,7 @@ alxdna.dev is Alex Medina's portfolio. It exists to get Alex hired into a senior
 
 ## Positioning
 
-Fourteen years shipping for the web, the last four building Shopify storefronts for brands everyone recognizes (Barnes & Noble, Netflix, SKIMS, Glossier, MoMA, Peet's Coffee, HAUS Labs, and Indigo) at SDG, including SKIMS as the first enterprise brand on Hydrogen. Alex also designs, founded and built Maps On Maps (Expo and React Native, iOS, Android, and web), built Reorder Nudge (his own Shopify app for wholesale reorders) and Zombicide Weapon Odds (a board game probability calculator at alxdna.dev/zombicide/), and has a background in visual art and jazz guitar. The site itself, including the self-hosted alxdnAI agent, is designed and built by Alex, so the code is part of the portfolio.
+Fourteen years shipping for the web, the last four building Shopify storefronts for brands everyone recognizes (Barnes & Noble, Netflix, SKIMS, Apple, Glossier, MoMA, Peet's Coffee, and HAUS Labs) at SDG, including SKIMS as the first enterprise brand on Hydrogen. Alex has a flair for design, founded and built Maps On Maps (Expo and React Native, iOS, Android, and web), built Reorder Nudge (his own Shopify app for wholesale reorders) and Zombicide Weapon Odds (a board game probability calculator at alxdna.dev/zombicide/), and has a background in visual art and jazz guitar. The site itself, including the self-hosted alxdnAI agent, is designed and built by Alex, so the code is part of the portfolio.
 
 ## Operating Context
 
