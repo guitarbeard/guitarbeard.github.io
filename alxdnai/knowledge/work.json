@@ -7,7 +7,7 @@
     "where": "Los Angeles, CA",
     "years": "March 2022 to July 2026",
     "url": "https://sdg.la",
-    "summary": "Developed and maintained custom large-scale headless (Hydrogen) and non-headless (Liquid) Shopify themes and custom Shopify apps for clients such as Barnes & Noble, Netflix, SKIMS, Apple, Glossier, MoMA, Peet's Coffee, and HAUS Labs. Extensive use of React, Node, TypeScript, and Remix, plus AI-assisted workflows with Claude and Codex.",
+    "summary": "Developed and maintained custom large-scale headless (Hydrogen) and non-headless (Liquid) Shopify themes and custom Shopify apps for clients such as Barnes & Noble, Netflix, SKIMS, Apple, Glossier, MoMA, Peet's Coffee, and HAUS Labs. Extensive use of React, Node, TypeScript, and Remix/React Router, plus AI-assisted workflows, mostly with Claude and also with Codex.",
     "tags": [
       "shopify",
       "hydrogen",
